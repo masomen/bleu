@@ -4,11 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Background</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: black; /* Fallback background */
+        }
+
+        /* Fullscreen Video Styling */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Sends the video behind the content */
+        }
+
+        /* Centered Content Styling */
+        .center-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .center-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+    </style>
 </head>
 <body>
-    <!-- Video Background -->
-    <video id="background-video" class="video-background" autoplay muted loop playsinline>
+    <!-- Fullscreen Video -->
+    <video class="video-background" autoplay muted loop playsinline>
+        <!-- The video file is in the same folder as index.html -->
         <source src="bleu.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -17,7 +55,5 @@
     <div class="center-content">
         <h1>Superhero Mode Activated</h1>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
