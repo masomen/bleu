@@ -12,17 +12,26 @@
       box-sizing: border-box;
     }
 
+    /* Body Styles */
+    body {
+      max-width: 1280px; /* Limit the width of the entire page */
+      margin: 0 auto; /* Center the content horizontally */
+      width: 100%;
+      height: 100%;
+      background-color: #000; /* Black background */
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
     /* Navbar Styles */
     .navbar {
-      max-width: 1280px; /* Limit navbar width */
       width: 100%;
-      margin: 0 auto; /* Center the navbar */
-      background-color: #000; /* Black navbar */
       display: flex;
-      justify-content: space-between; /* Space between logo and nav items */
+      justify-content: space-between; /* Logo on the left, links on the right */
       align-items: center;
       padding: 10px 20px; /* Padding inside the navbar */
-      z-index: 1000; /* Ensure navbar is always visible */
+      background-color: #000; /* Navbar background matches body */
+      z-index: 1000; /* Keep navbar above other elements */
     }
 
     .navbar .logo {
@@ -45,10 +54,7 @@
     .navbar .nav-links {
       display: flex;
       list-style: none;
-    }
-
-    .navbar .nav-links li {
-      margin-left: 20px; /* Space between links */
+      gap: 20px; /* Space between links */
     }
 
     .navbar .nav-links li a {
@@ -61,14 +67,6 @@
 
     .navbar .nav-links li a:hover {
       opacity: 1; /* Fully opaque on hover */
-    }
-
-    /* Add padding to body to prevent overlap */
-    body {
-      padding-top: 60px; /* Prevent navbar overlap */
-      background-color: #000; /* Black background */
-      color: white;
-      font-family: Arial, sans-serif;
     }
 
     /* Video Section */
@@ -91,7 +89,6 @@
       .navbar {
         flex-direction: column; /* Stack logo and links */
         align-items: flex-start;
-        padding: 20px;
       }
 
       .navbar .nav-links {
@@ -106,7 +103,7 @@
   <nav class="navbar">
     <div class="logo">
       <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
-        <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo" style="height: 40px; width: 40px; margin-right: 10px;">
+        <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
         <span>Bleu</span>
       </a>
     </div>
@@ -118,7 +115,6 @@
   <!-- Video Section -->
   <div class="video-section">
     <iframe 
-      id="js_video_iframe"
       src="https://jumpshare.com/embed/Fgyu50sk57W3iLIy00Ya"
       frameborder="0"
       allowfullscreen>
