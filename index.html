@@ -25,44 +25,49 @@
             align-items: center;
         }
 
-        /* Font Integration */
-        @font-face {
-            font-family: 'BatmanForever';
-            src: url('fonts/batmfa__.ttf') format('truetype'); /* Ensure correct path */
-            font-display: swap; /* Fallback behavior if font takes time to load */
-        }
-
         /* Navigation Bar Styles */
         .navbar {
             width: 100%;
             background-color: #000; /* Pure black for the navigation bar */
-            padding: 20px 0; /* Vertical padding for spacing */
-            text-align: center; /* Center-aligns the logo and text */
-            position: fixed;
-            top: 0;
-            z-index: 1000; /* Ensures navbar is above other content */
+            padding: 10px 20px; /* Padding with margin on left and right */
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start; /* Align to the left */
+            align-items: center; /* Vertically align content */
         }
 
         .navbar .logo {
             display: flex;
             align-items: center; /* Align image and text vertically */
-            gap: 3px; /* Slightly closer gap between image and text */
+            gap: 5px; /* Small gap between logo and text */
         }
 
         .navbar .logo img {
-            height: 48px; /* Double the size of the logo */
-            width: 48px; /* Ensure proportional scaling */
+            height: 40px; /* Adjusted logo size */
+            width: 40px; /* Proportional scaling */
         }
 
         .navbar .logo span {
             font-family: 'BatmanForever', Arial, sans-serif; /* Apply custom font */
-            font-size: 1.8rem; /* Adjusted smaller font size */
+            font-size: 1.8rem; /* Adjusted font size */
             font-weight: normal;
             color: #fff; /* White text for the logo */
             text-transform: none; /* Prevent automatic capitalization */
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            margin-left: auto; /* Push menu items to the right */
+        }
+
+        .navbar ul li {
+            margin: 0 15px; /* Add spacing between menu items */
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem; /* Adjust font size */
         }
 
         /* Video Section */
@@ -81,20 +86,39 @@
             height: 450px;
             border: none;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Stack items vertically on smaller screens */
+                align-items: flex-start; /* Align content to the left */
+            }
+
+            .navbar ul {
+                margin-left: 0; /* Reset margin for smaller screens */
+                width: 100%; /* Take full width */
+                justify-content: center; /* Center-align menu items */
+            }
+
+            .navbar ul li {
+                margin: 5px 10px; /* Smaller spacing on mobile */
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-    <div class="logo">
-        <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
-        <span>Bleu</span>
-    </div>
-    <ul style="display: flex; gap: 15px; list-style: none; margin-left: auto; margin-right: 10px; padding: 0;">
-        <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
-        <li><a href="my-mission.html" style="color: white; text-decoration: none;">My Mission</a></li>
-    </ul>
-</nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
+                <span>Bleu</span>
+            </a>
+        </div>
+        <ul>
+            <li><a href="my-mission.html">My Mission</a></li>
+        </ul>
+    </nav>
 
     <!-- Video Section -->
     <div class="video-section">
