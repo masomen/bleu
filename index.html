@@ -15,20 +15,20 @@
     /* Navbar Styles */
     .navbar {
       width: 100%;
-      position: fixed;
+      position: fixed; /* Fixed at the top */
       top: 0;
-      background-color: #000; /* Black background */
+      background-color: #000; /* Black navbar */
       display: flex;
       justify-content: space-between; /* Space between logo and nav items */
       align-items: center;
-      padding: 10px 40px; /* Padding for spacing */
+      padding: 10px 20px; /* Padding for spacing */
       z-index: 1000; /* Ensure navbar is always visible */
     }
 
     .navbar .logo {
       display: flex;
-      align-items: center; /* Align vertically */
-      gap: 8px; /* Space between logo and text */
+      align-items: center; /* Align logo and text vertically */
+      gap: 10px; /* Space between logo image and text */
     }
 
     .navbar .logo img {
@@ -45,14 +45,17 @@
     .navbar .nav-links {
       display: flex;
       list-style: none;
-      gap: 30px; /* Space between links */
+    }
+
+    .navbar .nav-links li {
+      margin-left: 20px; /* Space between links */
     }
 
     .navbar .nav-links li a {
       color: white;
       text-decoration: none; /* No underline */
       font-size: 1rem;
-      opacity: 0.7; /* Slightly transparent links */
+      opacity: 0.8; /* Slightly transparent links */
       transition: opacity 0.3s ease; /* Smooth hover effect */
     }
 
@@ -63,12 +66,30 @@
     /* Add padding to body to prevent overlap */
     body {
       padding-top: 60px; /* Prevent navbar overlap */
+      background-color: #000; /* Black background */
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Video Section */
+    .video-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 60px); /* Full height minus navbar */
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border: none;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
       .navbar {
-        flex-direction: column;
+        flex-direction: column; /* Stack logo and links */
         align-items: flex-start;
         padding: 20px;
       }
@@ -85,7 +106,7 @@
   <nav class="navbar">
     <div class="logo">
       <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
-        <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo" style="height: 40px; width: 40px; margin-right: 5px;">
+        <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo" style="height: 40px; width: 40px; margin-right: 10px;">
         <span>Bleu</span>
       </a>
     </div>
