@@ -8,13 +8,13 @@
 /* Font Integration */
 @font-face {
     font-family: 'BatmanForever';
-    src: url('fonts/batmfa__.ttf') format('truetype'); /* Ensure correct path to the font file */
+    src: url('fonts/batmfa__.ttf') format('truetype'); /* Ensure correct path */
     font-display: swap; /* Fallback behavior while the font loads */
 }
 
 /* Body Styling */
 body {
-    max-width: 1280px; /* Limit the width of the page for a centered layout */
+    max-width: 1280px; /* Constrain the page width */
     margin: 0 auto; /* Center content horizontally */
     width: 100%;
     background-color: #000; /* Black background */
@@ -24,43 +24,46 @@ body {
 
 /* Navbar Styles */
 .navbar {
-    width: 100%;
+    max-width: 1280px; /* Limit navbar width */
+    margin: 0 auto; /* Center the navbar */
     display: flex;
-    justify-content: space-between; /* Align logo on the left, links on the right */
-    align-items: center;
-    padding: 10px 20px; /* Add padding around the navbar content */
-    background-color: #000; /* Navbar background matches the page background */
-    z-index: 1000; /* Ensure navbar stays above all other content */
+    justify-content: center; /* Center all navbar items */
+    align-items: center; /* Vertically align items */
+    padding: 10px 20px;
+    background-color: #000; /* Match body background */
+    z-index: 1000; /* Ensure navbar is on top */
 }
 
 .navbar .logo {
     display: flex;
     align-items: center; /* Vertically align logo and text */
-    gap: 8px; /* Add spacing between the logo image and text */
+    gap: 8px;
+    margin-right: auto; /* Push the logo to the far left */
 }
 
 .navbar .logo img {
     height: 40px;
-    width: 40px; /* Ensure the logo image is proportional */
+    width: 40px;
 }
 
 .navbar .logo span {
-    font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font with fallback */
-    font-size: 1.5rem; /* Adjust size of the text */
-    font-weight: normal; /* Use the font’s default weight */
-    color: white; /* White text color */
+    font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font */
+    font-size: 1.5rem;
+    font-weight: normal; /* Use font’s default weight */
+    color: white;
 }
 
 .navbar .nav-links {
     display: flex;
     list-style: none;
-    gap: 20px; /* Add spacing between navigation links */
+    gap: 20px; /* Space between navigation links */
 }
 
 .navbar .nav-links li a {
-    color: white; /* White text color for links */
+    font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font for tabs */
+    color: white; /* White text for links */
     text-decoration: none; /* Remove underline */
-    font-size: 1rem; /* Standard link font size */
+    font-size: 1.2rem; /* Slightly larger font size */
     opacity: 0.8; /* Slightly transparent links */
     transition: opacity 0.3s ease; /* Smooth hover effect */
 }
@@ -74,7 +77,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 60px); /* Full height minus the navbar height */
+    height: calc(100vh - 60px); /* Full height minus navbar */
 }
 
 iframe {
@@ -86,7 +89,7 @@ iframe {
 
 /* Mission Page Content Styling */
 .mission-container {
-    margin-top: 80px; /* Add spacing below the navbar */
+    margin-top: 80px; /* Space below navbar */
     padding: 20px;
     text-align: center;
 }
