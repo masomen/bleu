@@ -25,38 +25,70 @@
             align-items: center;
         }
 
-        /* Navigation Bar */
+        /* Navigation Bar Styles */
         .navbar {
             width: 100%;
-            background-color: #000;
-            padding: 20px 0;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
+            background-color: #000; /* Pure black for the navigation bar */
+            padding: 10px 20px; /* Padding with margin on left and right */
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start; /* Align to the left */
+            align-items: center; /* Vertically align content */
         }
 
         .navbar .logo {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: center; /* Align image and text vertically */
+            gap: 5px; /* Small gap between logo and text */
         }
 
         .navbar .logo img {
-            height: 48px;
-            width: 48px;
+            height: 40px; /* Adjusted logo size */
+            width: 40px; /* Proportional scaling */
         }
 
         .navbar .logo span {
-            font-family: 'Arial', sans-serif;
-            font-size: 1.8rem;
-            color: #fff;
+            font-family: 'BatmanForever', Arial, sans-serif; /* Apply custom font */
+            font-size: 1.8rem; /* Adjusted font size */
+            font-weight: normal;
+            color: #fff; /* White text for the logo */
+            text-transform: none; /* Prevent automatic capitalization */
         }
 
-        /* Page Content */
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            margin-left: auto; /* Push menu items to the right */
+        }
+
+        .navbar ul li {
+            margin: 0 15px; /* Add spacing between menu items */
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem; /* Adjust font size */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Stack items vertically on smaller screens */
+                align-items: flex-start; /* Align content to the left */
+            }
+
+            .navbar ul {
+                margin-left: 0; /* Reset margin for smaller screens */
+                width: 100%; /* Take full width */
+                justify-content: center; /* Center-align menu items */
+            }
+
+            .navbar ul li {
+                margin: 5px 10px; /* Smaller spacing on mobile */
+            }
+        }
+
+        /* Content Section */
         .mission-container {
             max-width: 800px;
             margin-top: 150px; /* Push content below navbar */
@@ -95,38 +127,28 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo">
-            <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
-            <span>Bleu</span>
+            <a href="index.html">
+                <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
+                <span>Bleu</span>
+            </a>
         </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="my-mission.html">My Mission</a></li>
+        </ul>
     </nav>
 
-    <!-- My Mission Content -->
+    <!-- Mission Content -->
     <div class="mission-container">
         <h1>My Mission</h1>
-
         <h2>Who Am I?</h2>
         <p>
             I’m not just your average dog. No, I’m a superdog on a mission. While other dogs chase tails, I chase justice. My purpose? To create a world where no dog goes hungry, no paw is left uncared for, and every street dog can experience the simple joy of tasting a hamburger… or maybe even a cheeseburger, if we’re feeling fancy.
         </p>
 
-        <h2>My Mission</h2>
-        <p>
-            I vow to my homeless dog brothers and sisters:
-        </p>
-        <ul style="text-align: left; margin-left: 20%; margin-right: 20%; color: #fff;">
-            <li>To take what humans give (and sometimes leave unattended) and transform it into burgers for dogs in need.</li>
-            <li>To build a movement powered by blockchain, where every human transaction leaves behind a trail of hope for stray dogs.</li>
-            <li>To ensure that no stray dog suffers alone. With every bite of a burger, we fight hunger. With every token, we fight disease. Together, we will build a better tomorrow.</li>
-        </ul>
-
         <h2>To My Homeless Dog Siblings</h2>
         <p>
             Dear brothers and sisters of the streets, I want you to know that I see you. I hear you. And I will never stop barking for you. While humans swipe their credit cards and make their transactions, I will ensure that their generosity finds its way to your food bowls and your health.
-        </p>
-
-        <h2>To Humans Who Believe in the Cause</h2>
-        <p>
-            This is your chance to join a movement where burgers are justice and tokens bring hope. By supporting Bleu, you’re helping to build a charitable network powered by blockchain technology. You’re not just feeding dogs—you’re saving them. Let’s show the world that even the smallest token can make the biggest difference.
         </p>
     </div>
 
