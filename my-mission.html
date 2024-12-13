@@ -46,12 +46,11 @@
             width: 40px; /* Proportional scaling */
         }
 
-        .navbar .logo span {
-            font-family: 'BatmanForever', Arial, sans-serif; /* Apply custom font */
+        .navbar .logo a {
+            color: white; /* Ensure text is white */
+            text-decoration: none; /* Remove underline */
+            font-family: 'BatmanForever', Arial, sans-serif; /* Custom font */
             font-size: 1.8rem; /* Adjusted font size */
-            font-weight: normal;
-            color: #fff; /* White text for the logo */
-            text-transform: none; /* Prevent automatic capitalization */
         }
 
         .navbar ul {
@@ -61,7 +60,7 @@
         }
 
         .navbar ul li {
-            margin: 0 15px; /* Add spacing between menu items */
+            margin-left: 20px; /* Spacing between menu items */
         }
 
         .navbar ul li a {
@@ -70,25 +69,7 @@
             font-size: 1rem; /* Adjust font size */
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column; /* Stack items vertically on smaller screens */
-                align-items: flex-start; /* Align content to the left */
-            }
-
-            .navbar ul {
-                margin-left: 0; /* Reset margin for smaller screens */
-                width: 100%; /* Take full width */
-                justify-content: center; /* Center-align menu items */
-            }
-
-            .navbar ul li {
-                margin: 5px 10px; /* Smaller spacing on mobile */
-            }
-        }
-
-        /* Content Section */
+        /* Mission Content Section */
         .mission-container {
             max-width: 800px;
             margin-top: 150px; /* Push content below navbar */
@@ -129,11 +110,10 @@
         <div class="logo">
             <a href="index.html">
                 <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
-                <span>Bleu</span>
+                Bleu
             </a>
         </div>
         <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="my-mission.html">My Mission</a></li>
         </ul>
     </nav>
@@ -143,12 +123,18 @@
         <h1>My Mission</h1>
         <h2>Who Am I?</h2>
         <p>
-            I’m not just your average dog. No, I’m a superdog on a mission. While other dogs chase tails, I chase justice. My purpose? To create a world where no dog goes hungry, no paw is left uncared for, and every street dog can experience the simple joy of tasting a hamburger… or maybe even a cheeseburger, if we’re feeling fancy.
+            I’m not just your average dog. No, I’m a superdog on a mission. While other dogs chase tails, I chase justice.
+            My purpose? To create a world where no dog goes hungry, no paw is left uncared for, and every street dog can experience the simple joy of tasting a hamburger… or maybe even a cheeseburger, if we’re feeling fancy.
         </p>
 
         <h2>To My Homeless Dog Siblings</h2>
         <p>
-            Dear brothers and sisters of the streets, I want you to know that I see you. I hear you. And I will never stop barking for you. While humans swipe their credit cards and make their transactions, I will ensure that their generosity finds its way to your food bowls and your health.
+            Dear brothers and sisters of the streets, I want you to know that I see you. I hear you. And I will never stop barking for you.
+            While humans swipe their credit cards and make their transactions, I will ensure that their generosity finds its way to your food bowls and your health.
+        </p>
+
+        <p>
+            Together, we’ll fight hunger with every bite, wag our tails in victory, and prove that even the smallest acts of kindness can make the biggest difference.
         </p>
     </div>
 
