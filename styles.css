@@ -1,4 +1,4 @@
-/* General Reset */
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -8,59 +8,131 @@
 /* Font Integration */
 @font-face {
     font-family: 'BatmanForever';
-    src: url('fonts/batmfa__.ttf') format('truetype'); /* Ensure the path is correct */
-    font-display: swap; /* Fallback behavior if font takes time to load */
+    src: url('fonts/batmfa__.ttf') format('truetype'); /* Ensure correct path to the font file */
+    font-display: swap; /* Fallback behavior while the font loads */
 }
 
-/* Page Background and General Styles */
-html, body {
-    height: 100%;
-    background-color: #000; /* Pure black background */
-    color: #fff; /* White text */
-    font-family: Arial, sans-serif;
-}
-
-/* Body Layout */
+/* Body Styling */
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1280px; /* Limit the width of the page for a centered layout */
+    margin: 0 auto; /* Center content horizontally */
+    width: 100%;
+    background-color: #000; /* Black background */
+    color: white; /* White text */
+    font-family: Arial, sans-serif; /* Default fallback font */
 }
 
-/* Navigation Bar Styles */
+/* Navbar Styles */
 .navbar {
     width: 100%;
-    background-color: #000; /* Pure black for the navigation bar */
-    padding: 20px 0; /* Vertical padding for spacing */
-    text-align: center; /* Center-aligns the logo */
-    position: fixed;
-    top: 0;
-    z-index: 1000; /* Ensures navbar is above other content */
+    display: flex;
+    justify-content: space-between; /* Align logo on the left, links on the right */
+    align-items: center;
+    padding: 10px 20px; /* Add padding around the navbar content */
+    background-color: #000; /* Navbar background matches the page background */
+    z-index: 1000; /* Ensure navbar stays above all other content */
 }
 
-/* Logo Styles */
 .navbar .logo {
-    font-family: 'BatmanForever', Arial, sans-serif; /* Apply custom font */
-    font-size: 2rem; /* Larger font size for "bleu" */
-    font-weight: normal;
-    color: #fff; /* White text for the logo */
-    text-decoration: none;
-    text-transform: none; /* Prevent automatic capitalization */
+    display: flex;
+    align-items: center; /* Vertically align logo and text */
+    gap: 8px; /* Add spacing between the logo image and text */
 }
 
-/* Video Section */
+.navbar .logo img {
+    height: 40px;
+    width: 40px; /* Ensure the logo image is proportional */
+}
+
+.navbar .logo span {
+    font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font with fallback */
+    font-size: 1.5rem; /* Adjust size of the text */
+    font-weight: normal; /* Use the font’s default weight */
+    color: white; /* White text color */
+}
+
+.navbar .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px; /* Add spacing between navigation links */
+}
+
+.navbar .nav-links li a {
+    color: white; /* White text color for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem; /* Standard link font size */
+    opacity: 0.8; /* Slightly transparent links */
+    transition: opacity 0.3s ease; /* Smooth hover effect */
+}
+
+.navbar .nav-links li a:hover {
+    opacity: 1; /* Fully opaque on hover */
+}
+
+/* Video Section (for Homepage Only) */
 .video-section {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    padding-top: 80px; /* Space for the fixed navbar */
+    height: calc(100vh - 60px); /* Full height minus the navbar height */
 }
 
 iframe {
     width: 100%;
-    max-width: 800px;
+    max-width: 800px; /* Limit video width */
     height: 450px;
-    border: none;
+    border: none; /* Remove iframe border */
+}
+
+/* Mission Page Content Styling */
+.mission-container {
+    margin-top: 80px; /* Add spacing below the navbar */
+    padding: 20px;
+    text-align: center;
+}
+
+.mission-container h1 {
+    font-size: 2.5rem;
+    color: #ffa500; /* Highlighted title color */
+    margin-bottom: 20px;
+}
+
+.mission-container h2 {
+    font-size: 1.8rem;
+    margin: 20px 0;
+}
+
+.mission-container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #aaa; /* Slightly muted text for readability */
+    margin-bottom: 20px;
+}
+
+ul.mission-points {
+    list-style: disc;
+    text-align: left;
+    margin: 20px 10%;
+    color: #fff;
+}
+
+/* Footer Styling */
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack logo and links */
+        align-items: flex-start;
+    }
+
+    .navbar .nav-links {
+        flex-direction: column; /* Stack navigation links */
+        gap: 15px; /* Add spacing between stacked links */
+    }
 }
