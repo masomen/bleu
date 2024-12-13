@@ -1,130 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Mission - Bleu</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Mission - Bleu</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        html, body {
-            height: 100%;
-            background-color: #000; /* Pure black background */
-            color: #fff; /* White text */
-            font-family: Arial, sans-serif;
-        }
+    /* Body Styles */
+    body {
+      max-width: 1280px; /* Limit the width of the entire page */
+      margin: 0 auto; /* Center the content horizontally */
+      width: 100%;
+      background-color: #000; /* Black background */
+      color: white;
+      font-family: Arial, sans-serif;
+    }
 
-        /* Navbar Styles */
-        .navbar {
-            width: 100%;
-            position: fixed; /* Fixed at the top */
-            top: 0;
-            background-color: #000; /* Black navbar */
-            display: flex;
-            justify-content: space-between; /* Space between logo and nav items */
-            align-items: center;
-            padding: 10px 40px; /* Padding for spacing */
-            z-index: 1000; /* Ensure navbar is always on top */
-        }
+    /* Navbar Styles */
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between; /* Logo on the left, links on the right */
+      align-items: center;
+      padding: 10px 20px; /* Padding inside the navbar */
+      background-color: #000; /* Navbar background matches body */
+      z-index: 1000; /* Keep navbar above other elements */
+    }
 
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-            gap: 5px; /* Space between logo image and text */
-        }
+    .navbar .logo {
+      display: flex;
+      align-items: center; /* Align logo and text vertically */
+      gap: 8px; /* Space between logo image and text */
+    }
 
-        .navbar .logo img {
-            height: 40px;
-            width: 40px;
-        }
+    .navbar .logo img {
+      height: 40px;
+      width: 40px;
+    }
 
-        .navbar .logo span {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-        }
+    .navbar .logo span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
 
-        .navbar ul {
-            display: flex;
-            list-style: none;
-            gap: 30px; /* Space between menu items */
-        }
+    .navbar .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 20px; /* Space between links */
+    }
 
-        .navbar ul li a {
-            color: white;
-            text-decoration: none; /* Remove underline */
-            font-size: 1rem; /* Adjust font size */
-            transition: color 0.3s ease; /* Smooth hover effect */
-        }
+    .navbar .nav-links li a {
+      color: white;
+      text-decoration: none; /* No underline */
+      font-size: 1rem;
+      opacity: 0.8; /* Slightly transparent links */
+      transition: opacity 0.3s ease; /* Smooth hover effect */
+    }
 
-        .navbar ul li a:hover {
-            color: #aaa; /* Slightly lighter color on hover */
-        }
+    .navbar .nav-links li a:hover {
+      opacity: 1; /* Fully opaque on hover */
+    }
 
-        /* Add padding to the body to prevent overlap */
-        body {
-            padding-top: 60px; /* Space for the fixed navbar */
-        }
+    /* Content Section */
+    .mission-container {
+      margin-top: 80px; /* Space below navbar */
+      padding: 20px;
+      text-align: center;
+    }
 
-        /* Mission Content Section */
-        .mission-container {
-            max-width: 800px;
-            margin: 100px auto;
-            padding: 20px;
-            text-align: center;
-        }
+    .mission-container h1 {
+      font-size: 2.5rem;
+      color: #ffa500; /* Highlighted title */
+      margin-bottom: 20px;
+    }
 
-        .mission-container h1 {
-            font-size: 2.5rem;
-            color: #ffa500; /* Highlighted title */
-            margin-bottom: 20px;
-        }
+    .mission-container h2 {
+      font-size: 1.8rem;
+      margin: 20px 0;
+    }
 
-        .mission-container h2 {
-            font-size: 1.8rem;
-            margin: 20px 0;
-        }
+    .mission-container p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #aaa; /* Slightly muted text for readability */
+      margin-bottom: 20px;
+    }
 
-        .mission-container p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #aaa; /* Slightly muted text for readability */
-            margin-bottom: 20px;
-        }
+    ul.mission-points {
+      list-style: disc;
+      text-align: left;
+      margin: 20px 10%;
+      color: #fff;
+    }
 
-        ul.mission-points {
-            list-style: disc;
-            text-align: left;
-            margin: 20px 10%;
-            color: #fff;
-        }
+    /* Footer */
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #555;
+      font-size: 0.9rem;
+    }
 
-        /* Footer */
-        .footer {
-            margin-top: 50px;
-            text-align: center;
-            color: #aaa; /* Improved contrast */
-            font-size: 0.9rem;
-        }
-    </style>
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column; /* Stack logo and links */
+        align-items: flex-start;
+      }
+
+      .navbar .nav-links {
+        flex-direction: column;
+        gap: 15px; /* Reduce gap between items */
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">
-            <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
-            <span>Bleu</span>
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="my-mission.html">My Mission</a></li>
-        </ul>
-    </nav>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+        <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
+        <span>Bleu</span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="my-mission.html">My Mission</a></li>
+    </ul>
+  </nav>
     
     <!-- Mission Content -->
     <div class="mission-container">
@@ -156,7 +166,7 @@
             While humans swipe their credit cards and make their transactions, I will ensure that their generosity finds its way to your food bowls and your health.
         </p>
         <p>
-            Every burger I steal—or legally procure through blockchain—is for you. Every wag of my tail is for you. Together, we will taste victory… and hamburgers.
+            Every burger I procure through blockchain—is for you. Every wag of my tail is for you. Together, we will taste victory… and hamburgers.
         </p>
 
         <h2>To Humans Who Believe in the Cause</h2>
