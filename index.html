@@ -29,10 +29,10 @@
         .navbar {
             width: 100%;
             background-color: #000; /* Pure black for the navigation bar */
-            padding: 10px 20px; /* Padding with margin on left and right */
+            padding: 10px 20px; /* Padding for spacing */
             display: flex;
-            justify-content: space-between; /* Space between logo and menu items */
-            align-items: center; /* Vertically align content */
+            justify-content: flex-start; /* Left-align logo */
+            align-items: center; /* Vertically align items */
         }
 
         .navbar .logo {
@@ -46,17 +46,17 @@
             width: 40px; /* Proportional scaling */
         }
 
-        .navbar .logo span {
-            font-family: 'BatmanForever', Arial, sans-serif; /* Apply custom font */
+        .navbar .logo a {
+            color: white; /* Ensure text is white */
+            text-decoration: none; /* Remove underline */
+            font-family: 'BatmanForever', Arial, sans-serif; /* Custom font */
             font-size: 1.8rem; /* Adjusted font size */
-            font-weight: normal;
-            color: #fff; /* White text for the logo */
-            text-transform: none; /* Prevent automatic capitalization */
         }
 
         .navbar ul {
             display: flex;
             list-style: none;
+            margin-left: auto; /* Push menu items to the right */
         }
 
         .navbar ul li {
@@ -65,7 +65,7 @@
 
         .navbar ul li a {
             color: white;
-            text-decoration: none;
+            text-decoration: none; /* Remove underline for all tabs */
             font-size: 1rem; /* Adjust font size */
         }
 
@@ -111,7 +111,7 @@
         <div class="logo">
             <a href="index.html">
                 <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
-                <span>Bleu</span>
+                Bleu
             </a>
         </div>
         <ul>
