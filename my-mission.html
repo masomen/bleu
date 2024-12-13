@@ -19,66 +19,52 @@
             font-family: Arial, sans-serif;
         }
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Navigation Bar Styles */
+        /* Navbar Styles */
         .navbar {
             width: 100%;
-            background-color: #000; /* Pure black for the navigation bar */
-            padding: 10px 20px; /* Padding for spacing */
+            position: fixed; /* Fixed at the top */
+            top: 0;
+            background-color: #000; /* Black navbar */
             display: flex;
-            justify-content: space-between; /* Space between logo and menu */
-            align-items: center; /* Vertically align content */
+            justify-content: space-between; /* Space between logo and nav items */
+            align-items: center;
+            padding: 10px 40px; /* Padding for spacing */
+            z-index: 1000; /* Ensure navbar is always on top */
         }
 
         .navbar .logo {
-            display: flex;
-            align-items: center; /* Align image and text vertically */
-            gap: 5px; /* Small gap between logo and text */
-        }
-
-        .navbar .logo img {
-            height: 40px; /* Adjusted logo size */
-            width: 40px; /* Proportional scaling */
-        }
-
-        .navbar .logo a {
-            display: flex;
-            align-items: center;
-            color: white; /* Ensure text is white */
-            text-decoration: none; /* Remove underline */
-            font-family: 'BatmanForever', Arial, sans-serif; /* Custom font */
-            font-size: 1.8rem; /* Adjusted font size */
+            font-family: Arial, sans-serif; /* Use standard font for simplicity */
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
         }
 
         .navbar ul {
             display: flex;
             list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 20px; /* Space between menu items */
+            gap: 30px; /* Space between menu items */
         }
 
         .navbar ul li a {
             color: white;
             text-decoration: none; /* Remove underline */
             font-size: 1rem; /* Adjust font size */
-            padding: 5px 10px; /* Increase clickable area */
             transition: color 0.3s ease; /* Smooth hover effect */
         }
 
         .navbar ul li a:hover {
-            color: #ffa500; /* Add a hover color for interactivity */
+            color: #aaa; /* Slightly lighter color on hover */
+        }
+
+        /* Add padding to the body to prevent overlap */
+        body {
+            padding-top: 60px; /* Space for the fixed navbar */
         }
 
         /* Mission Content Section */
         .mission-container {
             max-width: 800px;
-            margin-top: 150px; /* Push content below navbar */
+            margin: 100px auto;
             padding: 20px;
             text-align: center;
         }
@@ -118,12 +104,15 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .navbar ul {
-                flex-direction: column; /* Stack items vertically */
+            .navbar {
+                flex-direction: column; /* Stack logo and links */
+                align-items: flex-start;
+                padding: 20px;
             }
 
-            .navbar ul li {
-                margin: 10px 0; /* Vertical spacing for smaller screens */
+            .navbar ul {
+                flex-direction: column;
+                gap: 15px; /* Reduce gap between items */
             }
         }
     </style>
@@ -131,12 +120,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">
-            <a href="index.html">
-                <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
-                Bleu
-            </a>
-        </div>
+        <a href="index.html" class="logo">Bleu</a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="my-mission.html">My Mission</a></li>
