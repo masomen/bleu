@@ -31,7 +31,7 @@
             background-color: #000; /* Pure black for the navigation bar */
             padding: 10px 20px; /* Padding with margin on left and right */
             display: flex;
-            justify-content: flex-start; /* Align to the left */
+            justify-content: space-between; /* Space between logo and menu items */
             align-items: center; /* Vertically align content */
         }
 
@@ -57,11 +57,10 @@
         .navbar ul {
             display: flex;
             list-style: none;
-            margin-left: auto; /* Push menu items to the right */
         }
 
         .navbar ul li {
-            margin: 0 15px; /* Add spacing between menu items */
+            margin-left: 20px; /* Spacing between menu items */
         }
 
         .navbar ul li a {
@@ -97,11 +96,11 @@
             .navbar ul {
                 margin-left: 0; /* Reset margin for smaller screens */
                 width: 100%; /* Take full width */
-                justify-content: center; /* Center-align menu items */
+                justify-content: flex-start; /* Align menu items to the left */
             }
 
             .navbar ul li {
-                margin: 5px 10px; /* Smaller spacing on mobile */
+                margin: 10px 0; /* Vertical spacing for smaller screens */
             }
         }
     </style>
