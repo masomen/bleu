@@ -31,8 +31,8 @@
             background-color: #000; /* Pure black for the navigation bar */
             padding: 10px 20px; /* Padding for spacing */
             display: flex;
-            justify-content: flex-start; /* Left-align logo */
-            align-items: center; /* Vertically align items */
+            justify-content: space-between; /* Space between logo and menu */
+            align-items: center; /* Vertically align content */
         }
 
         .navbar .logo {
@@ -56,17 +56,20 @@
         .navbar ul {
             display: flex;
             list-style: none;
-            margin-left: auto; /* Push menu items to the right */
-        }
-
-        .navbar ul li {
-            margin-left: 20px; /* Spacing between menu items */
+            margin: 0;
+            padding: 0;
+            gap: 20px; /* Space between menu items */
         }
 
         .navbar ul li a {
             color: white;
-            text-decoration: none; /* Remove underline for all tabs */
+            text-decoration: none; /* Remove underline */
             font-size: 1rem; /* Adjust font size */
+            transition: color 0.3s ease; /* Smooth hover effect */
+        }
+
+        .navbar ul li a:hover {
+            color: #ffa500; /* Add a hover color for interactivity */
         }
 
         /* Video Section */
@@ -94,7 +97,6 @@
             }
 
             .navbar ul {
-                margin-left: 0; /* Reset margin for smaller screens */
                 width: 100%; /* Take full width */
                 justify-content: flex-start; /* Align menu items to the left */
             }
