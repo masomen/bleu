@@ -1,128 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bleu</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bleu</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        html, body {
-            height: 100%;
-            background-color: #000; /* Pure black background */
-            color: #fff; /* White text */
-            font-family: Arial, sans-serif;
-        }
+    /* Navbar Styles */
+    .navbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      background-color: #000; /* Black background */
+      display: flex;
+      justify-content: space-between; /* Space between logo and nav items */
+      align-items: center;
+      padding: 10px 40px; /* Padding for spacing */
+      z-index: 1000; /* Ensure navbar is always visible */
+    }
 
-        /* Navbar Styles */
-        .navbar {
-            width: 100%;
-            position: fixed; /* Fixed at the top */
-            top: 0;
-            background-color: #000; /* Black navbar */
-            display: flex;
-            justify-content: space-between; /* Space between logo and nav items */
-            align-items: center;
-            padding: 10px 40px; /* Padding for spacing */
-            z-index: 1000; /* Ensure navbar is always on top */
-        }
+    .navbar .logo {
+      display: flex;
+      align-items: center; /* Align vertically */
+      gap: 8px; /* Space between logo and text */
+    }
 
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-            gap: 5px; /* Space between logo image and text */
-        }
+    .navbar .logo img {
+      height: 40px;
+      width: 40px;
+    }
 
-        .navbar .logo img {
-            height: 40px;
-            width: 40px;
-        }
+    .navbar .logo span {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
 
-        .navbar .logo span {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-        }
+    .navbar .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px; /* Space between links */
+    }
 
-        .navbar ul {
-            display: flex;
-            list-style: none;
-            gap: 30px; /* Space between menu items */
-        }
+    .navbar .nav-links li a {
+      color: white;
+      text-decoration: none; /* No underline */
+      font-size: 1rem;
+      opacity: 0.7; /* Slightly transparent links */
+      transition: opacity 0.3s ease; /* Smooth hover effect */
+    }
 
-        .navbar ul li a {
-            color: white;
-            text-decoration: none; /* Remove underline */
-            font-size: 1rem; /* Adjust font size */
-            transition: color 0.3s ease; /* Smooth hover effect */
-        }
+    .navbar .nav-links li a:hover {
+      opacity: 1; /* Fully opaque on hover */
+    }
 
-        .navbar ul li a:hover {
-            color: #aaa; /* Slightly lighter color on hover */
-        }
+    /* Add padding to body to prevent overlap */
+    body {
+      padding-top: 60px; /* Prevent navbar overlap */
+    }
 
-        /* Add padding to the body to prevent overlap */
-        body {
-            padding-top: 60px; /* Space for the fixed navbar */
-        }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
 
-        /* Video Section */
-        .video-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 60px); /* Full height minus navbar */
-        }
-
-        iframe {
-            width: 100%;
-            max-width: 800px;
-            height: 450px;
-            border: none;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column; /* Stack logo and links */
-                align-items: flex-start;
-                padding: 20px;
-            }
-
-            .navbar ul {
-                flex-direction: column;
-                gap: 15px; /* Reduce gap between items */
-            }
-        }
-    </style>
+      .navbar .nav-links {
+        flex-direction: column;
+        gap: 15px; /* Reduce gap between items */
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-  <div class="logo">
-    <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
-      <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo" style="height: 40px; width: 40px; margin-right: 5px;">
-      <span>Bleu</span>
-    </a>
-  </div>
-  <ul class="nav-links">
-    <li><a href="my-mission.html">My Mission</a></li>
-  </ul>
-</nav>
-
-    <!-- Video Section -->
-    <div class="video-section">
-        <iframe 
-            id="js_video_iframe"
-            src="https://jumpshare.com/embed/Fgyu50sk57W3iLIy00Ya"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
+        <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo" style="height: 40px; width: 40px; margin-right: 5px;">
+        <span>Bleu</span>
+      </a>
     </div>
+    <ul class="nav-links">
+      <li><a href="my-mission.html">My Mission</a></li>
+    </ul>
+  </nav>
+
+  <!-- Video Section -->
+  <div class="video-section">
+    <iframe 
+      id="js_video_iframe"
+      src="https://jumpshare.com/embed/Fgyu50sk57W3iLIy00Ya"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
 </body>
 </html>
