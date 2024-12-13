@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bleu</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            background-color: #000; /* Pure black background */
+            color: #fff; /* White text */
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Font Integration */
+        @font-face {
+            font-family: 'BatmanForever';
+            src: url('fonts/batmfa__.ttf') format('truetype'); /* Ensure correct path */
+            font-display: swap; /* Fallback behavior if font takes time to load */
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            width: 100%;
+            background-color: #000; /* Pure black for the navigation bar */
+            padding: 20px 0; /* Vertical padding for spacing */
+            text-align: center; /* Center-aligns the logo and text */
+            position: fixed;
+            top: 0;
+            z-index: 1000; /* Ensures navbar is above other content */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center; /* Align image and text vertically */
+            gap: 3px; /* Slightly closer gap between image and text */
+        }
+
+        .navbar .logo img {
+            height: 48px; /* Double the size of the logo */
+            width: 48px; /* Ensure proportional scaling */
+        }
+
+        .navbar .logo span {
+            font-family: 'BatmanForever', Arial, sans-serif; /* Apply custom font */
+            font-size: 1.8rem; /* Adjusted smaller font size */
+            font-weight: normal;
+            color: #fff; /* White text for the logo */
+            text-transform: none; /* Prevent automatic capitalization */
+        }
+
+        /* Video Section */
+        .video-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding-top: 80px; /* Space for the fixed navbar */
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
+            <span>Bleu</span> <!-- Capitalized B in "Bleu" -->
+        </div>
+    </nav>
+
+    <!-- Video Section -->
+    <div class="video-section">
+        <iframe 
+            id="js_video_iframe"
+            src="https://jumpshare.com/embed/Fgyu50sk57W3iLIy00Ya"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font Integration */
+@font-face {
+    font-family: 'BatmanForever';
+    src: url('fonts/batmfa__.ttf') format('truetype'); /* Ensure the path is correct */
+    font-display: swap; /* Fallback behavior if font takes time to load */
+}
+
+/* Page Background and General Styles */
+html, body {
+    height: 100%;
+    background-color: #000; /* Pure black background */
+    color: #fff; /* White text */
+    font-family: Arial, sans-serif;
+}
+
+/* Body Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    width: 100%;
+    background-color: #000; /* Pure black for the navigation bar */
+    padding: 20px 0; /* Vertical padding for spacing */
+    text-align: center; /* Center-aligns the logo */
+    position: fixed;
+    top: 0;
+    z-index: 1000; /* Ensures navbar is above other content */
+}
+
+/* Logo Styles */
+.navbar .logo {
+    font-family: 'BatmanForever', Arial, sans-serif; /* Apply custom font */
+    font-size: 2rem; /* Larger font size for "bleu" */
+    font-weight: normal;
+    color: #fff; /* White text for the logo */
+    text-decoration: none;
+    text-transform: none; /* Prevent automatic capitalization */
+}
+
+/* Video Section */
+.video-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 80px; /* Space for the fixed navbar */
+}
+
+iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border: none;
+}
