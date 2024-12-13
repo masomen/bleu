@@ -33,10 +33,20 @@
         }
 
         .navbar .logo {
-            font-family: Arial, sans-serif; /* Use standard font for simplicity */
+            display: flex;
+            align-items: center;
+            gap: 5px; /* Space between logo image and text */
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            width: 40px;
+        }
+
+        .navbar .logo span {
             font-size: 1.5rem;
+            font-weight: bold;
             color: white;
-            text-decoration: none;
         }
 
         .navbar ul {
@@ -94,7 +104,10 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="index.html" class="logo">Bleu</a>
+        <div class="logo">
+            <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
+            <span>Bleu</span>
+        </div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="my-mission.html">My Mission</a></li>
