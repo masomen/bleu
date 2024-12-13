@@ -33,10 +33,20 @@
         }
 
         .navbar .logo {
-            font-family: Arial, sans-serif; /* Use standard font for simplicity */
+            display: flex;
+            align-items: center;
+            gap: 5px; /* Space between logo image and text */
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            width: 40px;
+        }
+
+        .navbar .logo span {
             font-size: 1.5rem;
+            font-weight: bold;
             color: white;
-            text-decoration: none;
         }
 
         .navbar ul {
@@ -101,32 +111,21 @@
             color: #aaa; /* Improved contrast */
             font-size: 0.9rem;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column; /* Stack logo and links */
-                align-items: flex-start;
-                padding: 20px;
-            }
-
-            .navbar ul {
-                flex-direction: column;
-                gap: 15px; /* Reduce gap between items */
-            }
-        }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="index.html" class="logo">Bleu</a>
+        <div class="logo">
+            <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
+            <span>Bleu</span>
+        </div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="my-mission.html">My Mission</a></li>
         </ul>
     </nav>
-
+    
     <!-- Mission Content -->
     <div class="mission-container">
         <h1>My Mission</h1>
