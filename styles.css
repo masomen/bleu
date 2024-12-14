@@ -1,53 +1,58 @@
 /* Navbar Styling */
 .navbar {
     display: flex;
-    justify-content: flex-start; /* Align all items to the left */
-    align-items: center; /* Center vertically */
+    justify-content: flex-start; /* Align everything to the left */
+    align-items: center; /* Vertically align items */
     padding: 10px 20px;
     background-color: #000; /* Black background */
     z-index: 1000;
-    width: 100%; /* Full width navbar */
+    width: 100%; /* Full-width navbar */
+    border-bottom: 1px solid #555; /* Optional: add a subtle border for separation */
 }
 
 .nav-links {
     display: flex;
     list-style: none; /* Remove bullets */
-    gap: 20px; /* Space between links */
-    align-items: center; /* Align items vertically */
-    margin: 0; /* Remove default padding/margin */
+    gap: 20px; /* Space between navbar links */
+    margin: 0; /* Remove default margins */
     padding: 0; /* Remove default padding */
 }
 
 .nav-links li {
     display: flex;
-    align-items: center; /* Align vertically */
+    align-items: center; /* Align items vertically */
 }
 
-.nav-links li a {
+.nav-item {
     font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font */
     color: white; /* White text */
     text-decoration: none; /* Remove underline */
-    font-size: 1.2rem; /* Font size */
-    opacity: 0.8; /* Slightly transparent */
-    transition: opacity 0.3s ease; /* Smooth hover */
-    display: flex; /* Flex layout for items like logo */
-    align-items: center; /* Vertically align items */
-    gap: 8px; /* Spacing between logo and text */
+    font-size: 1.5rem; /* Adjust font size */
+    display: flex; /* Flex layout for logo and text */
+    align-items: center; /* Align vertically */
+    gap: 10px; /* Spacing between logo and text */
+    opacity: 0.8; /* Slight transparency */
+    transition: opacity 0.3s ease; /* Smooth hover effect */
 }
 
-.nav-links li a:hover {
+.nav-item:hover {
     opacity: 1; /* Fully visible on hover */
 }
 
 .logo-image {
     height: 30px; /* Adjust logo height */
     width: 30px; /* Adjust logo width */
+    border-radius: 50%; /* Optional: make the logo circular */
 }
 
 /* Responsive Design (Mobile) */
 @media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+    }
+
     .nav-links {
-        flex-direction: column; /* Stack links vertically on small screens */
-        gap: 15px; /* Reduce spacing on mobile */
+        flex-direction: column; /* Stack links vertically */
+        gap: 15px; /* Adjust spacing on small screens */
     }
 }
