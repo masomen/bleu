@@ -3,19 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Socials - Bleu</title>
+  <title>Bleu - Socials</title>
+  <!-- Link to Universal CSS -->
   <link rel="stylesheet" href="styles.css">
+  <!-- JavaScript to include navbar -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("navbar-placeholder").innerHTML = data;
+        })
+        .catch(error => console.error("Error loading navbar:", error));
+    });
+  </script>
 </head>
 <body>
-  <!-- Include Navbar -->
-  <?php include 'navbar.html'; ?>
+  <!-- Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
 
-  <!-- Socials Page Content -->
+  <!-- Social Links -->
   <div class="socials-container">
-    <h1>Follow Bleu on Social Media</h1>
+    <h1>Connect with Bleu</h1>
+    <p>Follow Bleu's adventures and join the Su-paw-hero movement!</p>
     <ul>
       <li><a href="https://x.com" target="_blank">X.com</a></li>
-      <li><a href="https://t.me" target="_blank">Telegram</a></li>
+      <li><a href="https://telegram.org" target="_blank">Telegram</a></li>
     </ul>
   </div>
 </body>
