@@ -6,6 +6,129 @@
   <title>Bleu</title>
   <!-- Link to Universal CSS -->
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: white;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #000;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .navbar .nav-links li a:hover {
+      color: #ffa500;
+    }
+
+    /* Video Section */
+    .video-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    iframe {
+      width: 90%;
+      height: 400px;
+      max-width: 800px;
+    }
+
+    /* Tab Section */
+    .tab-container {
+      margin: 30px auto;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab-buttons button {
+      background-color: #222;
+      border: 1px solid #555;
+      color: white;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .tab-buttons button.active {
+      background-color: #ffa500;
+      color: black;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .tab-content h2 {
+      margin-bottom: 20px;
+    }
+
+    .tab-content form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tab-content form input,
+    .tab-content form button {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #555;
+    }
+
+    .tab-content form button {
+      background-color: #ffa500;
+      border: none;
+      color: black;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation Bar -->
@@ -29,5 +152,45 @@
       allowfullscreen>
     </iframe>
   </div>
+
+  <!-- Tab Section -->
+  <div class="tab-container">
+    <div class="tab-buttons">
+      <button class="tab-button active" onclick="openTab(event, 'buy')">Buy</button>
+      <button class="tab-button" onclick="openTab(event, 'donate')">Donate</button>
+    </div>
+    <div id="buy" class="tab-content active">
+      <h2>Buy Bleu Tokens</h2>
+      <form action="#" method="post">
+        <label for="buyAmount">Enter Amount to Buy:</label>
+        <input type="number" id="buyAmount" name="buyAmount" placeholder="Enter amount" required>
+        <button type="submit">Buy Tokens</button>
+      </form>
+    </div>
+    <div id="donate" class="tab-content">
+      <h2>Donate to Bleu's Mission</h2>
+      <p>Your donation supports stray dogs worldwide!</p>
+      <a href="https://your-stripe-donation-link.com" target="_blank">
+        <button>Donate Now</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function openTab(event, tabName) {
+      // Hide all tab contents
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      // Remove 'active' class from all buttons
+      const buttons = document.querySelectorAll('.tab-buttons button');
+      buttons.forEach(button => button.classList.remove('active'));
+
+      // Show the selected tab and add 'active' to the button
+      document.getElementById(tabName).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
 </body>
 </html>
+
