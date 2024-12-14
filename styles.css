@@ -5,17 +5,17 @@
     box-sizing: border-box;
 }
 
-/* Font Integration for Navbar */
+/* Font Integration */
 @font-face {
     font-family: 'BatmanForever';
-    src: url('./fonts/batmfa__.ttf') format('truetype');
-    font-display: swap; /* Ensure font loads smoothly */
+    src: url('fonts/batmfa__.ttf') format('truetype');
+    font-display: swap;
 }
 
 /* Body Styling */
 body {
-    max-width: 1280px; /* Center the page content */
-    margin: 0 auto;
+    max-width: 1280px; /* Constrain the page width */
+    margin: 0 auto; /* Center content horizontally */
     width: 100%;
     background-color: #000; /* Black background */
     color: white; /* White text */
@@ -26,32 +26,17 @@ body {
 .navbar {
     display: flex;
     align-items: center; /* Vertically align items */
-    justify-content: flex-start; /* Align everything to the left */
+    justify-content: flex-start; /* Align items to the left */
     background-color: #000; /* Match body background */
     padding: 10px 20px;
     max-width: 1280px; /* Constrain navbar width */
     margin: 0 auto; /* Center the navbar */
 }
 
-/* Logo Styling */
-.navbar .logo {
-    display: flex;
-    align-items: center; /* Vertically align logo and text */
-    gap: 10px; /* Space between the logo and text */
-}
-
-.navbar .logo img {
-    height: 40px; /* Correct height */
-    width: 40px; /* Correct width */
-    object-fit: contain; /* Scale correctly */
-}
-
-/* Navbar Links Styling */
 .navbar ul {
     display: flex;
     list-style: none; /* Remove bullet points */
     gap: 20px; /* Space between links */
-    margin-left: 20px; /* Space between logo and links */
 }
 
 .navbar ul li a {
@@ -61,30 +46,85 @@ body {
     font-size: 1.2rem; /* Font size for links */
     opacity: 0.8; /* Slightly faded links */
     transition: opacity 0.3s ease; /* Smooth hover effect */
+    display: flex; /* Align logo and text inline */
+    align-items: center; /* Vertically center logo and text */
 }
 
 .navbar ul li a:hover {
     opacity: 1; /* Fully visible on hover */
 }
 
+.navbar ul li img {
+    height: 40px; /* Adjust logo height */
+    width: 40px; /* Adjust logo width */
+    margin-right: 8px; /* Space between logo and text */
+    object-fit: contain; /* Ensure proper scaling */
+}
+
+/* Video Section (for Homepage Only) */
+.video-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Full height minus navbar */
+}
+
+iframe {
+    width: 100%;
+    max-width: 800px; /* Limit video width */
+    height: 450px;
+    border: none; /* Remove iframe border */
+}
+
+/* Mission Page Content Styling */
+.mission-container {
+    margin-top: 80px; /* Space below navbar */
+    padding: 20px;
+    text-align: center;
+}
+
+.mission-container h1 {
+    font-size: 2.5rem;
+    color: #ffa500; /* Highlighted title color */
+    margin-bottom: 20px;
+}
+
+.mission-container h2 {
+    font-size: 1.8rem;
+    margin: 20px 0;
+}
+
+.mission-container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #aaa; /* Slightly muted text for readability */
+    margin-bottom: 20px;
+}
+
+ul.mission-points {
+    list-style: disc;
+    text-align: left;
+    margin: 20px 10%;
+    color: #fff;
+}
+
+/* Footer Styling */
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; /* Stack navbar items vertically */
+        flex-direction: column; /* Stack logo and links */
         align-items: flex-start;
     }
 
     .navbar ul {
-        flex-direction: column; /* Stack links */
-        gap: 15px; /* Space between stacked links */
+        flex-direction: column; /* Stack navigation links */
+        gap: 15px; /* Add spacing between stacked links */
     }
-}
-
-/* Page Content Styling */
-.container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    background-color: #000;
 }
