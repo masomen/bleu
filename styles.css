@@ -1,4 +1,4 @@
-/* Global Reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -8,76 +8,100 @@
 /* Font Integration */
 @font-face {
     font-family: 'BatmanForever';
-    src: url('fonts/batmfa__.ttf') format('truetype');
-    font-display: swap;
+    src: url('fonts/batmfa__.ttf') format('truetype'); /* Correct path for the font */
+    font-display: swap; /* Fallback behavior while the font loads */
 }
 
 /* Body Styling */
 body {
-    max-width: 1280px; /* Constrain the page width */
-    margin: 0 auto; /* Center content horizontally */
+    max-width: 1280px; /* Center content on large screens */
+    margin: 0 auto;
     width: 100%;
     background-color: #000; /* Black background */
-    color: white; /* White text */
+    color: white;
     font-family: Arial, sans-serif; /* Default fallback font */
+    text-align: center; /* Center content globally */
 }
 
-/* Navbar Styling */
+/* Navbar Styles */
 .navbar {
     display: flex;
-    align-items: center; /* Vertically align items */
-    justify-content: space-evenly; /* Even spacing between logo and links */
-    background-color: #000; /* Match body background */
-    padding: 10px 0;
-    max-width: 1280px; /* Constrain navbar width */
-    margin: 0 auto; /* Center the navbar */
+    justify-content: center; /* Center the navbar links */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Specific Logo Styling */
+/* Navbar List Styling */
 .navbar ul {
     display: flex;
-    align-items: center; /* Align items vertically */
-    list-style: none; /* Remove bullet points */
-    gap: 20px; /* Space between links */
+    justify-content: center; /* Center links */
+    align-items: center;
+    gap: 20px; /* Spacing between items */
+    list-style: none; /* Remove bullets from the navbar */
+    padding: 0;
 }
 
-.navbar ul li img {
-    height: 40px; /* Proper logo height */
-    width: 40px; /* Proper logo width */
-    object-fit: contain; /* Keep aspect ratio */
-}
-
+/* Individual Link Styling */
 .navbar ul li a {
     font-family: 'BatmanForever', Arial, sans-serif; /* Custom font for links */
-    color: white; /* White text */
     text-decoration: none; /* Remove underline */
-    font-size: 1.2rem; /* Font size for links */
-    opacity: 0.8; /* Slightly faded links */
-    transition: opacity 0.3s ease; /* Smooth hover effect */
+    font-size: 1.2rem;
+    color: white;
+    opacity: 0.8; /* Slight fade */
+    transition: opacity 0.3s ease;
 }
 
-/* Hover Effect for Links */
 .navbar ul li a:hover {
-    opacity: 1; /* Fully visible on hover */
+    opacity: 1; /* Fully opaque on hover */
 }
 
-/* Fix for Spacing Issues */
-.navbar ul {
-    justify-content: space-evenly; /* Evenly distribute links horizontally */
-    margin: 0;
-    padding: 0;
-    flex: 1;
+/* Logo and Navbar Integration */
+.navbar ul li img {
+    height: 35px; /* Adjust logo height */
+    width: 35px; /* Adjust logo width */
+    object-fit: contain;
+    margin-right: 5px; /* Space between logo and text */
+}
+
+/* Centering Content */
+.main-content {
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+iframe {
+    display: block;
+    margin: 0 auto; /* Center the iframe */
+    max-width: 800px; /* Restrict video width */
+    width: 100%;
+    height: 450px; /* Adjust height */
+}
+
+/* Footer Styling */
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column; /* Stack logo and links */
-        align-items: center; /* Center align items */
+    .navbar ul {
+        flex-direction: column; /* Stack navbar links vertically */
+        gap: 15px; /* Spacing between links */
     }
 
-    .navbar ul {
-        flex-direction: column; /* Stack navigation links */
-        gap: 15px; /* Add spacing between stacked links */
+    .navbar ul li a {
+        font-size: 1rem; /* Slightly smaller font for smaller screens */
+    }
+
+    iframe {
+        height: 300px; /* Adjust height for small screens */
     }
 }
