@@ -26,17 +26,25 @@ body {
 .navbar {
     display: flex;
     align-items: center; /* Vertically align items */
-    justify-content: flex-start; /* Align items to the left */
+    justify-content: space-evenly; /* Even spacing between logo and links */
     background-color: #000; /* Match body background */
-    padding: 10px 20px;
+    padding: 10px 0;
     max-width: 1280px; /* Constrain navbar width */
     margin: 0 auto; /* Center the navbar */
 }
 
+/* Specific Logo Styling */
 .navbar ul {
     display: flex;
+    align-items: center; /* Align items vertically */
     list-style: none; /* Remove bullet points */
     gap: 20px; /* Space between links */
+}
+
+.navbar ul li img {
+    height: 40px; /* Proper logo height */
+    width: 40px; /* Proper logo width */
+    object-fit: contain; /* Keep aspect ratio */
 }
 
 .navbar ul li a {
@@ -46,81 +54,26 @@ body {
     font-size: 1.2rem; /* Font size for links */
     opacity: 0.8; /* Slightly faded links */
     transition: opacity 0.3s ease; /* Smooth hover effect */
-    display: flex; /* Align logo and text inline */
-    align-items: center; /* Vertically center logo and text */
 }
 
+/* Hover Effect for Links */
 .navbar ul li a:hover {
     opacity: 1; /* Fully visible on hover */
 }
 
-.navbar ul li img {
-    height: 40px; /* Adjust logo height */
-    width: 40px; /* Adjust logo width */
-    margin-right: 8px; /* Space between logo and text */
-    object-fit: contain; /* Ensure proper scaling */
-}
-
-/* Video Section (for Homepage Only) */
-.video-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 60px); /* Full height minus navbar */
-}
-
-iframe {
-    width: 100%;
-    max-width: 800px; /* Limit video width */
-    height: 450px;
-    border: none; /* Remove iframe border */
-}
-
-/* Mission Page Content Styling */
-.mission-container {
-    margin-top: 80px; /* Space below navbar */
-    padding: 20px;
-    text-align: center;
-}
-
-.mission-container h1 {
-    font-size: 2.5rem;
-    color: #ffa500; /* Highlighted title color */
-    margin-bottom: 20px;
-}
-
-.mission-container h2 {
-    font-size: 1.8rem;
-    margin: 20px 0;
-}
-
-.mission-container p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #aaa; /* Slightly muted text for readability */
-    margin-bottom: 20px;
-}
-
-ul.mission-points {
-    list-style: disc;
-    text-align: left;
-    margin: 20px 10%;
-    color: #fff;
-}
-
-/* Footer Styling */
-.footer {
-    margin-top: 50px;
-    text-align: center;
-    color: #555;
-    font-size: 0.9rem;
+/* Fix for Spacing Issues */
+.navbar ul {
+    justify-content: space-evenly; /* Evenly distribute links horizontally */
+    margin: 0;
+    padding: 0;
+    flex: 1;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column; /* Stack logo and links */
-        align-items: flex-start;
+        align-items: center; /* Center align items */
     }
 
     .navbar ul {
