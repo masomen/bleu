@@ -39,8 +39,10 @@ body {
 }
 
 .navbar .logo img {
-    height: 40px;
-    width: 40px;
+    height: 40px; /* Correct height */
+    width: 40px;  /* Correct width */
+    object-fit: contain; /* Ensure the image scales correctly */
+    margin-right: 10px; /* Add spacing between logo and text */
 }
 
 .navbar ul {
