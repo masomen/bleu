@@ -1,47 +1,53 @@
-/* Navbar Styles */
+/* Navbar Styling */
 .navbar {
-    max-width: 1280px;
-    margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* Ensures even spacing */
-    align-items: center;
+    justify-content: flex-start; /* Align all items to the left */
+    align-items: center; /* Center vertically */
     padding: 10px 20px;
-    background-color: #000;
+    background-color: #000; /* Black background */
     z-index: 1000;
+    width: 100%; /* Full width navbar */
 }
 
-.navbar .logo {
+.nav-links {
     display: flex;
-    align-items: center; /* Align logo and text vertically */
-    gap: 8px; /* Spacing between the logo and Bleu text */
+    list-style: none; /* Remove bullets */
+    gap: 20px; /* Space between links */
+    align-items: center; /* Align items vertically */
+    margin: 0; /* Remove default padding/margin */
+    padding: 0; /* Remove default padding */
 }
 
-.navbar .logo img {
-    height: 40px;
-    width: 40px;
+.nav-links li {
+    display: flex;
+    align-items: center; /* Align vertically */
 }
 
-.navbar .logo span {
+.nav-links li a {
     font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font */
-    font-size: 1.5rem;
-    color: white;
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2rem; /* Font size */
+    opacity: 0.8; /* Slightly transparent */
+    transition: opacity 0.3s ease; /* Smooth hover */
+    display: flex; /* Flex layout for items like logo */
+    align-items: center; /* Vertically align items */
+    gap: 8px; /* Spacing between logo and text */
 }
 
-.navbar .nav-links {
-    display: flex; /* Arrange navigation links side by side */
-    list-style: none;
-    gap: 20px; /* Space between navigation links */
+.nav-links li a:hover {
+    opacity: 1; /* Fully visible on hover */
 }
 
-.navbar .nav-links li a {
-    font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font */
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem; /* Adjust font size */
-    opacity: 0.8; /* Slightly transparent for effect */
-    transition: opacity 0.3s ease; /* Smooth hover transition */
+.logo-image {
+    height: 30px; /* Adjust logo height */
+    width: 30px; /* Adjust logo width */
 }
 
-.navbar .nav-links li a:hover {
-    opacity: 1; /* Fully opaque on hover */
+/* Responsive Design (Mobile) */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column; /* Stack links vertically on small screens */
+        gap: 15px; /* Reduce spacing on mobile */
+    }
 }
