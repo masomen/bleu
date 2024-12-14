@@ -1,13 +1,37 @@
-/* Navbar Styling */
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Font Integration */
+@font-face {
+    font-family: 'BatmanForever';
+    src: url('fonts/batmfa__.ttf') format('truetype'); /* Ensure the font path is correct */
+    font-display: swap; /* Fallback behavior while font loads */
+}
+
+/* Body Styling */
+body {
+    max-width: 1280px; /* Constrain the page width */
+    margin: 0 auto; /* Center content horizontally */
+    width: 100%;
+    background-color: #000; /* Black background */
+    color: white; /* White text */
+    font-family: Arial, sans-serif; /* Default fallback font */
+}
+
+/* Navbar Styles */
 .navbar {
     display: flex;
-    justify-content: flex-start; /* Align everything to the left */
+    justify-content: flex-start; /* Align all items to the left */
     align-items: center; /* Vertically align items */
     padding: 10px 20px;
-    background-color: #000; /* Black background */
+    background-color: #000; /* Match body background */
     z-index: 1000;
     width: 100%; /* Full-width navbar */
-    border-bottom: 1px solid #555; /* Optional: add a subtle border for separation */
+    border-bottom: 1px solid #555; /* Optional: subtle border for separation */
 }
 
 .nav-links {
@@ -45,14 +69,38 @@
     border-radius: 50%; /* Optional: make the logo circular */
 }
 
-/* Responsive Design (Mobile) */
+/* Video Section (for Homepage Only) */
+.video-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Full height minus navbar */
+}
+
+iframe {
+    width: 100%;
+    max-width: 800px; /* Limit video width */
+    height: 450px;
+    border: none; /* Remove iframe border */
+}
+
+/* Footer Styling */
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column; /* Stack logo and links */
+        align-items: flex-start;
     }
 
     .nav-links {
-        flex-direction: column; /* Stack links vertically */
+        flex-direction: column; /* Stack navigation links */
         gap: 15px; /* Adjust spacing on small screens */
     }
 }
