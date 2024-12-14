@@ -119,6 +119,39 @@ ul.mission-points {
     color: #fff;
 }
 
+/* Socials Page Styling */
+.socials-container {
+    text-align: center;
+    margin: 80px auto;
+    color: white;
+}
+
+.socials-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.socials-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.socials-container ul li {
+    margin: 10px 0;
+}
+
+.socials-container ul li a {
+    font-family: 'BatmanForever', Arial, sans-serif;
+    color: #ffa500;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.socials-container ul li a:hover {
+    color: #ff4500; /* Hover color */
+}
+
 /* Footer Styling */
 .footer {
     margin-top: 50px;
