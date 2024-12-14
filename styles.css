@@ -9,79 +9,82 @@
 @font-face {
     font-family: 'BatmanForever';
     src: url('./fonts/batmfa__.ttf') format('truetype');
-    font-display: swap;
+    font-display: swap; /* Ensure font loads smoothly */
 }
 
 /* Body Styling */
 body {
-    max-width: 1280px;
+    max-width: 1280px; /* Center the page content */
     margin: 0 auto;
     width: 100%;
     background-color: #000; /* Black background */
-    color: white;
+    color: white; /* White text */
     font-family: Arial, sans-serif; /* Default fallback font */
 }
 
-/* Navbar Styles */
+/* Navbar Styling */
 .navbar {
     display: flex;
-    justify-content: flex-start; /* Align to the left */
-    align-items: center;
-    background-color: #000;
+    align-items: center; /* Vertically align items */
+    justify-content: flex-start; /* Align everything to the left */
+    background-color: #000; /* Match body background */
     padding: 10px 20px;
-    gap: 20px;
+    max-width: 1280px; /* Constrain navbar width */
+    margin: 0 auto; /* Center the navbar */
 }
 
+/* Logo Styling */
 .navbar .logo {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: center; /* Vertically align logo and text */
+    gap: 10px; /* Space between the logo and text */
 }
 
 .navbar .logo img {
     height: 40px; /* Correct height */
-    width: 40px;  /* Correct width */
-    object-fit: contain; /* Ensure the image scales correctly */
-    margin-right: 10px; /* Add spacing between logo and text */
+    width: 40px; /* Correct width */
+    object-fit: contain; /* Scale correctly */
 }
 
+/* Navbar Links Styling */
 .navbar ul {
     display: flex;
-    list-style: none;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
+    list-style: none; /* Remove bullet points */
+    gap: 20px; /* Space between links */
+    margin-left: 20px; /* Space between logo and links */
 }
 
 .navbar ul li a {
-    font-family: 'BatmanForever', Arial, sans-serif; /* Custom font for navbar only */
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    font-family: 'BatmanForever', Arial, sans-serif; /* Custom font for links */
+    color: white; /* White text */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2rem; /* Font size for links */
+    opacity: 0.8; /* Slightly faded links */
+    transition: opacity 0.3s ease; /* Smooth hover effect */
 }
 
 .navbar ul li a:hover {
-    opacity: 1;
+    opacity: 1; /* Fully visible on hover */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
+        flex-direction: column; /* Stack navbar items vertically */
         align-items: flex-start;
     }
 
     .navbar ul {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: column; /* Stack links */
+        gap: 15px; /* Space between stacked links */
     }
 }
 
-/* Container for Page Width */
+/* Page Content Styling */
 .container {
     max-width: 1280px;
     margin: 0 auto;
     padding: 20px;
+    text-align: center;
+    background-color: #000;
 }
