@@ -1,8 +1,9 @@
+/* Navbar Styles */
 .navbar {
     max-width: 1280px;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Ensures even spacing */
     align-items: center;
     padding: 10px 20px;
     background-color: #000;
@@ -11,9 +12,8 @@
 
 .navbar .logo {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-right: auto;
+    align-items: center; /* Align logo and text vertically */
+    gap: 8px; /* Spacing between the logo and Bleu text */
 }
 
 .navbar .logo img {
@@ -22,26 +22,26 @@
 }
 
 .navbar .logo span {
-    font-family: 'BatmanForever', Arial, sans-serif;
+    font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font */
     font-size: 1.5rem;
     color: white;
 }
 
 .navbar .nav-links {
-    display: flex;
+    display: flex; /* Arrange navigation links side by side */
     list-style: none;
-    gap: 20px;
+    gap: 20px; /* Space between navigation links */
 }
 
 .navbar .nav-links li a {
-    font-family: 'BatmanForever', Arial, sans-serif;
+    font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font */
     color: white;
     text-decoration: none;
-    font-size: 1.2rem;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    font-size: 1.2rem; /* Adjust font size */
+    opacity: 0.8; /* Slightly transparent for effect */
+    transition: opacity 0.3s ease; /* Smooth hover transition */
 }
 
 .navbar .nav-links li a:hover {
-    opacity: 1;
+    opacity: 1; /* Fully opaque on hover */
 }
