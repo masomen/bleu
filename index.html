@@ -3,157 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bleu</title>
-  <!-- Link to Universal CSS -->
+  <title>Bleu - Su-paw-hero</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* General Reset */
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
       font-family: Arial, sans-serif;
       background-color: #000;
       color: white;
     }
 
-    /* Navigation Bar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #000;
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #111;
     }
 
-    .navbar .logo {
-      display: flex;
-      align-items: center;
+    .hero img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
     }
 
-    .navbar .logo img {
-      height: 40px;
-      margin-right: 10px;
+    .hero h1 {
+      font-size: 2.5rem;
+      margin: 20px 0;
     }
 
-    .navbar .nav-links {
-      list-style: none;
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .hero .cta-buttons {
       display: flex;
+      justify-content: center;
       gap: 20px;
     }
 
-    .navbar .nav-links li a {
-      text-decoration: none;
-      color: white;
-      font-size: 1rem;
-    }
-
-    .navbar .nav-links li a:hover {
-      color: #ffa500;
-    }
-
-    /* Video Section */
-    .video-section {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    iframe {
-      width: 90%;
-      height: 400px;
-      max-width: 800px;
-    }
-
-    /* Tab Section */
-    .tab-container {
-      margin: 30px auto;
-      text-align: center;
-      width: 90%;
-      max-width: 600px;
-    }
-
-    .tab-buttons {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .tab-buttons button {
-      background-color: #222;
-      border: 1px solid #555;
-      color: white;
-      padding: 10px 20px;
-      margin: 0 5px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .tab-buttons button.active {
-      background-color: #ffa500;
-      color: black;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .tab-content h2 {
-      margin-bottom: 20px;
-    }
-
-    .tab-content form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .tab-content form input,
-    .tab-content form button {
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #555;
-    }
-
-    .tab-content form button {
+    .cta-buttons button {
       background-color: #ffa500;
       border: none;
-      color: black;
+      padding: 15px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
       cursor: pointer;
+      color: black;
+    }
+
+    .cta-buttons button:hover {
+      background-color: #e09000;
+    }
+
+    .about {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .about img {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .steps {
+      padding: 40px 20px;
+      background-color: #111;
+    }
+
+    .steps .step {
+      margin-bottom: 20px;
+    }
+
+    .steps h3 {
+      font-size: 1.5rem;
+    }
+
+    .metrics {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .metrics h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .metrics .metric {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .footer {
+      background-color: #222;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="logo">
-      <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: white;">
-        <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
-        <span>Bleu</span>
-      </a>
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="images/bleu.png" alt="Bleu the Su-paw-hero">
+    <h1>I'm Bleu, the Su-paw-hero!</h1>
+    <p>Join me on a mission to make the world a better place for stray dogs.</p>
+    <div class="cta-buttons">
+      <button onclick="window.location.href='#buy'">Buy Tokens</button>
+      <button onclick="window.location.href='#donate'">Donate Now</button>
     </div>
-    <ul class="nav-links">
-      <li><a href="my-mission.html">My Mission</a></li>
-    </ul>
-  </nav>
+  </section>
 
-  <!-- Video Section -->
-  <div class="video-section">
-    <iframe 
-      src="https://jumpshare.com/embed/Fgyu50sk57W3iLIy00Ya"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-  </div>
+  <!-- About Section -->
+  <section class="about">
+    <img src="images/bleu-pose.png" alt="About Bleu">
+    <h2>About Bleu</h2>
+    <p>I'm Bleu, a superdog with a heart of gold! From blockchain to belly rubs, I’m here to make a difference. Every token you buy or donation you make goes directly to helping stray dogs in need.</p>
+  </section>
 
-  <!-- Tab Section -->
+  <!-- Steps Section -->
+  <section class="steps">
+    <h2>How It Works</h2>
+    <div class="step">
+      <h3>Step 1: Buy Tokens</h3>
+      <p>Support Bleu's mission by purchasing tokens.</p>
+    </div>
+    <div class="step">
+      <h3>Step 2: Donate</h3>
+      <p>Contribute directly to our charity fund for stray dogs.</p>
+    </div>
+    <div class="step">
+      <h3>Step 3: Bleu Takes Action</h3>
+      <p>Your support goes straight to shelters and food programs.</p>
+    </div>
+  </section>
+
+  <!-- Metrics Section -->
+  <section class="metrics">
+    <h2>Our Impact</h2>
+    <p class="metric">🐾 Dogs Fed: 1,250</p>
+    <p class="metric">💰 Funds Raised: $10,000</p>
+    <p class="metric">🌍 Communities Helped: 20</p>
+  </section>
+
+  <!-- Buy/Donate Section -->
   <div class="tab-container">
     <div class="tab-buttons">
       <button class="tab-button active" onclick="openTab(event, 'buy')">Buy</button>
@@ -176,21 +173,22 @@
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2024 Bleu - The Su-paw-hero of Strays</p>
+  </footer>
+
   <script>
     function openTab(event, tabName) {
-      // Hide all tab contents
       const tabs = document.querySelectorAll('.tab-content');
       tabs.forEach(tab => tab.classList.remove('active'));
 
-      // Remove 'active' class from all buttons
       const buttons = document.querySelectorAll('.tab-buttons button');
       buttons.forEach(button => button.classList.remove('active'));
 
-      // Show the selected tab and add 'active' to the button
       document.getElementById(tabName).classList.add('active');
       event.currentTarget.classList.add('active');
     }
   </script>
 </body>
 </html>
-
