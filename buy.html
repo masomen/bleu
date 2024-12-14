@@ -5,23 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Fetch and load navbar dynamically
+            fetch("navbar.html")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Failed to load navbar");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading navbar:", error));
+        });
+    </script>
+    <style>
+        /* Body Styling */
+        body {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            background-color: #000; /* Black background */
+            color: white; /* White text */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Navbar Placeholder Styling */
+        #navbar-placeholder {
+            width: 100%;
+            margin-bottom: 60px; /* Add spacing below the navbar */
+        }
+
+        /* Main Layout */
+        main {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            main {
+                grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
+                gap: 50px;
+                padding: 40px;
+            }
+        }
+
+        /* Buttons Styling */
+        a.button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        a.button:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter background on hover */
+        }
+
+        /* Image Styling */
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+    </style>
 </head>
-<body class="max-w-[1280px] mx-auto w-full bg-black text-white">
-   <!-- Link to Universal CSS -->
-  <link rel="stylesheet" href="styles.css">
-  <!-- JavaScript to include navbar -->
+<body>
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
 
     <!-- Main Content -->
-    <main class="flex flex-col gap-12 px-5 lg:grid grid-cols-2 lg:gap-6 pt-16 lg:pt-24 pb-16">
-        <!-- Content Section -->
+    <main>
+        <!-- Left Section (Text and Buttons) -->
         <div class="flex flex-col gap-6">
-            <h1 class="text-white text-4xl font-bold pb-8 lg:pb-10">Buy Now</h1>
+            <h1 class="text-white text-4xl font-bold">Buy Now</h1>
             <ul class="text-white text-lg flex flex-col gap-6">
                 <li>
                     Telegram
-                    <a href="https://t.me/wallet" target="_blank" class="group inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
+                    <a href="https://t.me/wallet" target="_blank" class="button">
                         Wallet
-                        <svg class="w-6 h-6 fill-white/50 group-hover:fill-white transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                             <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
                             <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
                         </svg>
@@ -30,23 +102,16 @@
                 <li>
                     Centralized Exchanges
                     <div class="flex flex-wrap gap-4">
-                        <a href="https://www.binance.com/" target="_blank" class="group inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
+                        <a href="https://www.binance.com/" target="_blank" class="button">
                             Binance
-                            <svg class="w-6 h-6 fill-white/50 group-hover:fill-white transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                                 <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
                                 <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
                             </svg>
                         </a>
-                        <a href="https://www.okx.com/" target="_blank" class="group inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
+                        <a href="https://www.okx.com/" target="_blank" class="button">
                             OKX
-                            <svg class="w-6 h-6 fill-white/50 group-hover:fill-white transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                                <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
-                                <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
-                            </svg>
-                        </a>
-                        <a href="https://www.bybit.com/" target="_blank" class="group inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
-                            Bybit
-                            <svg class="w-6 h-6 fill-white/50 group-hover:fill-white transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                                 <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
                                 <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
                             </svg>
@@ -56,36 +121,20 @@
                 <li>
                     Decentralized Exchanges
                     <div class="flex flex-wrap gap-4">
-                        <a href="https://app.ston.fi/" target="_blank" class="group inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
+                        <a href="https://app.ston.fi/" target="_blank" class="button">
                             StonFi
-                            <svg class="w-6 h-6 fill-white/50 group-hover:fill-white transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                                <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
-                                <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
-                            </svg>
-                        </a>
-                        <a href="https://dedust.io/" target="_blank" class="group inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
-                            DeDust
-                            <svg class="w-6 h-6 fill-white/50 group-hover:fill-white transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                                 <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
                                 <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
                             </svg>
                         </a>
                     </div>
                 </li>
-                <li>
-                    Or <a href="https://telegra.ph/How-to-buy-NOTCOIN-05-16" target="_blank" class="group inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
-                        Read the Detailed Guide
-                        <svg class="w-6 h-6 fill-white/50 group-hover:fill-white transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                            <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
-                            <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
-                        </svg>
-                    </a>
-                </li>
             </ul>
         </div>
 
-        <!-- Image Section -->
-        <img src="https://cdn.joincommunity.xyz/not-site/meme16.jpeg" alt="Buy now image" class="rounded-lg">
+        <!-- Right Section (Image) -->
+        <img src="https://cdn.joincommunity.xyz/not-site/meme16.jpeg" alt="Buy Now Image" class="rounded-lg">
     </main>
 </body>
 </html>
