@@ -34,12 +34,13 @@
         margin-bottom: 20px; /* Add spacing below each paragraph */
     }
 
-    /* Bullet Points */
+    /* Bullet Points - Centered */
     ul.mission-points {
-        list-style: disc; /* Use regular bullet points */
-        margin-left: 40px; /* Add left indentation for bullet points */
+        list-style: disc inside; /* Ensure bullet points are visible and inside the text container */
+        margin: 0 auto; /* Center the list horizontally */
+        display: inline-block; /* Make the list content act like an inline element */
+        text-align: left; /* Align text properly relative to bullets */
         margin-bottom: 20px; /* Add spacing below the list */
-        text-align: left; /* Align text to the left within the list */
     }
 
     ul.mission-points li {
