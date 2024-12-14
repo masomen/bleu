@@ -33,6 +33,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    margin-bottom: 30px; /* Universal spacing below the navbar */
 }
 
 /* Navbar List Styling */
@@ -72,6 +73,11 @@ body {
     margin: 0 auto;
     text-align: center;
     padding: 20px;
+}
+
+/* Add universal spacing below navbar */
+.main-content, .mission-container, .content-container {
+    margin-top: 30px; /* Ensures consistent spacing between navbar and content */
 }
 
 iframe {
