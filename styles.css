@@ -1,44 +1,19 @@
-/* Global Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Font Integration */
-@font-face {
-    font-family: 'BatmanForever';
-    src: url('fonts/batmfa__.ttf') format('truetype'); /* Ensure correct path */
-    font-display: swap; /* Fallback behavior while the font loads */
-}
-
-/* Body Styling */
-body {
-    max-width: 1280px; /* Constrain the page width */
-    margin: 0 auto; /* Center content horizontally */
-    width: 100%;
-    background-color: #000; /* Black background */
-    color: white; /* White text */
-    font-family: Arial, sans-serif; /* Default fallback font */
-}
-
-/* Navbar Styles */
 .navbar {
-    max-width: 1280px; /* Limit navbar width */
-    margin: 0 auto; /* Center the navbar */
+    max-width: 1280px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center; /* Center all navbar items */
-    align-items: center; /* Vertically align items */
+    justify-content: center;
+    align-items: center;
     padding: 10px 20px;
-    background-color: #000; /* Match body background */
-    z-index: 1000; /* Ensure navbar is on top */
+    background-color: #000;
+    z-index: 1000;
 }
 
 .navbar .logo {
     display: flex;
-    align-items: center; /* Vertically align logo and text */
+    align-items: center;
     gap: 8px;
-    margin-right: auto; /* Push the logo to the far left */
+    margin-right: auto;
 }
 
 .navbar .logo img {
@@ -47,128 +22,26 @@ body {
 }
 
 .navbar .logo span {
-    font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font */
+    font-family: 'BatmanForever', Arial, sans-serif;
     font-size: 1.5rem;
-    font-weight: normal; /* Use font’s default weight */
     color: white;
 }
 
 .navbar .nav-links {
     display: flex;
     list-style: none;
-    gap: 20px; /* Space between navigation links */
+    gap: 20px;
 }
 
 .navbar .nav-links li a {
-    font-family: 'BatmanForever', Arial, sans-serif; /* Use custom font for tabs */
-    color: white; /* White text for links */
-    text-decoration: none; /* Remove underline */
-    font-size: 1.2rem; /* Slightly larger font size */
-    opacity: 0.8; /* Slightly transparent links */
-    transition: opacity 0.3s ease; /* Smooth hover effect */
+    font-family: 'BatmanForever', Arial, sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
 }
 
 .navbar .nav-links li a:hover {
-    opacity: 1; /* Fully opaque on hover */
-}
-
-/* Video Section (for Homepage Only) */
-.video-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 60px); /* Full height minus navbar */
-}
-
-iframe {
-    width: 100%;
-    max-width: 800px; /* Limit video width */
-    height: 450px;
-    border: none; /* Remove iframe border */
-}
-
-/* Mission Page Content Styling */
-.mission-container {
-    margin-top: 80px; /* Space below navbar */
-    padding: 20px;
-    text-align: center;
-}
-
-.mission-container h1 {
-    font-size: 2.5rem;
-    color: #ffa500; /* Highlighted title color */
-    margin-bottom: 20px;
-}
-
-.mission-container h2 {
-    font-size: 1.8rem;
-    margin: 20px 0;
-}
-
-.mission-container p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #aaa; /* Slightly muted text for readability */
-    margin-bottom: 20px;
-}
-
-ul.mission-points {
-    list-style: disc;
-    text-align: left;
-    margin: 20px 10%;
-    color: #fff;
-}
-
-/* Socials Page Styling */
-.socials-container {
-    text-align: center;
-    margin: 80px auto;
-    color: white;
-}
-
-.socials-container h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.socials-container ul {
-    list-style: none;
-    padding: 0;
-}
-
-.socials-container ul li {
-    margin: 10px 0;
-}
-
-.socials-container ul li a {
-    font-family: 'BatmanForever', Arial, sans-serif;
-    color: #ffa500;
-    font-size: 1.5rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.socials-container ul li a:hover {
-    color: #ff4500; /* Hover color */
-}
-
-/* Footer Styling */
-.footer {
-    margin-top: 50px;
-    text-align: center;
-    color: #555;
-    font-size: 0.9rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column; /* Stack logo and links */
-        align-items: flex-start;
-    }
-
-    .navbar .nav-links {
-        flex-direction: column; /* Stack navigation links */
-        gap: 15px; /* Add spacing between stacked links */
-    }
+    opacity: 1;
 }
