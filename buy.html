@@ -3,86 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy BLEU</title>
+    <title>Buy BLEU - MetaMask Integration</title>
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Include Ethers.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Fetch and load navbar dynamically
-            fetch("navbar.html")
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Failed to load navbar");
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById("navbar-placeholder").innerHTML = data;
-                })
-                .catch(error => console.error("Error loading navbar:", error));
-        });
-
-        // MetaMask Integration Script
         let userWalletAddress = "";
-        const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Your contract address
-        const abi = [ 
-            {
-                "inputs": [
-                    { "internalType": "string", "name": "paymentType", "type": "string" },
-                    { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
-                ],
-                "name": "buyTokens",
-                "outputs": [],
-                "stateMutability": "payable",
-                "type": "function"
+
+        // MetaMask Connection
+        async function connectMetaMask() {
+            if (window.ethereum) {
+                try {
+                    // Request wallet access
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    userWalletAddress = accounts[0];
+                    document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
+                    console.log("Wallet connected:", userWalletAddress);
+                } catch (error) {
+                    console.error("Failed to connect wallet:", error);
+                    alert("Failed to connect MetaMask wallet. Please try again.");
+                }
+            } else {
+                alert("MetaMask is not installed. Please install it to use this feature!");
             }
-        ];
+        }
 
+        // Buy BLEU Tokens
         async function buyTokens(paymentType) {
-    if (!userWalletAddress) {
-        alert("Please connect your MetaMask wallet first!");
-        return;
-    }
+            if (!userWalletAddress) {
+                alert("Please connect your MetaMask wallet first!");
+                return;
+            }
 
-    try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(contractAddress, abi, signer);
+            const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Replace with your smart contract address
+            const abi = [ 
+                {
+                    "inputs": [
+                        { "internalType": "string", "name": "paymentType", "type": "string" },
+                        { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
+                    ],
+                    "name": "buyTokens",
+                    "outputs": [],
+                    "stateMutability": "payable",
+                    "type": "function"
+                }
+            ];
 
-        let valueToSend = "0";
+            try {
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const signer = provider.getSigner();
+                const contract = new ethers.Contract(contractAddress, abi, signer);
 
-        if (paymentType === "BNB") {
-            const amountInBNB = prompt("Enter the amount of BNB you want to spend:");
-            valueToSend = ethers.utils.parseEther(amountInBNB); // Convert to Wei
-            console.log("Sending BNB:", valueToSend.toString());
-        } else if (paymentType === "ETH") {
-            const amountInETH = prompt("Enter the amount of ETH you want to spend:");
-            valueToSend = ethers.utils.parseEther(amountInETH); // Convert to Wei
-            console.log("Sending ETH:", valueToSend.toString());
-        } else if (paymentType === "USDT-BEP20") {
-            alert("USDT purchases require prior approval. Please approve USDT transfer first.");
-            return;
-        } else {
-            alert("Invalid payment type selected!");
-            return;
+                let valueToSend = "0";
+                if (paymentType === "BNB") {
+                    const amount = prompt("Enter the amount of BNB to spend:");
+                    valueToSend = ethers.utils.parseEther(amount);
+                }
+
+                console.log("Sending transaction to buyTokens...");
+                const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
+                await tx.wait();
+
+                alert("Purchase successful! BLEU tokens will be sent to your wallet.");
+            } catch (error) {
+                console.error("Transaction failed:", error);
+                alert("Transaction failed! Check the console for details.");
+            }
         }
-
-        console.log("Calling buyTokens with paymentType:", paymentType);
-        const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
-        console.log("Transaction sent:", tx.hash);
-
-        await tx.wait();
-        alert("Purchase successful! BLEU tokens will be sent to your wallet.");
-    } catch (error) {
-        console.error("Transaction failed:", error);
-        if (error.message.includes("execution reverted")) {
-            alert("Transaction reverted. Check if you have sufficient funds or the contract logic.");
-        } else {
-            alert("Transaction failed. See console for details.");
-        }
-    }
-}
-
     </script>
+
     <style>
         /* Body Styling */
         body {
@@ -122,11 +113,9 @@
             font-size: 3rem;
         }
 
-        /* Buttons */
         .button {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             padding: 12px 24px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
@@ -134,6 +123,8 @@
             text-decoration: none;
             transition: background-color 0.3s, transform 0.2s;
             cursor: pointer;
+            border: none;
+            font-size: 1rem;
         }
 
         .button:hover {
@@ -141,20 +132,10 @@
             transform: scale(1.05);
         }
 
-        /* Wallet Address Display */
         #wallet-address {
             margin-top: 20px;
             font-size: 1.2rem;
             color: orange;
-        }
-
-        .section {
-            margin-bottom: 30px;
-        }
-
-        img {
-            max-width: 100%;
-            border-radius: 8px;
         }
     </style>
 </head>
@@ -164,7 +145,6 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Left Section (Buttons) -->
         <div class="flex flex-col gap-6">
             <h1>Buy BLEU</h1>
 
@@ -181,8 +161,6 @@
                 <button class="button" onclick="buyTokens('USDT-BEP20')">Buy with USDT (BEP-20)</button>
             </div>
         </div>
-
-        <!-- Right Section (Image) -->
         <img src="images/bleu1.jpg" alt="Buy BLEU Tokens" class="rounded-lg">
     </main>
 </body>
