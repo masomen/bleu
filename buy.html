@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Buy BLEU </title>
     <link rel="stylesheet" href="styles.css">
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Fetch and load navbar dynamically
             fetch("navbar.html")
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Failed to load navbar");
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById("navbar-placeholder").innerHTML = data;
-                })
+                .then(response => response.text())
+                .then(data => document.getElementById("navbar-placeholder").innerHTML = data)
                 .catch(error => console.error("Error loading navbar:", error));
         });
+
+        // MetaMask Integration Script
+        let userWalletAddress = "";
+
+        async function connectMetaMask() {
+            if (window.ethereum) {
+                try {
+                    // Request account access if needed
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    userWalletAddress = accounts[0];
+                    document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
+                    console.log("Wallet connected:", userWalletAddress);
+                } catch (error) {
+                    console.error("User denied account access", error);
+                }
+            } else {
+                alert("MetaMask is not installed. Please install it to use this feature!");
+            }
+        }
     </script>
     <style>
         /* Body Styling */
@@ -64,7 +76,7 @@
         }
 
         /* Buttons Styling */
-        a.button {
+        .button {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -74,11 +86,21 @@
             color: white;
             text-decoration: none;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            border: none;
         }
 
-        a.button:hover {
+        .button:hover {
             background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter background on hover */
             transform: scale(1.05); /* Add a subtle scaling effect */
+        }
+
+        /* Wallet Address Display */
+        #wallet-address {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: orange;
         }
 
         /* Section Spacing */
@@ -99,52 +121,20 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Left Section (Text and Buttons) -->
+        <!-- Left Section (MetaMask Integration) -->
         <div class="flex flex-col gap-6">
-            <h1>Buy</h1>
+            <h1>Buy BLEU</h1>
 
             <div class="section">
-                <p>Telegram</p>
-                <a href="https://t.me/wallet" target="_blank" class="button">
-                    Wallet
+                <p>Connect with MetaMask</p>
+                <button class="button" onclick="connectMetaMask()">
+                    Connect Wallet
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                         <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
                         <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
                     </svg>
-                </a>
-            </div>
-
-            <div class="section">
-                <p>Centralized Exchanges</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="https://www.binance.com/" target="_blank" class="button">
-                        Binance
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                            <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
-                            <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
-                        </svg>
-                    </a>
-                    <a href="https://www.okx.com/" target="_blank" class="button">
-                        OKX
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                            <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
-                            <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="section">
-                <p>Decentralized Exchanges</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="https://app.ston.fi/" target="_blank" class="button">
-                        StonFi
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                            <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
-                            <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
-                        </svg>
-                    </a>
-                </div>
+                </button>
+                <div id="wallet-address">Not connected</div>
             </div>
         </div>
 
