@@ -3,118 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy BLEU </title>
+    <title>Buy BLEU</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-    let userWalletAddress = "";
-    const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Replace with your deployed contract address
-    const abi = [ 
-        // ABI (Application Binary Interface) goes here
-        {
-            "inputs": [
-                { "internalType": "string", "name": "paymentType", "type": "string" },
-                { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
-            ],
-            "name": "buyTokens",
-            "outputs": [],
-            "stateMutability": "payable",
-            "type": "function"
-        }
-    ];
+        document.addEventListener("DOMContentLoaded", function () {
+            // Fetch and load navbar dynamically
+            fetch("navbar.html")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Failed to load navbar");
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading navbar:", error));
+        });
 
-    // Connect MetaMask Wallet
-    async function connectMetaMask() {
-        if (window.ethereum) {
+        // MetaMask Integration Script
+        let userWalletAddress = "";
+        const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Your contract address
+        const abi = [ 
+            {
+                "inputs": [
+                    { "internalType": "string", "name": "paymentType", "type": "string" },
+                    { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
+                ],
+                "name": "buyTokens",
+                "outputs": [],
+                "stateMutability": "payable",
+                "type": "function"
+            }
+        ];
+
+        async function connectMetaMask() {
+            if (window.ethereum) {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    userWalletAddress = accounts[0];
+                    document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
+                } catch (error) {
+                    console.error("Wallet connection failed:", error);
+                    alert("Failed to connect MetaMask.");
+                }
+            } else {
+                alert("MetaMask is not installed. Please install it to use this feature!");
+            }
+        }
+
+        async function buyTokens(paymentType) {
+            if (!userWalletAddress) {
+                alert("Please connect your MetaMask wallet first!");
+                return;
+            }
+
             try {
-                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                userWalletAddress = accounts[0];
-                document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
-                console.log("Wallet connected:", userWalletAddress);
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                const signer = provider.getSigner();
+                const contract = new ethers.Contract(contractAddress, abi, signer);
+
+                let valueToSend = "0";
+
+                if (paymentType === "BNB") {
+                    const amountInBNB = prompt("Enter the amount of BNB you want to spend:");
+                    valueToSend = ethers.utils.parseEther(amountInBNB);
+                }
+
+                const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
+                await tx.wait();
+                alert("Purchase successful! BLEU tokens will be sent to your wallet.");
             } catch (error) {
-                console.error("User denied account access", error);
+                console.error("Transaction failed:", error);
+                alert("Transaction failed! Please try again.");
             }
-        } else {
-            alert("MetaMask is not installed. Please install it to use this feature!");
         }
-    }
-
-    // Function to Buy BLEU Tokens
-    async function buyTokens(paymentType) {
-        if (!userWalletAddress) {
-            alert("Please connect your MetaMask wallet first!");
-            return;
-        }
-
-        try {
-            // Request the provider (MetaMask) and set up the contract
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-            const contract = new ethers.Contract(contractAddress, abi, signer);
-
-            let valueToSend = "0"; // Default value for USDT payments
-
-            // If BNB or ETH, get the value to send (convert to Wei)
-            if (paymentType === "BNB") {
-                const amountInBNB = prompt("Enter the amount of BNB you want to spend:");
-                valueToSend = ethers.utils.parseEther(amountInBNB);
-            }
-
-            // Call the buyTokens function on the smart contract
-            const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
-            await tx.wait(); // Wait for the transaction to be mined
-
-            alert("Purchase successful! BLEU tokens will be sent to your wallet.");
-            console.log("Transaction successful:", tx);
-        } catch (error) {
-            console.error("Transaction failed:", error);
-            alert("Transaction failed! Please try again.");
-        }
-    }
-</script>
-
+    </script>
     <style>
         /* Body Styling */
         body {
             max-width: 1280px;
             margin: 0 auto;
-            width: 100%;
-            background-color: #000; /* Black background */
-            color: white; /* White text */
+            background-color: #000;
+            color: white;
             font-family: Arial, sans-serif;
             text-align: center;
         }
 
-        /* Navbar Placeholder Styling */
+        /* Navbar Placeholder */
         #navbar-placeholder {
             width: 100%;
-            margin-bottom: 60px; /* Add spacing below the navbar */
+            margin-bottom: 60px;
         }
 
         /* Main Layout */
         main {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 40px; /* Add spacing between columns */
+            gap: 40px;
             padding: 20px;
         }
 
         @media (min-width: 1024px) {
             main {
-                grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
+                grid-template-columns: 1fr 1fr;
                 gap: 50px;
                 padding: 40px;
             }
         }
 
-        /* Title Styling */
         h1 {
             font-family: 'BatmanForever', Arial, sans-serif;
             color: orange;
             font-size: 3rem;
-            margin-bottom: 40px; /* Add spacing below the title */
         }
 
-        /* Buttons Styling */
+        /* Buttons */
         .button {
             display: inline-flex;
             align-items: center;
@@ -124,15 +128,13 @@
             border-radius: 8px;
             color: white;
             text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s, transform 0.2s;
             cursor: pointer;
-            font-size: 1rem;
-            border: none;
         }
 
         .button:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter background on hover */
-            transform: scale(1.05); /* Add a subtle scaling effect */
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
         }
 
         /* Wallet Address Display */
@@ -142,12 +144,10 @@
             color: orange;
         }
 
-        /* Section Spacing */
         .section {
-            margin-bottom: 30px; /* Add spacing between sections */
+            margin-bottom: 30px;
         }
 
-        /* Image Styling */
         img {
             max-width: 100%;
             border-radius: 8px;
@@ -160,27 +160,26 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Left Section (MetaMask Integration) -->
+        <!-- Left Section (Buttons) -->
         <div class="flex flex-col gap-6">
             <h1>Buy BLEU</h1>
 
             <div class="section">
-    <p>Connect with MetaMask</p>
-    <button class="button" onclick="connectMetaMask()">
-        Connect Wallet
-    </button>
-    <div id="wallet-address">Not connected</div>
-</div>
+                <p>Connect with MetaMask</p>
+                <button class="button" onclick="connectMetaMask()">Connect Wallet</button>
+                <div id="wallet-address">Not connected</div>
+            </div>
 
-<div class="section">
-    <p>Buy BLEU Tokens</p>
-    <button class="button" onclick="buyTokens('BNB')">Buy with BNB</button>
-    <button class="button" onclick="buyTokens('ETH')">Buy with ETH</button>
-    <button class="button" onclick="buyTokens('USDT-BEP20')">Buy with USDT (BEP-20)</button>
-</div>
+            <div class="section">
+                <p>Buy BLEU Tokens</p>
+                <button class="button" onclick="buyTokens('BNB')">Buy with BNB</button>
+                <button class="button" onclick="buyTokens('ETH')">Buy with ETH</button>
+                <button class="button" onclick="buyTokens('USDT-BEP20')">Buy with USDT (BEP-20)</button>
+            </div>
+        </div>
 
         <!-- Right Section (Image) -->
-        <img src="images/bleu1.jpg" alt="Buy Now Image" class="rounded-lg">
+        <img src="images/bleu1.jpg" alt="Buy BLEU Tokens" class="rounded-lg">
     </main>
 </body>
 </html>
