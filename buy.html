@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Include Ethers.js -->
-    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 
     <script>
         let userWalletAddress = "";
-        const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Your deployed contract address
+        const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Replace with your contract address
         const abi = [ 
             {
                 "inputs": [
@@ -33,8 +33,8 @@
                     userWalletAddress = accounts[0];
                     document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
                 } catch (error) {
-                    alert("Connection failed. Please try again.");
-                    console.error(error);
+                    console.error("Connection failed:", error);
+                    alert("Failed to connect MetaMask. Please try again.");
                 }
             } else {
                 alert("MetaMask is not installed. Please install it to use this feature!");
@@ -57,54 +57,75 @@
 
                 if (paymentType === "BNB") {
                     const amount = prompt("Enter the amount of BNB to spend:");
-                    valueToSend = ethers.utils.parseEther(amount);
+                    valueToSend = ethers.utils.parseEther(amount); // Convert BNB to Wei
                 }
 
-                console.log(`Initiating transaction with paymentType: ${paymentType}, Value: ${valueToSend.toString()}`);
+                console.log(`Sending buyTokens with paymentType: ${paymentType}, Value: ${valueToSend.toString()}`);
                 const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
                 await tx.wait();
 
-                alert("Purchase successful! BLEU tokens will be sent to your wallet.");
+                alert("Purchase successful! BLEU tokens have been sent to your wallet.");
             } catch (error) {
-                console.error("Transaction Error:", error);
-                alert("Transaction failed! Check the console for details.");
+                console.error("Transaction failed:", error);
+                alert("Transaction failed! Please check the console for details.");
             }
         }
     </script>
 
     <style>
+        /* Body Styling */
         body {
             max-width: 1280px;
             margin: 0 auto;
-            background-color: #000;
-            color: white;
+            width: 100%;
+            background-color: #000; /* Black background */
+            color: white; /* White text */
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
+        /* Navbar Placeholder */
         #navbar-placeholder {
             width: 100%;
-            margin-bottom: 20px;
+            margin-bottom: 60px;
         }
 
+        /* Main Layout */
         main {
             display: grid;
             grid-template-columns: 1fr;
             gap: 40px;
-            text-align: center;
             padding: 20px;
         }
 
-        h1 {
-            color: orange;
-            font-size: 3rem;
+        @media (min-width: 1024px) {
+            main {
+                grid-template-columns: 1fr 1fr;
+                gap: 50px;
+                padding: 40px;
+            }
         }
 
+        /* Title Styling */
+        h1 {
+            font-family: 'BatmanForever', Arial, sans-serif;
+            color: orange;
+            font-size: 3rem;
+            margin-bottom: 40px;
+        }
+
+        /* Buttons */
         .button {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
             cursor: pointer;
             font-size: 1rem;
             margin: 10px;
@@ -112,13 +133,17 @@
 
         .button:hover {
             background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
         }
 
+        /* Wallet Address Display */
         #wallet-address {
-            margin-top: 10px;
+            margin-top: 20px;
+            font-size: 1.2rem;
             color: orange;
         }
 
+        /* Image Styling */
         img {
             max-width: 100%;
             border-radius: 8px;
@@ -129,8 +154,8 @@
     <!-- Navbar Placeholder -->
     <div id="navbar-placeholder"></div>
 
+    <!-- Script to Load Navbar -->
     <script>
-        // Load Navbar Dynamically
         document.addEventListener("DOMContentLoaded", function () {
             fetch("navbar.html")
                 .then(response => response.text())
@@ -143,24 +168,25 @@
 
     <!-- Main Content -->
     <main>
+        <!-- Left Section -->
         <div>
-            <h1>Buy BLEU Tokens</h1>
+            <h1>Buy BLEU</h1>
 
-            <div>
-                <p>Connect to MetaMask</p>
+            <div class="section">
+                <p>Connect with MetaMask</p>
                 <button class="button" onclick="connectMetaMask()">Connect Wallet</button>
                 <div id="wallet-address">Not connected</div>
             </div>
 
-            <div>
-                <p>Select Payment Method</p>
+            <div class="section">
+                <p>Buy BLEU Tokens</p>
                 <button class="button" onclick="buyTokens('BNB')">Buy with BNB</button>
                 <button class="button" onclick="buyTokens('ETH')">Buy with ETH</button>
                 <button class="button" onclick="buyTokens('USDT-BEP20')">Buy with USDT (BEP-20)</button>
             </div>
         </div>
 
-        <!-- Image Section -->
+        <!-- Right Section (Image) -->
         <div>
             <img src="images/bleu1.jpg" alt="Buy BLEU Tokens">
         </div>
