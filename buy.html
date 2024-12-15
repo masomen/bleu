@@ -37,47 +37,51 @@
             }
         ];
 
-        async function connectMetaMask() {
-            if (window.ethereum) {
-                try {
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    userWalletAddress = accounts[0];
-                    document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
-                } catch (error) {
-                    console.error("Wallet connection failed:", error);
-                    alert("Failed to connect MetaMask.");
-                }
-            } else {
-                alert("MetaMask is not installed. Please install it to use this feature!");
-            }
-        }
-
         async function buyTokens(paymentType) {
-            if (!userWalletAddress) {
-                alert("Please connect your MetaMask wallet first!");
-                return;
-            }
+    if (!userWalletAddress) {
+        alert("Please connect your MetaMask wallet first!");
+        return;
+    }
 
-            try {
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
-                const signer = provider.getSigner();
-                const contract = new ethers.Contract(contractAddress, abi, signer);
+    try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(contractAddress, abi, signer);
 
-                let valueToSend = "0";
+        let valueToSend = "0";
 
-                if (paymentType === "BNB") {
-                    const amountInBNB = prompt("Enter the amount of BNB you want to spend:");
-                    valueToSend = ethers.utils.parseEther(amountInBNB);
-                }
-
-                const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
-                await tx.wait();
-                alert("Purchase successful! BLEU tokens will be sent to your wallet.");
-            } catch (error) {
-                console.error("Transaction failed:", error);
-                alert("Transaction failed! Please try again.");
-            }
+        if (paymentType === "BNB") {
+            const amountInBNB = prompt("Enter the amount of BNB you want to spend:");
+            valueToSend = ethers.utils.parseEther(amountInBNB); // Convert to Wei
+            console.log("Sending BNB:", valueToSend.toString());
+        } else if (paymentType === "ETH") {
+            const amountInETH = prompt("Enter the amount of ETH you want to spend:");
+            valueToSend = ethers.utils.parseEther(amountInETH); // Convert to Wei
+            console.log("Sending ETH:", valueToSend.toString());
+        } else if (paymentType === "USDT-BEP20") {
+            alert("USDT purchases require prior approval. Please approve USDT transfer first.");
+            return;
+        } else {
+            alert("Invalid payment type selected!");
+            return;
         }
+
+        console.log("Calling buyTokens with paymentType:", paymentType);
+        const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
+        console.log("Transaction sent:", tx.hash);
+
+        await tx.wait();
+        alert("Purchase successful! BLEU tokens will be sent to your wallet.");
+    } catch (error) {
+        console.error("Transaction failed:", error);
+        if (error.message.includes("execution reverted")) {
+            alert("Transaction reverted. Check if you have sufficient funds or the contract logic.");
+        } else {
+            alert("Transaction failed. See console for details.");
+        }
+    }
+}
+
     </script>
     <style>
         /* Body Styling */
