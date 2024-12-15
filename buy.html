@@ -3,27 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy BLEU - MetaMask Integration</title>
+    <title>Buy BLEU</title>
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Include Ethers.js Library -->
+    <!-- Include Ethers.js -->
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
 
     <script>
         let userWalletAddress = "";
+        const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Your deployed contract address
+        const abi = [ 
+            {
+                "inputs": [
+                    { "internalType": "string", "name": "paymentType", "type": "string" },
+                    { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
+                ],
+                "name": "buyTokens",
+                "outputs": [],
+                "stateMutability": "payable",
+                "type": "function"
+            }
+        ];
 
-        // MetaMask Connection
+        // Connect MetaMask
         async function connectMetaMask() {
             if (window.ethereum) {
                 try {
-                    // Request wallet access
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     userWalletAddress = accounts[0];
                     document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
-                    console.log("Wallet connected:", userWalletAddress);
                 } catch (error) {
-                    console.error("Failed to connect wallet:", error);
-                    alert("Failed to connect MetaMask wallet. Please try again.");
+                    alert("Connection failed. Please try again.");
+                    console.error(error);
                 }
             } else {
                 alert("MetaMask is not installed. Please install it to use this feature!");
@@ -37,105 +48,80 @@
                 return;
             }
 
-            const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Replace with your smart contract address
-            const abi = [ 
-                {
-                    "inputs": [
-                        { "internalType": "string", "name": "paymentType", "type": "string" },
-                        { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
-                    ],
-                    "name": "buyTokens",
-                    "outputs": [],
-                    "stateMutability": "payable",
-                    "type": "function"
-                }
-            ];
-
             try {
                 const provider = new ethers.providers.Web3Provider(window.ethereum);
                 const signer = provider.getSigner();
                 const contract = new ethers.Contract(contractAddress, abi, signer);
 
                 let valueToSend = "0";
+
                 if (paymentType === "BNB") {
                     const amount = prompt("Enter the amount of BNB to spend:");
                     valueToSend = ethers.utils.parseEther(amount);
                 }
 
-                console.log("Sending transaction to buyTokens...");
+                console.log(`Initiating transaction with paymentType: ${paymentType}, Value: ${valueToSend.toString()}`);
                 const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
                 await tx.wait();
 
                 alert("Purchase successful! BLEU tokens will be sent to your wallet.");
             } catch (error) {
-                console.error("Transaction failed:", error);
+                console.error("Transaction Error:", error);
                 alert("Transaction failed! Check the console for details.");
             }
         }
     </script>
 
     <style>
-        /* Body Styling */
         body {
             max-width: 1280px;
             margin: 0 auto;
             background-color: #000;
             color: white;
             font-family: Arial, sans-serif;
-            text-align: center;
         }
 
-        /* Navbar Placeholder */
         #navbar-placeholder {
             width: 100%;
-            margin-bottom: 60px;
+            margin-bottom: 20px;
         }
 
-        /* Main Layout */
         main {
             display: grid;
             grid-template-columns: 1fr;
             gap: 40px;
+            text-align: center;
             padding: 20px;
         }
 
-        @media (min-width: 1024px) {
-            main {
-                grid-template-columns: 1fr 1fr;
-                gap: 50px;
-                padding: 40px;
-            }
-        }
-
         h1 {
-            font-family: 'BatmanForever', Arial, sans-serif;
             color: orange;
             font-size: 3rem;
         }
 
         .button {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
             color: white;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.2s;
-            cursor: pointer;
             border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
             font-size: 1rem;
+            margin: 10px;
         }
 
         .button:hover {
             background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
         }
 
         #wallet-address {
-            margin-top: 20px;
-            font-size: 1.2rem;
+            margin-top: 10px;
             color: orange;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -143,25 +129,41 @@
     <!-- Navbar Placeholder -->
     <div id="navbar-placeholder"></div>
 
+    <script>
+        // Load Navbar Dynamically
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("navbar-placeholder").innerHTML = data;
+                })
+                .catch(error => console.error("Failed to load navbar:", error));
+        });
+    </script>
+
     <!-- Main Content -->
     <main>
-        <div class="flex flex-col gap-6">
-            <h1>Buy BLEU</h1>
+        <div>
+            <h1>Buy BLEU Tokens</h1>
 
-            <div class="section">
-                <p>Connect with MetaMask</p>
+            <div>
+                <p>Connect to MetaMask</p>
                 <button class="button" onclick="connectMetaMask()">Connect Wallet</button>
                 <div id="wallet-address">Not connected</div>
             </div>
 
-            <div class="section">
-                <p>Buy BLEU Tokens</p>
+            <div>
+                <p>Select Payment Method</p>
                 <button class="button" onclick="buyTokens('BNB')">Buy with BNB</button>
                 <button class="button" onclick="buyTokens('ETH')">Buy with ETH</button>
                 <button class="button" onclick="buyTokens('USDT-BEP20')">Buy with USDT (BEP-20)</button>
             </div>
         </div>
-        <img src="images/bleu1.jpg" alt="Buy BLEU Tokens" class="rounded-lg">
+
+        <!-- Image Section -->
+        <div>
+            <img src="images/bleu1.jpg" alt="Buy BLEU Tokens">
+        </div>
     </main>
 </body>
 </html>
