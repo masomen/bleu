@@ -6,33 +6,72 @@
     <title>Buy BLEU </title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Fetch and load navbar dynamically
-            fetch("navbar.html")
-                .then(response => response.text())
-                .then(data => document.getElementById("navbar-placeholder").innerHTML = data)
-                .catch(error => console.error("Error loading navbar:", error));
-        });
-
-        // MetaMask Integration Script
-        let userWalletAddress = "";
-
-        async function connectMetaMask() {
-            if (window.ethereum) {
-                try {
-                    // Request account access if needed
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    userWalletAddress = accounts[0];
-                    document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
-                    console.log("Wallet connected:", userWalletAddress);
-                } catch (error) {
-                    console.error("User denied account access", error);
-                }
-            } else {
-                alert("MetaMask is not installed. Please install it to use this feature!");
-            }
+    let userWalletAddress = "";
+    const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Replace with your deployed contract address
+    const abi = [ 
+        // ABI (Application Binary Interface) goes here
+        {
+            "inputs": [
+                { "internalType": "string", "name": "paymentType", "type": "string" },
+                { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
+            ],
+            "name": "buyTokens",
+            "outputs": [],
+            "stateMutability": "payable",
+            "type": "function"
         }
-    </script>
+    ];
+
+    // Connect MetaMask Wallet
+    async function connectMetaMask() {
+        if (window.ethereum) {
+            try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                userWalletAddress = accounts[0];
+                document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
+                console.log("Wallet connected:", userWalletAddress);
+            } catch (error) {
+                console.error("User denied account access", error);
+            }
+        } else {
+            alert("MetaMask is not installed. Please install it to use this feature!");
+        }
+    }
+
+    // Function to Buy BLEU Tokens
+    async function buyTokens(paymentType) {
+        if (!userWalletAddress) {
+            alert("Please connect your MetaMask wallet first!");
+            return;
+        }
+
+        try {
+            // Request the provider (MetaMask) and set up the contract
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(contractAddress, abi, signer);
+
+            let valueToSend = "0"; // Default value for USDT payments
+
+            // If BNB or ETH, get the value to send (convert to Wei)
+            if (paymentType === "BNB") {
+                const amountInBNB = prompt("Enter the amount of BNB you want to spend:");
+                valueToSend = ethers.utils.parseEther(amountInBNB);
+            }
+
+            // Call the buyTokens function on the smart contract
+            const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
+            await tx.wait(); // Wait for the transaction to be mined
+
+            alert("Purchase successful! BLEU tokens will be sent to your wallet.");
+            console.log("Transaction successful:", tx);
+        } catch (error) {
+            console.error("Transaction failed:", error);
+            alert("Transaction failed! Please try again.");
+        }
+    }
+</script>
+
     <style>
         /* Body Styling */
         body {
@@ -126,17 +165,19 @@
             <h1>Buy BLEU</h1>
 
             <div class="section">
-                <p>Connect with MetaMask</p>
-                <button class="button" onclick="connectMetaMask()">
-                    Connect Wallet
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                        <path d="M3 3H18V18H21V3C21 1.89543 20.1046 1 19 1H3C1.89543 1 1 1.89543 1 3V21C1 22.1046 1.89543 23 3 23H9V20H3V3Z"></path>
-                        <path d="M20 12L10 21L9 20L18 12H14V10H21V17H20V12Z"></path>
-                    </svg>
-                </button>
-                <div id="wallet-address">Not connected</div>
-            </div>
-        </div>
+    <p>Connect with MetaMask</p>
+    <button class="button" onclick="connectMetaMask()">
+        Connect Wallet
+    </button>
+    <div id="wallet-address">Not connected</div>
+</div>
+
+<div class="section">
+    <p>Buy BLEU Tokens</p>
+    <button class="button" onclick="buyTokens('BNB')">Buy with BNB</button>
+    <button class="button" onclick="buyTokens('ETH')">Buy with ETH</button>
+    <button class="button" onclick="buyTokens('USDT-BEP20')">Buy with USDT (BEP-20)</button>
+</div>
 
         <!-- Right Section (Image) -->
         <img src="images/bleu1.jpg" alt="Buy Now Image" class="rounded-lg">
