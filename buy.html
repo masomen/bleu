@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy BLEU</title>
+    <title>Buy BLEU Tokens</title>
     <link rel="stylesheet" href="styles.css">
 
     <!-- Include Ethers.js -->
@@ -12,6 +12,7 @@
     <script>
         let userWalletAddress = "";
         const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Replace with your contract address
+
         const abi = [ 
             {
                 "inputs": [
@@ -48,49 +49,82 @@
                 return;
             }
 
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(contractAddress, abi, signer);
+
             try {
-                const provider = new ethers.providers.Web3Provider(window.ethereum);
-                const signer = provider.getSigner();
-                const contract = new ethers.Contract(contractAddress, abi, signer);
+                if (paymentType === "BNB" || paymentType === "ETH") {
+                    const amount = prompt(`Enter the amount of ${paymentType} to spend:`);
+                    const valueToSend = ethers.utils.parseEther(amount);
+                    
+                    console.log(`Sending ${paymentType} transaction...`);
+                    const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
+                    await tx.wait();
 
-                let valueToSend = "0";
+                    alert(`Purchase successful! BLEU tokens have been sent to your wallet.`);
+                } 
+                else if (paymentType === "USDT-BEP20" || paymentType === "USDT-ERC20") {
+                    const usdtAddress = paymentType === "USDT-BEP20" 
+                        ? "0x55d398326f99059fF775485246999027B3197955" // USDT BEP-20
+                        : "0xdAC17F958D2ee523a2206206994597C13D831ec7"; // USDT ERC-20
 
-                if (paymentType === "BNB") {
-                    const amount = prompt("Enter the amount of BNB to spend:");
-                    valueToSend = ethers.utils.parseEther(amount); // Convert BNB to Wei
+                    const usdtContract = new ethers.Contract(
+                        usdtAddress,
+                        [
+                            {
+                                "inputs": [
+                                    { "name": "spender", "type": "address" },
+                                    { "name": "amount", "type": "uint256" }
+                                ],
+                                "name": "approve",
+                                "outputs": [{ "name": "", "type": "bool" }],
+                                "stateMutability": "nonpayable",
+                                "type": "function"
+                            }
+                        ],
+                        signer
+                    );
+
+                    const amount = prompt("Enter the amount of USDT to spend:");
+                    const amountInWei = ethers.utils.parseUnits(amount, 18);
+
+                    // Approve the contract to spend USDT
+                    console.log("Approving USDT...");
+                    const approveTx = await usdtContract.approve(contractAddress, amountInWei);
+                    await approveTx.wait();
+
+                    console.log("USDT approved. Sending transaction...");
+                    const tx = await contract.buyTokens(paymentType, amountInWei);
+                    await tx.wait();
+
+                    alert("Purchase successful! BLEU tokens have been sent to your wallet.");
+                } 
+                else {
+                    alert("Invalid payment option selected.");
                 }
-
-                console.log(`Sending buyTokens with paymentType: ${paymentType}, Value: ${valueToSend.toString()}`);
-                const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
-                await tx.wait();
-
-                alert("Purchase successful! BLEU tokens have been sent to your wallet.");
             } catch (error) {
                 console.error("Transaction failed:", error);
-                alert("Transaction failed! Please check the console for details.");
+                alert("Transaction failed! Check the console for details.");
             }
         }
     </script>
 
     <style>
-        /* Body Styling */
         body {
             max-width: 1280px;
             margin: 0 auto;
-            width: 100%;
-            background-color: #000; /* Black background */
-            color: white; /* White text */
+            background-color: #000;
+            color: white;
             font-family: Arial, sans-serif;
             text-align: center;
         }
 
-        /* Navbar Placeholder */
         #navbar-placeholder {
             width: 100%;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
-        /* Main Layout */
         main {
             display: grid;
             grid-template-columns: 1fr;
@@ -106,28 +140,23 @@
             }
         }
 
-        /* Title Styling */
         h1 {
-            font-family: 'BatmanForever', Arial, sans-serif;
             color: orange;
             font-size: 3rem;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
-        /* Buttons */
         .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
             padding: 12px 24px;
             background: rgba(255, 255, 255, 0.1);
+            border: none;
             border-radius: 8px;
             color: white;
             text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: none;
-            cursor: pointer;
             font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             margin: 10px;
         }
 
@@ -136,17 +165,9 @@
             transform: scale(1.05);
         }
 
-        /* Wallet Address Display */
         #wallet-address {
-            margin-top: 20px;
-            font-size: 1.2rem;
+            margin-top: 10px;
             color: orange;
-        }
-
-        /* Image Styling */
-        img {
-            max-width: 100%;
-            border-radius: 8px;
         }
     </style>
 </head>
@@ -168,27 +189,23 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Left Section -->
         <div>
-            <h1>Buy BLEU</h1>
-
-            <div class="section">
+            <h1>Buy BLEU Tokens</h1>
+            <div>
                 <p>Connect with MetaMask</p>
                 <button class="button" onclick="connectMetaMask()">Connect Wallet</button>
                 <div id="wallet-address">Not connected</div>
             </div>
-
-            <div class="section">
-                <p>Buy BLEU Tokens</p>
+            <div>
+                <p>Choose a Payment Method</p>
                 <button class="button" onclick="buyTokens('BNB')">Buy with BNB</button>
                 <button class="button" onclick="buyTokens('ETH')">Buy with ETH</button>
                 <button class="button" onclick="buyTokens('USDT-BEP20')">Buy with USDT (BEP-20)</button>
+                <button class="button" onclick="buyTokens('USDT-ERC20')">Buy with USDT (ERC-20)</button>
             </div>
         </div>
-
-        <!-- Right Section (Image) -->
         <div>
-            <img src="images/bleu1.jpg" alt="Buy BLEU Tokens">
+            <img src="images/bleu1.jpg" alt="Buy BLEU Tokens" style="max-width: 100%; border-radius: 8px;">
         </div>
     </main>
 </body>
