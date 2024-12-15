@@ -89,7 +89,6 @@
                     const amount = prompt("Enter the amount of USDT to spend:");
                     const amountInWei = ethers.utils.parseUnits(amount, 18);
 
-                    // Approve the contract to spend USDT
                     console.log("Approving USDT...");
                     const approveTx = await usdtContract.approve(contractAddress, amountInWei);
                     await approveTx.wait();
@@ -147,7 +146,9 @@
         }
 
         .button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 12px 24px;
             background: rgba(255, 255, 255, 0.1);
             border: none;
@@ -157,7 +158,12 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            margin: 10px;
+            margin: 15px;
+        }
+
+        .button img {
+            width: 20px;
+            height: 20px;
         }
 
         .button:hover {
@@ -198,10 +204,18 @@
             </div>
             <div>
                 <p>Choose a Payment Method</p>
-                <button class="button" onclick="buyTokens('BNB')">Buy with BNB</button>
-                <button class="button" onclick="buyTokens('ETH')">Buy with ETH</button>
-                <button class="button" onclick="buyTokens('USDT-BEP20')">Buy with USDT (BEP-20)</button>
-                <button class="button" onclick="buyTokens('USDT-ERC20')">Buy with USDT (ERC-20)</button>
+                <button class="button" onclick="buyTokens('BNB')">
+                    Buy with BNB <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB Logo">
+                </button>
+                <button class="button" onclick="buyTokens('ETH')">
+                    Buy with ETH <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH Logo">
+                </button>
+                <button class="button" onclick="buyTokens('USDT-BEP20')">
+                    Buy with USDT (BEP-20) <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT Logo">
+                </button>
+                <button class="button" onclick="buyTokens('USDT-ERC20')">
+                    Buy with USDT (ERC-20) <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT Logo">
+                </button>
             </div>
         </div>
         <div>
