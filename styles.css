@@ -223,22 +223,19 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-container {
-        flex-direction: column;
+        flex-direction: column; /* Stack hero content and image vertically */
         text-align: center;
         padding: 30px 15px;
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: 2rem; /* Smaller title size for mobile */
         margin-bottom: 15px;
     }
 
     .hero-mascot img {
-        max-width: 60%;
-        margin: 20px auto 0;
-    }
-
-    .bleu-step {
-        max-width: 100%;
+        max-width: 200px; /* Limit the image to 200px */
+        height: auto; /* Maintain aspect ratio */
+        margin: 20px auto 0; /* Center the image with spacing */
     }
 }
