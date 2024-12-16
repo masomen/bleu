@@ -24,7 +24,6 @@
     .image-section img {
       max-width: 100%;
       height: auto;
-      max-width: 800px;
       display: block;
       margin: 0 auto;
     }
@@ -38,77 +37,77 @@
       height: 100vh;
       z-index: -1; /* Push behind all content */
     }
-    <section class="bleu-info-section">
-  <div class="bleu-info-header">
-    <h2 class="bleu-title">🐾 WHAT IS <span class="highlight">BLEU</span></h2>
-    <p class="bleu-subtitle">Let us share how Bleu Coin works to support dogs worldwide!</p>
-  </div>
-  <div class="bleu-steps-container">
-    <!-- Step 1 -->
-    <div class="bleu-step">
-      <div class="step-number">1</div>
-      <h3>ON-CHAIN TRANSACTIONS</h3>
-      <p>Every Bleu transaction happens securely on the blockchain.</p>
-    </div>
-    <!-- Step 2 -->
-    <div class="bleu-step">
-      <div class="step-number">2</div>
-      <h3>1% FEE GOES TO CHARITY WALLET</h3>
-      <p>A small 1% fee is automatically sent to the charity wallet.</p>
-    </div>
-    <!-- Step 3 -->
-    <div class="bleu-step">
-      <div class="step-number">3</div>
-      <h3>WE DONATE TO DOG CHARITIES</h3>
-      <p>Funds from the charity wallet are donated to dog charities worldwide.</p>
-    </div>
-    <!-- Step 4 -->
-    <div class="bleu-step">
-      <div class="step-number">4</div>
-      <h3>DOG BELLYS GET FED</h3>
-      <p>Your support ensures dogs get the care, food, and love they deserve!</p>
-    </div>
-  </div>
-</section>
 
-
-    /* Tokenomics Section */
-    .tokenomics-section {
-      margin-top: 50px;
-      padding: 20px;
+    /* Bleu Section Styling */
+    .bleu-info-section {
       background-color: #111;
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .bleu-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 10px;
       color: white;
     }
 
-    .tokenomics-title {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #00bfff;
+    .bleu-title .highlight {
+      color: #00bfff; /* Bleu highlight color */
     }
 
-    .tokenomics-container {
+    .bleu-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      color: #ccc;
+    }
+
+    .bleu-steps-container {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
     }
 
-    .tokenomics-card {
+    .bleu-step {
       background-color: #222;
-      padding: 20px;
+      color: white;
       border-radius: 10px;
-      text-align: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      max-width: 200px;
+      padding: 20px;
+      max-width: 280px;
+      text-align: center;
+      position: relative;
     }
 
-    .tokenomics-card h1 {
-      font-size: 1.5rem;
+    .step-number {
+      background-color: #00bfff;
+      color: #111;
+      font-size: 1.2rem;
+      font-weight: bold;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bleu-step h3 {
+      font-size: 1.2rem;
+      margin: 30px 0 10px;
       color: #00bfff;
-      margin-bottom: 10px;
     }
 
-    .tokenomics-card p {
+    .bleu-step p {
+      font-size: 0.9rem;
       color: #ccc;
     }
   </style>
@@ -120,121 +119,81 @@
   <!-- Floating Network Effect -->
   <div id="tsparticles"></div>
 
-<!-- Hero Section -->
-<section id="hero-section" class="hero-container">
-  <div class="hero-content">
-    <h1 class="hero-title">NOT PEOPLE'S COIN</h1>
-    <div class="hero-description">
-      Bleu Token is the world’s first true dog token created <strong>for the dogs</strong>. More than just a meme, 
-      Bleu is a <span class="highlight">su-paw-hero</span> on a mission to make a difference. 
-      This isn’t your typical <span class="highlight">‘slap a cute dog logo on it and call it a day’</span> 
-      token designed to line human pockets. No, Bleu has <strong>actual purpose</strong>: to give back to the real MVPs—
-      <strong>dogs</strong>. With every transaction, Bleu supports dog charities worldwide, helping our furry friends 
-      get the care and love they deserve. Join the movement, because Bleu isn’t here to 
-      <span class="highlight">fetch profits</span>—he’s here to <span class="highlight">fetch hope</span> for dogs everywhere!
+  <!-- What is Bleu Section -->
+  <section class="bleu-info-section">
+    <div class="bleu-info-header">
+      <h2 class="bleu-title">🐾 WHAT IS <span class="highlight">BLEU</span></h2>
+      <p class="bleu-subtitle">Let us share how Bleu Coin works to support dogs worldwide!</p>
     </div>
-    <button class="hero-button">Learn More</button>
-  </div>
-  <!-- Animated Mascot -->
-  <div class="hero-mascot">
-    <img src="images/superbleu.png" alt="SuperBleu">
-  </div>
-</section>
-
-
-  <!-- Tokenomics Section -->
-  <section class="tokenomics-section">
-    <h2 class="tokenomics-title">TOKENOMICS</h2>
-    <div class="tokenomics-container">
-      <div class="tokenomics-card">
-        <h1>0</h1>
-        <p>Tax</p>
+    <div class="bleu-steps-container">
+      <!-- Step 1 -->
+      <div class="bleu-step">
+        <div class="step-number">1</div>
+        <h3>ON-CHAIN TRANSACTIONS</h3>
+        <p>Every Bleu transaction happens securely on the blockchain.</p>
       </div>
-      <div class="tokenomics-card">
-        <h1>BURN</h1>
-        <p>LP</p>
+      <!-- Step 2 -->
+      <div class="bleu-step">
+        <div class="step-number">2</div>
+        <h3>1% FEE GOES TO CHARITY WALLET</h3>
+        <p>A small 1% fee is automatically sent to the charity wallet.</p>
       </div>
-      <div class="tokenomics-card">
-        <h1>1,000,000,000</h1>
-        <p>Supply</p>
+      <!-- Step 3 -->
+      <div class="bleu-step">
+        <div class="step-number">3</div>
+        <h3>WE DONATE TO DOG CHARITIES</h3>
+        <p>Funds from the charity wallet are donated to dog charities worldwide.</p>
       </div>
-      <div class="tokenomics-card">
-        <h1>TRON</h1>
-        <p>Chain</p>
+      <!-- Step 4 -->
+      <div class="bleu-step">
+        <div class="step-number">4</div>
+        <h3>DOG BELLYS GET FED</h3>
+        <p>Your support ensures dogs get the care, food, and love they deserve!</p>
       </div>
     </div>
   </section>
 
   <!-- TSParticles Configuration -->
-<!-- Register custom SVG path for bones -->
-<script>
-  const bonePath =
-    "M6.5 1C5.12 1 4 2.12 4 3.5C4 4.15 4.24 4.74 4.63 5.19L1.19 8.63C0.74 8.24 0.15 8 0.5 8C-0.12 8 -1 8.88 -1 9.5C-1 10.88 0.12 12 1.5 12C2.15 12 2.74 11.76 3.19 11.37L6.63 14.81C6.24 15.26 6 15.85 6 16.5C6 17.88 7.12 19 8.5 19C9.88 19 11 17.88 11 16.5C11 15.85 10.76 15.26 10.37 14.81L13.81 11.37C14.26 11.76 14.85 12 15.5 12C16.88 12 18 10.88 18 9.5C18 8.12 16.88 7 15.5 7C14.85 7 14.26 7.24 13.81 7.63L10.37 4.19C10.76 3.74 11 3.15 11 2.5C11 1.12 9.88 0 8.5 0C7.12 0 6.5 1 6.5 1Z";
-
-  tsParticles.addShape("bone", {
-    type: "path",
-    path: bonePath,
-    fill: false,
-    stroke: {
-      color: "#ffffff", /* White outline */
-      width: 1,
-    },
-    size: 10, /* Bone size */
-  });
-</script>
-
-<!-- Load TSParticles with Network Lines + Bones -->
-<!-- Load TSParticles -->
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
-
-<!-- Custom Dog Bone Path Registration -->
-<script>
-  tsParticles.load("tsparticles", {
-    particles: {
-      number: { value: 80, density: { enable: true, value_area: 800 } },
-      color: { value: "#00bfff" }, /* Blue for network visuals */
-      shape: {
-        type: ["circle", "polygon"], /* Add circle and polygon shapes */
-        polygon: { sides: 6 }, /* Approximate a simple 'dog bone' */
-      },
-      opacity: { value: 0.5, random: true },
-      size: { value: 10, random: true }, /* Adjust size for bones */
-      line_linked: {
-        enable: true, /* Network lines */
-        distance: 150,
-        color: "#00bfff",
-        opacity: 0.4,
-        width: 1,
-      },
-      move: {
-        enable: true,
-        speed: 1, /* Slower movement */
-        direction: "none",
-        random: false,
-        straight: false,
-        out_mode: "out",
-        bounce: false,
-      },
-    },
-    interactivity: {
-      events: {
-        onhover: { enable: true, mode: "grab" }, /* Connect on hover */
-        onclick: { enable: true, mode: "push" },
-      },
-      modes: {
-        grab: {
-          distance: 200,
-          line_linked: { opacity: 1 },
+  <script>
+    tsParticles.load("tsparticles", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#00bfff" }, /* Blue for network visuals */
+        shape: {
+          type: ["circle", "polygon"],
+          polygon: { sides: 6 },
         },
-        push: { particles_nb: 4 },
+        opacity: { value: 0.5, random: true },
+        size: { value: 4, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#00bfff",
+          opacity: 0.4,
+          width: 1,
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+        },
       },
-    },
-    retina_detect: true,
-  });
-</script>
-
-
-
-
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+        },
+        modes: {
+          grab: { distance: 200, line_linked: { opacity: 1 } },
+          push: { particles_nb: 4 },
+        },
+      },
+      retina_detect: true,
+    });
+  </script>
 </body>
 </html>
