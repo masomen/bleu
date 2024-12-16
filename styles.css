@@ -161,11 +161,11 @@ iframe {
 }
 
 .hero-content {
-  flex: 2; /* Make content take up more space */
+  flex: 1.5; /* Allow the content to take more space */
   text-align: left;
-  max-width: 700px; /* Optional: Adjust max-width for fine-tuning */
-  padding-right: 20px; /* Add spacing between content and mascot */
-  background: none;
+  width: 60%; /* Explicitly set the width to stretch closer to the mascot */
+  max-width: none; /* Remove any previous width limits */
+  padding-right: 30px; /* Space between content and mascot */
 }
 
 .hero-title {
