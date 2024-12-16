@@ -340,7 +340,6 @@ h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
   opacity: 1;
   transform: translateY(0);
 }
-
 /* Mission Page Specific Centering Fix */
 body.mission-page {
     display: flex;
@@ -348,6 +347,9 @@ body.mission-page {
     align-items: center;
     justify-content: center;
     min-height: 100vh; /* Centers content vertically */
+    max-width: none; /* Override the global max-width */
+    width: 100%; /* Ensure full page width */
+    margin: 0; /* Remove conflicting centering */
 }
 
 .global-wrapper {
@@ -357,8 +359,4 @@ body.mission-page {
     padding: 20px;
     box-sizing: border-box;
 }
-body.mission-page {
-    max-width: none; /* Override the global max-width */
-    width: 100%; /* Ensure full page width */
-    margin: 0; /* Remove conflicting centering */
-}
+
