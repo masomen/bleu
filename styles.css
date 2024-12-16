@@ -1,226 +1,98 @@
 /* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Font Integration */
-@font-face {
-    font-family: 'BatmanForever';
-    src: url('fonts/batmfa__.ttf') format('truetype'); /* Correct path for the font */
-    font-display: swap; /* Fallback behavior while the font loads */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Body Styling */
 body {
-    max-width: 1280px; /* Center content on large screens */
-    margin: 0 auto;
-    width: 100%;
-    background-color: #000; /* Black background */
-    color: white;
-    font-family: Arial, sans-serif; /* Default fallback font */
-    text-align: center; /* Center content globally */
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: #000; /* Dark background */
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Navbar Styles */
-.navbar {
-    display: flex;
-    justify-content: center; /* Center the navbar links */
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #000;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    margin-bottom: 60px; /* Double the spacing below the navbar */
+/* Navbar Placeholder */
+#navbar-placeholder {
+  margin-bottom: 20px;
 }
 
-/* Navbar List Styling */
-.navbar ul {
-    display: flex;
-    justify-content: center; /* Center links */
-    align-items: center;
-    gap: 20px; /* Spacing between items */
-    list-style: none; /* Remove bullets from the navbar */
-    padding: 0;
+/* Particles.js Background */
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  z-index: -1; /* Push behind all content */
 }
 
-/* Individual Link Styling */
-.navbar ul li a {
-    font-family: 'BatmanForever', Arial, sans-serif; /* Custom font for links */
-    text-decoration: none; /* Remove underline */
-    font-size: 1.2rem;
-    color: white;
-    opacity: 0.8; /* Slight fade */
-    transition: opacity 0.3s ease;
+/* Image Section */
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 50px auto;
 }
 
-.navbar ul li a:hover {
-    opacity: 1; /* Fully opaque on hover */
-}
-
-/* Logo and Navbar Integration */
-.navbar ul li img {
-    height: 35px; /* Adjust logo height */
-    width: 35px; /* Adjust logo width */
-    object-fit: contain;
-    margin-right: 5px; /* Space between logo and text */
-}
-
-/* Centering Content */
-.main-content {
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Add universal spacing below navbar */
-.main-content, .mission-container, .content-container {
-    margin-top: 60px; /* Double the spacing for consistent layout */
-}
-
-iframe {
-    display: block;
-    margin: 0 auto; /* Center the iframe */
-    max-width: 800px; /* Restrict video width */
-    width: 100%;
-    height: 450px; /* Adjust height */
-}
-
-/* Footer Styling */
-.footer {
-    margin-top: 50px;
-    text-align: center;
-    color: #555;
-    font-size: 0.9rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .navbar ul {
-        flex-direction: column; /* Stack navbar links vertically */
-        gap: 15px; /* Spacing between links */
-    }
-
-    .navbar ul li a {
-        font-size: 1rem; /* Slightly smaller font for smaller screens */
-    }
-
-    iframe {
-        height: 300px; /* Adjust height for small screens */
-    }
-}
 /* Tokenomics Section */
 .tokenomics-section {
-  padding: 40px 20px;
-  background-color: #000; /* Matches your dark theme */
-  color: white;
-  text-align: center;
+  padding: 60px 20px;
+  background: url('images/bg-white.jpg') no-repeat center center/cover;
+  position: relative;
+  z-index: 1; /* Above particles */
 }
 
 .tokenomics-title {
   font-size: 2.5rem;
-  margin-bottom: 30px;
+  font-weight: bold;
+  color: #00bfff;
+  margin-bottom: 40px;
   text-transform: uppercase;
-  color: cyan;
-  font-family: 'BatmanForever', Arial, sans-serif;
 }
 
-/* Tokenomics Container Grid */
+/* Tokenomics Cards */
 .tokenomics-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Individual Tokenomics Card */
 .tokenomics-card {
-  background-color: #001F3F; /* Blue background */
+  background-color: #fff;
   border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
-  padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 255, 255, 0.3);
   position: relative;
 }
 
 .tokenomics-card h1 {
   font-size: 2rem;
-  color: cyan;
+  color: #00bfff;
   font-weight: bold;
 }
 
 .tokenomics-card h2 {
-  font-size: 1rem;
-  color: #b3b3b3;
+  font-size: 1.2rem;
+  color: #333;
 }
 
-/* Shape Decoration */
+/* Decorative Shape */
 .shape-down-sm {
   position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 40px;
   height: 20px;
-  background-color: cyan;
+  background-color: #00bfff;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .tokenomics-container {
-    grid-template-columns: 1fr;
-  }
-}
-/* Shape Decoration (Down Triangle) */
-.shape-down-sm {
-  position: absolute;
-  width: 40px;
-  height: 20px;
-  background-color: #ef4444; /* Red color */
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-/* Tokenomics Section Background */
-.tokenomics-bg {
-  background: url('images/bg-white.jpg') no-repeat center center/cover;
-  padding: 60px 20px;
-}
-
-/* Tokenomics Title */
-.text-4xl {
-  font-size: 2.25rem;
-}
-
-.font-bold {
-  font-weight: bold;
-}
-
-.text-gray-800 {
-  color: #2d3748;
-}
-
-.text-red-500 {
-  color: #ef4444;
-}
-
-/* Cards */
-.shadow-lg {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
-}
-
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-
-.bg-white {
-  background-color: #ffffff;
-}
-
-.pt-12 {
-  padding-top: 3rem;
-}
-
-.pb-6 {
-  padding-bottom: 1.5rem;
 }
