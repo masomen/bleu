@@ -184,7 +184,15 @@ iframe {
   margin-bottom: 20px;
   background: none; /* Transparent description */
 }
+.hero-description strong {
+  color: #00bfff; /* Highlight bold text in Bleu's primary blue color */
+}
 
+.hero-description .highlight {
+  color: #ffcc00; /* Golden-yellow color for emphasis */
+  font-weight: bold;
+  font-style: italic;
+}
 .hero-button {
   background-color: #00bfff;
   color: #000;
