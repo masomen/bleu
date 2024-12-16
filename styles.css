@@ -295,4 +295,16 @@ iframe {
   font-size: 0.9rem;
   color: #ccc;
 }
+/* Initially Hidden Section */
+.hidden-section {
+  opacity: 0;
+  transform: translateY(50px); /* Start off lower */
+  transition: all 1s ease-out; /* Smooth reveal transition */
+}
+
+/* Section Revealed */
+.hidden-section.show {
+  opacity: 1;
+  transform: translateY(0); /* Move to natural position */
+}
 
