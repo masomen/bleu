@@ -51,14 +51,16 @@
   overflow-x: hidden; /* Prevent horizontal overflow */
 }
     .mission-container {
-      background: rgba(0, 0, 0, 0.7); /* Semi-transparent container */
-      padding: 30px;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle box shadow */
-      max-width: 900px; /* Prevent text from stretching */
-    }
-
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent container */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  max-width: 900px;
+  width: 90%; /* Ensure responsiveness */
+  z-index: 1; /* Content above particles */
+  text-align: center;
+  margin: 20px 0;
+}
     h1, h2 {
       font-family: 'BatmanForever', Arial, sans-serif; /* Custom title font */
       color: orange;
