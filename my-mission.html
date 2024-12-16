@@ -44,6 +44,18 @@
       margin-bottom: 20px;
     }
 
+    /* Reveal Effect */
+    .hidden-title {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .hidden-title.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .footer {
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
@@ -62,7 +74,7 @@
     }
   </style>
 </head>
-  <body class="mission-page">
+<body class="mission-page">
   <div class="global-wrapper">
     <!-- TSParticles Background -->
     <div id="tsparticles"></div>
@@ -70,57 +82,57 @@
     <!-- Navbar Placeholder -->
     <div id="navbar-placeholder"></div>
     
-  <!-- Mission Content -->
-  <div class="mission-container">
-    <img src="images/bleucity.png" alt="Bleu City at Night" class="mission-image">
-    <h1 class="hidden-title">My Mission</h1>
-    <h2 class="hidden-title">Calling All Humans and Four-Legged Friends!</h2>
-    <p>
-      I am Bleu, the Robinhood of Dogs. My dream is to create a world where <span class="highlight">every stray feels the joy of a full belly</span> and the wag of a hopeful tail. Together, we’ll turn this dream into reality, one burger at a time.
-    </p>
+    <!-- Mission Content -->
+    <div class="mission-container">
+      <img src="images/bleucity.png" alt="Bleu City at Night" class="mission-image">
+      <h1 class="hidden-title">My Mission</h1>
+      <h2 class="hidden-title">Calling All Humans and Four-Legged Friends!</h2>
+      <p>
+        I am Bleu, the Robinhood of Dogs. My dream is to create a world where <span class="highlight">every stray feels the joy of a full belly</span> and the wag of a hopeful tail. Together, we’ll turn this dream into reality, one burger at a time.
+      </p>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <h2 class="hidden-title">Who Am I?</h2>
-    <p>
-      I’m not your average dog. I am a <span class="highlight">voice for the voiceless</span>, a fighter for justice, and a champion for change. While some chase their tails, I chase my mission: to ensure <span class="highlight">no dog goes hungry</span>, no paw is uncared for, and every street dog gets to enjoy the simple pleasure of a burger—or even a cheeseburger, if we’re feeling fancy.
-    </p>
-   
-    <div class="divider"></div>
+      <h2 class="hidden-title">Who Am I?</h2>
+      <p>
+        I’m not your average dog. I am a <span class="highlight">voice for the voiceless</span>, a fighter for justice, and a champion for change. While some chase their tails, I chase my mission: to ensure <span class="highlight">no dog goes hungry</span>, no paw is uncared for, and every street dog gets to enjoy the simple pleasure of a burger—or even a cheeseburger, if we’re feeling fancy.
+      </p>
+      
+      <div class="divider"></div>
 
-    <h2 class="hidden-title">What Drives My Mission?</h2>
-    <ul class="mission-points">
-      <li><i class="fas fa-paw"></i> Transform overlooked resources into meals for dogs in need.</li>
-      <li><i class="fas fa-paw"></i> Utilize blockchain technology to create a network of kindness and hope.</li>
-      <li><i class="fas fa-paw"></i> Fight hunger and illness by delivering food, providing care, and building safe shelters.</li>
-    </ul>
+      <h2 class="hidden-title">What Drives My Mission?</h2>
+      <ul class="mission-points">
+        <li><i class="fas fa-paw"></i> Transform overlooked resources into meals for dogs in need.</li>
+        <li><i class="fas fa-paw"></i> Utilize blockchain technology to create a network of kindness and hope.</li>
+        <li><i class="fas fa-paw"></i> Fight hunger and illness by delivering food, providing care, and building safe shelters.</li>
+      </ul>
 
-    <p>
-      Through blockchain, we turn everyday human actions into extraordinary change. Every burger you buy, every token you share, becomes part of a movement to feed bellies, heal paws, and offer hope. <span class="highlight">This is more than a mission; it’s a revolution.</span>
-    </p>
+      <p>
+        Through blockchain, we turn everyday human actions into extraordinary change. Every burger you buy, every token you share, becomes part of a movement to feed bellies, heal paws, and offer hope. <span class="highlight">This is more than a mission; it’s a revolution.</span>
+      </p>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <h2 class="hidden-title">A Message to My Homeless Dog Siblings</h2>
-    <p>
-      To my brothers and sisters on the streets: I see you, I hear you, and I am here for you. Every act of human kindness fuels my fight to fill your bowls, heal your wounds, and bring you hope.
-    </p>
-    <p>
-      Every burger I fetch is for you. Every wag of my tail is a promise of a <span class="highlight">brighter tomorrow</span>. Together, we won’t just taste victory—we’ll live it.
-    </p>
+      <h2 class="hidden-title">A Message to My Homeless Dog Siblings</h2>
+      <p>
+        To my brothers and sisters on the streets: I see you, I hear you, and I am here for you. Every act of human kindness fuels my fight to fill your bowls, heal your wounds, and bring you hope.
+      </p>
+      <p>
+        Every burger I fetch is for you. Every wag of my tail is a promise of a <span class="highlight">brighter tomorrow</span>. Together, we won’t just taste victory—we’ll live it.
+      </p>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <h2 class="hidden-title">A Call to Humans Who Believe in Change</h2>
-    <p>
-      This is your chance to make a difference. By joining me, you’re supporting a movement where burgers symbolize justice and tokens deliver hope. <span class="highlight">Small actions can create monumental change</span> for the dogs who need it most.
-    </p>
-    <p>
-      Let’s build a future where no dog is forgotten. Together, we’ll transform lives—<span class="highlight">one burger, one wag, and one act of kindness at a time</span>.
-    </p>
-  </div>
+      <h2 class="hidden-title">A Call to Humans Who Believe in Change</h2>
+      <p>
+        This is your chance to make a difference. By joining me, you’re supporting a movement where burgers symbolize justice and tokens deliver hope. <span class="highlight">Small actions can create monumental change</span> for the dogs who need it most.
+      </p>
+      <p>
+        Let’s build a future where no dog is forgotten. Together, we’ll transform lives—<span class="highlight">one burger, one wag, and one act of kindness at a time</span>.
+      </p>
+    </div>
 
-<!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
       <p>© 2024 Bleu - The Robinhood of Dogs</p>
     </footer>
@@ -133,6 +145,18 @@
       fetch("navbar.html")
         .then(response => response.text())
         .then(data => navbarPlaceholder.innerHTML = data);
+
+      const titles = document.querySelectorAll('.hidden-title');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      titles.forEach(title => observer.observe(title));
 
       tsParticles.load("tsparticles", {
         particles: {
