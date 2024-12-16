@@ -133,8 +133,8 @@
   </section>
 
   <!-- TSParticles Configuration -->
+<!-- Register custom SVG path for bones -->
 <script>
-  // Register custom SVG path for bones
   const bonePath =
     "M6.5 1C5.12 1 4 2.12 4 3.5C4 4.15 4.24 4.74 4.63 5.19L1.19 8.63C0.74 8.24 0.15 8 0.5 8C-0.12 8 -1 8.88 -1 9.5C-1 10.88 0.12 12 1.5 12C2.15 12 2.74 11.76 3.19 11.37L6.63 14.81C6.24 15.26 6 15.85 6 16.5C6 17.88 7.12 19 8.5 19C9.88 19 11 17.88 11 16.5C11 15.85 10.76 15.26 10.37 14.81L13.81 11.37C14.26 11.76 14.85 12 15.5 12C16.88 12 18 10.88 18 9.5C18 8.12 16.88 7 15.5 7C14.85 7 14.26 7.24 13.81 7.63L10.37 4.19C10.76 3.74 11 3.15 11 2.5C11 1.12 9.88 0 8.5 0C7.12 0 6.5 1 6.5 1Z";
 
@@ -149,13 +149,15 @@
     size: 10, /* Bone size */
   });
 </script>
-  <script>
+
+<!-- Load TSParticles with Network Lines + Bones -->
+<script>
   tsParticles.load("tsparticles", {
     particles: {
       number: { value: 80, density: { enable: true, value_area: 800 } },
       color: { value: "#00bfff" }, /* Network visuals color */
       shape: {
-        type: ["circle", "bone"], /* Keep circles and custom bone shape */
+        type: ["circle", "bone"], /* Use both circles and custom bone shape */
       },
       opacity: { value: 0.5, random: true },
       size: { value: 4, random: true }, /* Size for circles */
@@ -192,11 +194,6 @@
     retina_detect: true
   });
 </script>
-
-
-
-
-
 
 
 </body>
