@@ -35,26 +35,75 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      z-index: -1;
+      z-index: -1; /* Push behind all content */
     }
 
-    /* Bleu Section Styling */
-    .bleu-info-section, .hero-container {
+    /* Hero Section Styling */
+    .hero-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 20px;
+      color: white;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-family: 'BatmanForever', Arial, sans-serif;
+      color: #00bfff;
+      margin-bottom: 20px;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .hero-button {
+      background-color: #00bfff;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-button:hover {
+      background-color: #0080ff;
+    }
+
+    .hero-mascot img {
+      max-width: 300px;
+      height: auto;
+    }
+
+    /* Bleu Info Section */
+    .bleu-info-section {
+      background-color: #111;
       padding: 60px 20px;
       text-align: center;
       color: white;
     }
 
-    .bleu-title, .hero-title {
+    .bleu-title {
       font-size: 2.5rem;
       font-weight: bold;
       text-transform: uppercase;
       margin-bottom: 10px;
-      color: white;
     }
 
     .bleu-title .highlight {
-      color: #00bfff; /* Highlight color */
+      color: #00bfff;
     }
 
     .bleu-subtitle {
@@ -63,7 +112,6 @@
       color: #ccc;
     }
 
-    /* Steps Container */
     .bleu-steps-container {
       display: flex;
       flex-wrap: wrap;
@@ -73,8 +121,8 @@
 
     .bleu-step {
       background-color: #222;
-      border-radius: 10px;
       padding: 20px;
+      border-radius: 10px;
       max-width: 280px;
       text-align: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -84,12 +132,12 @@
       background-color: #00bfff;
       color: #111;
       font-weight: bold;
-      border-radius: 50%;
       width: 35px;
       height: 35px;
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 50%;
       margin: 0 auto -20px;
     }
 
@@ -123,6 +171,10 @@
         Join the movement, because Bleu isn’t here to <span class="highlight">fetch profits</span>—he’s here to 
         <span class="highlight">fetch hope</span> for dogs everywhere!
       </div>
+      <button class="hero-button">Learn More</button>
+    </div>
+    <div class="hero-mascot">
+      <img src="images/superbleu.png" alt="SuperBleu">
     </div>
   </section>
 
@@ -133,25 +185,21 @@
       <p class="bleu-subtitle">Let us share how Bleu Coin works to support dogs worldwide!</p>
     </div>
     <div class="bleu-steps-container">
-      <!-- Step 1 -->
       <div class="bleu-step">
         <div class="step-number">1</div>
         <h3>ON-CHAIN TRANSACTIONS</h3>
         <p>Every Bleu transaction happens securely on the blockchain.</p>
       </div>
-      <!-- Step 2 -->
       <div class="bleu-step">
         <div class="step-number">2</div>
         <h3>1% FEE GOES TO CHARITY WALLET</h3>
         <p>A small 1% fee is automatically sent to the charity wallet.</p>
       </div>
-      <!-- Step 3 -->
       <div class="bleu-step">
         <div class="step-number">3</div>
         <h3>WE DONATE TO DOG CHARITIES</h3>
         <p>Funds from the charity wallet are donated to dog charities worldwide.</p>
       </div>
-      <!-- Step 4 -->
       <div class="bleu-step">
         <div class="step-number">4</div>
         <h3>DOG BELLYS GET FED</h3>
@@ -159,7 +207,6 @@
       </div>
     </div>
   </section>
-
   <!-- TSParticles Configuration -->
   <script>
     tsParticles.load("tsparticles", {
