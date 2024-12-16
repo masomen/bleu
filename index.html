@@ -135,11 +135,11 @@
       shape: { type: "circle" },
       opacity: { value: 0.5, random: true },
       size: { 
-        value: 5, /* Increased particle size (center dots) */
-        random: true 
+        value: 4, /* Particle size */
+        random: true
       },
       line_linked: {
-        enable: true, /* Connect lines */
+        enable: true, /* Lines will connect */
         distance: 150,
         color: "#00bfff",
         opacity: 0.4,
@@ -147,7 +147,7 @@
       },
       move: {
         enable: true,
-        speed: 1.2, /* Slower movement */
+        speed: 0.6, /* Slower movement - adjust this value */
         direction: "none",
         random: false,
         straight: false,
@@ -171,6 +171,7 @@
     retina_detect: true
   });
 </script>
+
 
 
 </body>
