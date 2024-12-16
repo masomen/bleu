@@ -1,66 +1,62 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bleu - My Mission</title>
   <!-- Link to Universal CSS -->
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbarPlaceholder = document.getElementById("navbar-placeholder");
-    // Set a loading placeholder while fetching
-    navbarPlaceholder.innerHTML = '<div style="text-align:center; color:#ccc; padding:10px;">Loading...</div>';
-    
-    fetch("navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        navbarPlaceholder.innerHTML = data;
-      })
-      .catch(error => {
-        console.error("Error loading navbar:", error);
-        navbarPlaceholder.innerHTML = '<div style="text-align:center; color:red;">Failed to load navbar.</div>';
-      });
-  });
-</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbarPlaceholder = document.getElementById("navbar-placeholder");
+      navbarPlaceholder.innerHTML = '<div style="text-align:center; color:#ccc; padding:10px;">Loading...</div>';
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+          navbarPlaceholder.innerHTML = data;
+        })
+        .catch(error => {
+          console.error("Error loading navbar:", error);
+          navbarPlaceholder.innerHTML = '<div style="text-align:center; color:red;">Failed to load navbar.</div>';
+        });
+    });
+  </script>
   <link rel="stylesheet" href="styles.css">
   <!-- Font Awesome CDN for Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha512-Fo3rlrZj/k7ujTnH/PRcZTJqHcS3OXx/jT+u66GH8HgG8GQZRqXvP0/D9+kzP2nZhL6fVLo9TFDTBk5yB4IfXw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnH/PRcZTJqHcS3OXx/jT+u66GH8HgG8GQZRqXvP0/D9+kzP2nZhL6fVLo9TFDTBk5yB4IfXw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     /* General Page Styles */
     body {
-    background-color: #000; /* Solid black background */
-    color: white;
-    font-family: 'Poppins', Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
+      background-color: #000;
+      color: white;
+      font-family: 'Poppins', Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
     .mission-container {
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent container */
-    padding: 30px;
-    margin: 50px auto; /* Center content horizontally */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle box shadow */
-    max-width: 900px; /* Prevent text from stretching too far */
-    width: 100%; /* Ensure it adjusts on smaller screens */
-    position: relative;
-    z-index: 1; /* Stacks content above particles */
-}
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      max-width: 900px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
     h1, h2 {
-      font-family: 'BatmanForever', Arial, sans-serif; /* Custom title font */
+      font-family: 'BatmanForever', Arial, sans-serif;
       color: orange;
       margin-bottom: 20px;
       opacity: 0;
-      transform: translateY(20px); /* Smooth reveal setup */
+      transform: translateY(20px);
       transition: all 1s ease-out;
     }
 
@@ -74,13 +70,11 @@
       line-height: 1.6;
     }
 
-    /* Highlight for Key Phrases */
     .highlight {
-      color: #ffcc00; /* Bright yellow */
+      color: #ffcc00;
       font-weight: bold;
     }
 
-    /* Styled Divider */
     .divider {
       border: none;
       height: 2px;
@@ -89,7 +83,6 @@
       max-width: 80%;
     }
 
-    /* Mission Image */
     .mission-image {
       display: block;
       margin: 0 auto 20px;
@@ -98,7 +91,6 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     }
 
-    /* Bullet Points */
     ul.mission-points {
       list-style: none;
       padding: 0;
@@ -116,11 +108,10 @@
     }
 
     ul.mission-points i {
-      color: #00bfff; /* Light blue icons */
+      color: #00bfff;
       font-size: 1.2rem;
     }
 
-    /* Footer Styling */
     .footer {
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
@@ -129,32 +120,31 @@
       font-size: 0.9rem;
       margin-top: 40px;
     }
-  </style>
-  <style>
-  /* TSParticles Background for this Page */
-  #tsparticles {
-    position: fixed; /* Fixed background */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1; /* Push behind the content */
-    pointer-events: none; /* Allow interaction with content */
-  }
 
-  /* Specific Fix for Content on this Page */
-  .mission-container, #navbar-placeholder, .footer {
-    position: relative; /* Ensures content appears above particles */
-    z-index: 1; /* Stacks content above background */
-  }
-</style>
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .mission-container, #navbar-placeholder, .footer {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navbar Placeholder -->
-  <div id="navbar-placeholder">
-    
-  </div><!-- TSParticles Background -->
-<div id="tsparticles"></div>
+  <!-- Page Wrapper Added -->
+  <div class="page-wrapper">
+    <!-- TSParticles Background -->
+    <div id="tsparticles"></div>
+
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
   
 
   <!-- Mission Content -->
@@ -205,60 +195,22 @@
     </p>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2024 Bleu - The Robinhood of Dogs</p>
-  </footer>
-
-  <!-- Smooth Title Reveal -->
+  <!-- Particles Script -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const titles = document.querySelectorAll('.hidden-title');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-            observer.unobserve(entry.target);
-          }
-        });
-      });
-      titles.forEach(title => observer.observe(title));
+    tsParticles.load("tsparticles", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#00bfff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#00bfff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 1.5, out_mode: "out" }
+      },
+      interactivity: { events: { onhover: { enable: true, mode: "grab" } } },
+      retina_detect: true
     });
   </script>
-
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
-<script>
-  tsParticles.load("tsparticles", {
-    particles: {
-      number: { value: 80, density: { enable: true, value_area: 800 } },
-      color: { value: "#00bfff" }, /* Light Blue Lines */
-      shape: { type: "circle" }, /* Simple circles */
-      opacity: { value: 0.5, random: true },
-      size: { value: 3, random: true },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: "#00bfff",
-        opacity: 0.4,
-        width: 1,
-      },
-      move: {
-        enable: true,
-        speed: 1.5, /* Slightly slower movement */
-        direction: "none",
-        out_mode: "out",
-      },
-    },
-    interactivity: {
-      events: {
-        onhover: { enable: true, mode: "grab" },
-      },
-      modes: {
-        grab: { distance: 200, line_linked: { opacity: 1 } },
-      },
-    },
-    retina_detect: true,
-  });
-</script>
 </body>
 </html>
