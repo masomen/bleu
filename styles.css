@@ -160,9 +160,13 @@ iframe {
   color: white;
   max-width: 1280px;
   margin: 0 auto;
-  background: none; /* Ensure background is transparent */
   box-shadow: none; /* Remove any box shadows */
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  border-radius: 10px; /* Optional: Rounded corners for style */
+  padding: 60px 20px; /* Retain existing padding */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
+
 
 .hero-content {
   flex: 1.5; /* Allow the content to take more space */
