@@ -147,3 +147,64 @@ iframe {
         font-size: 1rem;
     }
 }
+/* Hero Section Styling */
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #111; /* Dark background for contrast */
+  color: white;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.hero-content {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-title {
+  font-family: 'BatmanForever', Arial, sans-serif;
+  font-size: 3rem;
+  color: #00bfff;
+  margin-bottom: 20px;
+}
+
+.hero-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.hero-button {
+  background-color: #00bfff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #0080ff;
+}
+
+.hero-mascot {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-mascot img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* Adjust size of mascot */
+}
+
