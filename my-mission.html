@@ -1,44 +1,35 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bleu - My Mission</title>
-  <!-- Link to Universal CSS -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const navbarPlaceholder = document.getElementById("navbar-placeholder");
-      navbarPlaceholder.innerHTML = '<div style="text-align:center; color:#ccc; padding:10px;">Loading...</div>';
-      fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => {
-          navbarPlaceholder.innerHTML = data;
-        })
-        .catch(error => {
-          console.error("Error loading navbar:", error);
-          navbarPlaceholder.innerHTML = '<div style="text-align:center; color:red;">Failed to load navbar.</div>';
-        });
-    });
-  </script>
   <link rel="stylesheet" href="styles.css">
-  <!-- Font Awesome CDN for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha512-Fo3rlrZj/k7ujTnH/PRcZTJqHcS3OXx/jT+u66GH8HgG8GQZRqXvP0/D9+kzP2nZhL6fVLo9TFDTBk5yB4IfXw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Google Font -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* General Page Styles */
+    /* General Page Styling */
     body {
-      background-color: #000;
+      background-color: #000; /* Solid black background */
       color: white;
       font-family: 'Poppins', Arial, sans-serif;
-      text-align: center;
       margin: 0;
       padding: 0;
     }
 
+    /* Page Wrapper */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh; /* Centers content vertically */
+    }
+
+    /* Mission Container */
     .mission-container {
       background: rgba(0, 0, 0, 0.7);
       padding: 30px;
@@ -46,23 +37,13 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
       max-width: 900px;
-      width: 100%;
-      position: relative;
-      z-index: 1;
+      text-align: center;
     }
 
     h1, h2 {
       font-family: 'BatmanForever', Arial, sans-serif;
       color: orange;
       margin-bottom: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 1s ease-out;
-    }
-
-    h1.show, h2.show {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     p {
@@ -70,83 +51,44 @@
       line-height: 1.6;
     }
 
-    .highlight {
-      color: #ffcc00;
-      font-weight: bold;
+    /* Navbar Fix */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      padding: 10px 0;
     }
 
-    .divider {
-      border: none;
-      height: 2px;
-      background: linear-gradient(to right, transparent, #00bfff, transparent);
-      margin: 30px auto;
-      max-width: 80%;
-    }
-
-    .mission-image {
-      display: block;
-      margin: 0 auto 20px;
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    }
-
-    ul.mission-points {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto;
-      display: inline-block;
-      text-align: left;
-    }
-
-    ul.mission-points li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 15px;
-      font-size: 1rem;
-    }
-
-    ul.mission-points i {
-      color: #00bfff;
-      font-size: 1.2rem;
-    }
-
+    /* Footer */
     .footer {
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
-      text-align: center;
       color: #ccc;
-      font-size: 0.9rem;
+      text-align: center;
       margin-top: 40px;
     }
 
+    /* Particles Background */
     #tsparticles {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       z-index: -1;
-      pointer-events: none;
-    }
-
-    .mission-container, #navbar-placeholder, .footer {
-      position: relative;
-      z-index: 1;
     }
   </style>
 </head>
 <body>
-  <!-- Page Wrapper Added -->
+  <!-- Page Wrapper -->
   <div class="page-wrapper">
     <!-- TSParticles Background -->
     <div id="tsparticles"></div>
 
-    <!-- Navbar Placeholder -->
+    <!-- Navbar -->
     <div id="navbar-placeholder"></div>
-  
-
+    
   <!-- Mission Content -->
   <div class="mission-container">
     <img src="images/bleucity.png" alt="Bleu City at Night" class="mission-image">
@@ -195,22 +137,35 @@
     </p>
   </div>
 
-  <!-- Particles Script -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2024 Bleu - The Robinhood of Dogs</p>
+    </footer>
+  </div>
+
+  <!-- Smooth Reveal Script -->
   <script>
-    tsParticles.load("tsparticles", {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#00bfff" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#00bfff", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 1.5, out_mode: "out" }
-      },
-      interactivity: { events: { onhover: { enable: true, mode: "grab" } } },
-      retina_detect: true
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbarPlaceholder = document.getElementById("navbar-placeholder");
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => navbarPlaceholder.innerHTML = data);
+
+      tsParticles.load("tsparticles", {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#00bfff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 150, color: "#00bfff", opacity: 0.4, width: 1 },
+          move: { enable: true, speed: 1.5, out_mode: "out" }
+        }
+      });
     });
   </script>
+
+  <!-- TSParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
 </body>
 </html>
