@@ -134,6 +134,16 @@ body {
   margin-bottom: 20px;
 }
 
+/* Hero Title Styling */
+.hero-title {
+  position: relative;
+  font-size: 3rem; /* Main title size */
+  font-family: 'BatmanForever', Arial, sans-serif;
+  color: white;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
 /* Container for Strikethrough and Replacement Text */
 .strikethrough-container {
   position: relative;
@@ -150,13 +160,13 @@ body {
 .strikethrough::after {
   content: "";
   position: absolute;
-  top: 45%; /* Adjust brush vertically */
+  top: 50%; /* Adjust brush vertically */
   left: -5px; /* Align slightly to the left */
-  width: 120%; /* Extend beyond the text for natural look */
-  height: 30px; /* Brush stroke thickness */
+  width: 110%; /* Moderate width */
+  height: 20px; /* Adjusted brush stroke thickness */
   background: url('images/brush-stroke.png') no-repeat center;
-  background-size: cover;
-  transform: rotate(-8deg); /* Slight angle for a natural brush effect */
+  background-size: contain; /* Resize brush for balance */
+  transform: rotate(-8deg); /* Slight angle for natural effect */
   z-index: 1; /* Brush sits behind the text */
 }
 
@@ -164,16 +174,15 @@ body {
 .replacement-text {
   position: absolute;
   top: -20px; /* Position above "People's" */
-  left: 10px; /* Align horizontally with the word */
+  left: 10px; /* Align horizontally */
   color: yellow; /* Highlight color for visibility */
-  font-family: 'Permanent Marker', cursive; /* Handwritten font style */
-  font-size: 2.5rem; /* Larger text for "Dog" */
+  font-family: 'YourSelectedFont', cursive; /* Replace with your chosen font */
+  font-size: 2.2rem; /* Moderate size for better balance */
   line-height: 1;
-  transform: rotate(-5deg); /* Slight tilt for handwritten effect */
-  z-index: 3; /* Text above everything */
+  transform: rotate(-5deg); /* Slight tilt for handwritten look */
+  z-index: 3; /* Text sits above everything */
   white-space: nowrap;
 }
-
 
 
 
