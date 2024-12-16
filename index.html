@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bleu - Home</title>
+  <!-- Link to External CSS -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Load TSParticles -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
 </head>
 <body>
@@ -12,12 +14,12 @@
   <header class="navbar">
     <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-3">
       <h1 class="text-white text-2xl font-bold flex items-center gap-2">
-        <img src="images/logo.png" class="w-10 h-10" alt="Logo">Bleu<span class="text-blue-400">Coin</span>
+        <img src="images/logo.png" class="w-10 h-10" alt="Logo"> BleuCoin
       </h1>
       <ul class="hidden md:flex items-center gap-7">
         <li><a href="#home" class="text-white hover:text-blue-400">Home</a></li>
         <li><a href="#tokenomics" class="text-white hover:text-blue-400">Tokenomics</a></li>
-        <li><a href="#about" class="text-white hover:text-blue-400">About</a></li>
+        <li><a href="#contact" class="text-white hover:text-blue-400">Contact</a></li>
       </ul>
       <button class="md:hidden">
         <span class="text-white text-3xl">☰</span>
@@ -25,11 +27,11 @@
     </nav>
   </header>
 
-  <!-- Particles Background -->
+  <!-- Floating Interactive Background -->
   <div id="tsparticles"></div>
 
   <!-- Hero Section -->
-  <section id="hero" class="relative w-full h-screen flex flex-col items-center justify-center text-center text-white">
+  <section id="hero" class="relative w-full h-screen flex flex-col items-center justify-center text-center text-white z-10">
     <h1 class="text-5xl md:text-7xl font-extrabold">The Dog's Coin</h1>
     <p class="mt-5 text-lg text-gray-300">Empowering the future for dogs around the world!</p>
   </section>
@@ -57,7 +59,16 @@
     </div>
   </section>
 
-  <!-- Particles Script -->
+  <!-- Contact Section -->
+  <section id="contact" class="bg-black text-white py-12 text-center">
+    <h2 class="text-4xl font-bold">Contact Us</h2>
+    <div class="flex justify-center gap-5 mt-6">
+      <a href="#" class="text-white text-3xl hover:text-blue-400">Telegram</a>
+      <a href="#" class="text-white text-3xl hover:text-blue-400">X (Twitter)</a>
+    </div>
+  </section>
+
+  <!-- Particles.js Initialization -->
   <script>
     tsParticles.load("tsparticles", {
       particles: {
@@ -66,29 +77,19 @@
         shape: { type: "circle" },
         opacity: { value: 0.5, random: true },
         size: { value: 4, random: true },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#00bfff",
-          opacity: 0.4,
-          width: 1
+        line_linked: { 
+          enable: true, 
+          distance: 150, 
+          color: "#00bfff", 
+          opacity: 0.4, 
+          width: 1 
         },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: "none",
-          random: false,
-          straight: false,
-          out_mode: "out",
-          bounce: false
-        }
+        move: { enable: true, speed: 2 }
       },
       interactivity: {
-        detect_on: "canvas",
         events: {
           onhover: { enable: true, mode: "repulse" },
-          onclick: { enable: true, mode: "push" },
-          resize: true
+          onclick: { enable: true, mode: "push" }
         }
       },
       retina_detect: true
