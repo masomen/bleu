@@ -120,12 +120,15 @@
   tsParticles.load("tsparticles", {
     particles: {
       number: { value: 80, density: { enable: true, value_area: 800 } },
-      color: { value: "#00bfff" },
+      color: { value: "#00bfff" }, /* Blue particles */
       shape: { type: "circle" },
       opacity: { value: 0.5, random: true },
-      size: { value: 4, random: true },
+      size: { 
+        value: 5, /* Increased particle size (center dots) */
+        random: true 
+      },
       line_linked: {
-        enable: true, /* Lines will connect */
+        enable: true, /* Connect lines */
         distance: 150,
         color: "#00bfff",
         opacity: 0.4,
@@ -133,7 +136,7 @@
       },
       move: {
         enable: true,
-        speed: 2,
+        speed: 1.2, /* Slower movement */
         direction: "none",
         random: false,
         straight: false,
@@ -143,13 +146,13 @@
     },
     interactivity: {
       events: {
-        onhover: { enable: true, mode: "grab" }, /* Connect to nearest on hover */
+        onhover: { enable: true, mode: "grab" }, /* Connect to nearest particles */
         onclick: { enable: true, mode: "push" }
       },
       modes: {
         grab: { 
-          distance: 200, /* Adjust connection distance */
-          line_linked: { opacity: 1 } /* Make connected lines fully visible */
+          distance: 200, /* Connection distance */
+          line_linked: { opacity: 1 } /* Fully visible connection lines */
         },
         push: { particles_nb: 4 }
       }
@@ -157,6 +160,7 @@
     retina_detect: true
   });
 </script>
+
 
 </body>
 </html>
