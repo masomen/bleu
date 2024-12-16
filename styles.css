@@ -222,4 +222,77 @@ iframe {
   height: auto;
   max-height: 400px;
 }
+/* Bleu Section Header */
+.bleu-info-section {
+  background-color: #111;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.bleu-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.bleu-title .highlight {
+  color: #00bfff; /* Bleu highlight color */
+}
+
+.bleu-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: #ccc;
+}
+
+/* Steps Container */
+.bleu-steps-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.bleu-step {
+  background-color: #222;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 280px;
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  background-color: #00bfff;
+  color: #111;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bleu-step h3 {
+  font-size: 1.2rem;
+  margin: 30px 0 10px;
+  color: #00bfff;
+}
+
+.bleu-step p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
 
