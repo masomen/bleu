@@ -35,19 +35,17 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      z-index: -1; /* Push behind all content */
+      z-index: -1;
     }
 
     /* Bleu Section Styling */
-    .bleu-info-section {
-      background-color: #111;
+    .bleu-info-section, .hero-container {
       padding: 60px 20px;
       text-align: center;
       color: white;
-      position: relative;
     }
 
-    .bleu-title {
+    .bleu-title, .hero-title {
       font-size: 2.5rem;
       font-weight: bold;
       text-transform: uppercase;
@@ -56,7 +54,7 @@
     }
 
     .bleu-title .highlight {
-      color: #00bfff; /* Bleu highlight color */
+      color: #00bfff; /* Highlight color */
     }
 
     .bleu-subtitle {
@@ -65,6 +63,7 @@
       color: #ccc;
     }
 
+    /* Steps Container */
     .bleu-steps-container {
       display: flex;
       flex-wrap: wrap;
@@ -74,34 +73,27 @@
 
     .bleu-step {
       background-color: #222;
-      color: white;
       border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       padding: 20px;
       max-width: 280px;
       text-align: center;
-      position: relative;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     .step-number {
       background-color: #00bfff;
       color: #111;
-      font-size: 1.2rem;
       font-weight: bold;
+      border-radius: 50%;
       width: 35px;
       height: 35px;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 50%;
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
+      margin: 0 auto -20px;
     }
 
     .bleu-step h3 {
-      font-size: 1.2rem;
       margin: 30px 0 10px;
       color: #00bfff;
     }
@@ -118,6 +110,21 @@
 
   <!-- Floating Network Effect -->
   <div id="tsparticles"></div>
+
+  <!-- Hero Section: NOT PEOPLE'S COIN -->
+  <section id="hero-section" class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">NOT PEOPLE'S COIN</h1>
+      <div class="hero-description">
+        Bleu Token is the world’s first true dog token created <strong>for the dogs</strong>. More than just a meme, 
+        Bleu is a <span class="highlight">su-paw-hero</span> on a mission to make a difference. 
+        This isn’t your typical <span class="highlight">‘slap a cute dog logo on it and call it a day’</span> 
+        token designed to line human pockets. No, Bleu has <strong>actual purpose</strong>: to give back to the real MVPs—<strong>dogs</strong>. 
+        Join the movement, because Bleu isn’t here to <span class="highlight">fetch profits</span>—he’s here to 
+        <span class="highlight">fetch hope</span> for dogs everywhere!
+      </div>
+    </div>
+  </section>
 
   <!-- What is Bleu Section -->
   <section class="bleu-info-section">
@@ -158,11 +165,8 @@
     tsParticles.load("tsparticles", {
       particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#00bfff" }, /* Blue for network visuals */
-        shape: {
-          type: ["circle", "polygon"],
-          polygon: { sides: 6 },
-        },
+        color: { value: "#00bfff" },
+        shape: { type: ["circle"] },
         opacity: { value: 0.5, random: true },
         size: { value: 4, random: true },
         line_linked: {
@@ -172,25 +176,11 @@
           opacity: 0.4,
           width: 1,
         },
-        move: {
-          enable: true,
-          speed: 1,
-          direction: "none",
-          random: false,
-          straight: false,
-          out_mode: "out",
-          bounce: false,
-        },
+        move: { enable: true, speed: 1, direction: "none", out_mode: "out" },
       },
       interactivity: {
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" },
-        },
-        modes: {
-          grab: { distance: 200, line_linked: { opacity: 1 } },
-          push: { particles_nb: 4 },
-        },
+        events: { onhover: { enable: true, mode: "grab" } },
+        modes: { grab: { distance: 200, line_linked: { opacity: 1 } } },
       },
       retina_detect: true,
     });
