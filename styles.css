@@ -250,7 +250,14 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
-
+.divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #00bfff, transparent);
+    margin: 30px auto;
+    width: 80%;
+    opacity: 0.8;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-container {
