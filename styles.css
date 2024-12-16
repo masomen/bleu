@@ -8,339 +8,237 @@
 /* Font Integration */
 @font-face {
     font-family: 'BatmanForever';
-    src: url('fonts/batmfa__.ttf') format('truetype'); /* Correct path for the font */
-    font-display: swap; /* Fallback behavior while the font loads */
+    src: url('fonts/batmfa__.ttf') format('truetype');
+    font-display: swap;
 }
 
 /* Body Styling */
 body {
-    max-width: 1280px; /* Center content on large screens */
+    max-width: 1280px;
     margin: 0 auto;
     width: 100%;
-    background-color: #000; /* Black background */
+    background-color: #000;
     color: white;
-    font-family: Arial, sans-serif; /* Default fallback font */
-    text-align: center; /* Center content globally */
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 /* Navbar Styles */
 .navbar {
     display: flex;
-    justify-content: center; /* Center the navbar links */
+    justify-content: center;
     align-items: center;
     padding: 10px 20px;
     background-color: #000;
     position: sticky;
     top: 0;
     z-index: 1000;
-    margin-bottom: 60px; /* Double the spacing below the navbar */
+    margin-bottom: 60px;
 }
 
-/* Navbar List Styling */
 .navbar ul {
     display: flex;
-    justify-content: center; /* Center links */
-    align-items: center;
-    gap: 20px; /* Spacing between items */
-    list-style: none; /* Remove bullets from the navbar */
+    gap: 20px;
+    list-style: none;
     padding: 0;
 }
 
-/* Individual Link Styling */
 .navbar ul li a {
-    font-family: 'BatmanForever', Arial, sans-serif; /* Custom font for links */
-    text-decoration: none; /* Remove underline */
+    font-family: 'BatmanForever', Arial, sans-serif;
+    text-decoration: none;
     font-size: 1.2rem;
     color: white;
-    opacity: 0.8; /* Slight fade */
+    opacity: 0.8;
     transition: opacity 0.3s ease;
 }
 
 .navbar ul li a:hover {
-    opacity: 1; /* Fully opaque on hover */
+    opacity: 1;
 }
 
-/* Logo and Navbar Integration */
 .navbar ul li img {
-    height: 35px; /* Adjust logo height */
-    width: 35px; /* Adjust logo width */
+    height: 35px;
+    width: 35px;
     object-fit: contain;
-    margin-right: 5px; /* Space between logo and text */
+    margin-right: 5px;
 }
 
-/* Centering Content */
-.main-content {
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Add universal spacing below navbar */
-.main-content, .mission-container, .content-container {
-    margin-top: 60px; /* Double the spacing for consistent layout */
-}
-
-iframe {
-    display: block;
-    margin: 0 auto; /* Center the iframe */
-    max-width: 800px; /* Restrict video width */
-    width: 100%;
-    height: 450px; /* Adjust height */
-}
-
-/* Footer Styling */
-.footer {
-    margin-top: 50px;
-    text-align: center;
-    color: #555;
-    font-size: 0.9rem;
-}
-
-/* Tokenomics Section */
-.tokenomics-section {
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #111;
+/* Hero Section Styling */
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: white;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.tokenomics-title {
-    font-size: 2rem;
+.hero-content {
+    flex: 1.5;
+    text-align: left;
+    padding-right: 30px;
+}
+
+.hero-title {
+    font-family: 'BatmanForever', Arial, sans-serif;
+    font-size: 3rem;
+    color: #00bfff;
     margin-bottom: 20px;
+}
+
+.hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.hero-description strong {
     color: #00bfff;
 }
 
-.tokenomics-container {
+.hero-description .highlight {
+    color: #ffcc00;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.hero-button {
+    background-color: #00bfff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #0080ff;
+}
+
+.hero-mascot img {
+    max-width: 300px;
+    height: auto;
+}
+
+/* Bleu Info Section */
+.bleu-info-section {
+    background-color: #111;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.bleu-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.bleu-title .highlight {
+    color: #00bfff;
+}
+
+.bleu-steps-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
-.tokenomics-card {
+.bleu-step {
     background-color: #222;
-    padding: 20px;
     border-radius: 10px;
-    text-align: center;
+    padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    max-width: 200px;
+    max-width: 280px;
 }
 
-.tokenomics-card h1 {
-    font-size: 1.5rem;
+.step-number {
+    background-color: #00bfff;
+    color: #111;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: -20px auto 10px;
+}
+
+.bleu-step h3 {
     color: #00bfff;
     margin-bottom: 10px;
 }
 
-.tokenomics-card p {
-    color: #ccc;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .navbar ul {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .navbar ul li a {
-        font-size: 1rem;
-    }
-}
-  .hero-mascot img {
-    max-width: 200px; /* Adjust mascot image size */
-    margin-top: 20px; /* Add spacing */
-  }
-/* Hero Section Styling */
-.hero-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 60px 20px; /* Adjust spacing */
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
-  border-radius: 10px; /* Rounded corners for style */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-}
-
-
-.hero-content {
-  flex: 1.5; /* Allow the content to take more space */
-  text-align: left;
-  width: 60%; /* Explicitly set the width to stretch closer to the mascot */
-  max-width: none; /* Remove any previous width limits */
-  padding-right: 30px; /* Space between content and mascot */
-}
-
-.hero-title {
-  font-family: 'BatmanForever', Arial, sans-serif;
-  font-size: 3rem;
-  color: #00bfff;
-  margin-bottom: 20px;
-  background: none; /* Transparent title */
-}
-
-.hero-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #ccc;
-  max-width: 500px;
-  margin-bottom: 20px;
-  background: none; /* Transparent description */
-}
-.hero-description strong {
-  color: #00bfff; /* Highlight bold text in Bleu's primary blue color */
-}
-
-.hero-description .highlight {
-  color: #ffcc00; /* Golden-yellow color for emphasis */
-  font-weight: bold;
-  font-style: italic;
-}
-.hero-button {
-  background-color: #00bfff;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.hero-button:hover {
-  background-color: #0080ff;
-}
-
-.hero-mascot {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: none; /* Ensure mascot background is transparent */
-}
-
-.hero-mascot img {
-  max-width: 100%;
-  height: auto;
-  max-height: 400px;
-}
-/* Bleu Section Header */
-.bleu-info-section {
-      background-color: #111;
-      padding: 60px 20px;
-      text-align: center;
-      color: white;
-    }
-
-.bleu-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  color: white;
-}
-
-.bleu-title .highlight {
-  color: #00bfff; /* Bleu highlight color */
-}
-
-.bleu-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-  color: #ccc;
-}
-
-/* Steps Container */
-.bleu-steps-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.bleu-step {
-  background-color: #222;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  max-width: 280px;
-  text-align: center;
-  position: relative;
-}
-
-.step-number {
-  background-color: #00bfff;
-  color: #111;
-  font-size: 1.2rem;
-  font-weight: bold;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.bleu-step h3 {
-  font-size: 1.2rem;
-  margin: 30px 0 10px;
-  color: #00bfff;
-}
-
 .bleu-step p {
-  font-size: 0.9rem;
-  color: #ccc;
-}
-/* Initially Hidden Section */
-.hidden-section {
-  opacity: 0;
-  transform: translateY(50px); /* Start off lower */
-  transition: all 1s ease-out; /* Smooth reveal transition */
-}
-
-/* Section Revealed */
-.hidden-section.show {
-  opacity: 1;
-  transform: translateY(0); /* Move to natural position */
+    color: #ccc;
+    font-size: 0.9rem;
 }
 
 /* Powered by Binance Smart Chain Section */
 .bsc-powered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-  background: rgba(0, 0, 0, 0.8);
-  text-align: center;
-  color: #fff;
-}
-
-.bsc-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
 }
 
 .bsc-logo {
-  width: 80px; /* Adjust logo size */
-  height: auto;
+    width: 80px;
+    margin-bottom: 10px;
 }
 
 .bsc-text {
-  font-size: 1.5rem;
-  font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .bsc-text .highlight {
-  color: #f3ba2f; /* Binance yellow */
+    color: #f3ba2f;
+}
+
+/* Hidden Section (Scroll Effect) */
+.hidden-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.hidden-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 15px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .hero-mascot img {
+        max-width: 60%;
+        margin: 20px auto 0;
+    }
+
+    .bleu-step {
+        max-width: 100%;
+    }
 }
