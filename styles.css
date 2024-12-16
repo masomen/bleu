@@ -245,3 +245,68 @@ h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
     text-transform: uppercase; /* Keep titles uppercase */
     letter-spacing: 1px; /* Add slight spacing for style */
 }
+/* Footer Section */
+.footer {
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 50px;
+  border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer-email {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and email */
+}
+
+.footer-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.footer-link {
+  color: #00bfff; /* Match Bleu’s highlight color */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #0080ff; /* Slight color change on hover */
+}
+
+.footer-text p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+.footer-disclaimer {
+  font-size: 0.8rem;
+  color: #999;
+  max-width: 800px; /* Keep disclaimer readable on larger screens */
+  margin: 0 auto;
+}
+
+/* Reveal Effect for Footer */
+.hidden-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+.hidden-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
