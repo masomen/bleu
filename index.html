@@ -233,5 +233,27 @@
       retina_detect: true,
     });
   </script>
+  <!-- JavaScript for Scroll Reveal -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hiddenSections = document.querySelectorAll('.hidden-section');
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target); // Stop observing after reveal
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% of the section is visible
+    );
+
+    hiddenSections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
 </body>
 </html>
