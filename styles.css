@@ -11,6 +11,12 @@
     src: url('fonts/batmfa__.ttf') format('truetype');
     font-display: swap;
 }
+@font-face {
+    font-family: 'SilentBrush';
+    src: url('fonts/SilentBrush-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* Body Styling */
 body {
@@ -170,20 +176,18 @@ body {
   z-index: 1; /* Brush sits behind the text */
 }
 
-/* Handwritten "Dog" Above "People" */
-.replacement-text {
-  position: absolute;
-  top: -20px; /* Position above "People's" */
-  left: 10px; /* Align horizontally */
-  color: yellow; /* Highlight color for visibility */
-  font-family: 'YourSelectedFont', cursive; /* Replace with your chosen font */
-  font-size: 2.2rem; /* Moderate size for better balance */
-  line-height: 1;
-  transform: rotate(-5deg); /* Slight tilt for handwritten look */
-  z-index: 3; /* Text sits above everything */
-  white-space: nowrap;
+/* Handwritten "Dog" Above 'People' */
+.word-dog {
+    font-family: 'SilentBrush', Arial, sans-serif; /* Apply new font */
+    font-size: 2.5rem; /* Adjust size for visibility */
+    position: absolute;
+    top: -20px; /* Slightly above the word "People" */
+    left: 50%; /* Horizontally center relative to the parent */
+    transform: translateX(-50%) rotate(-5deg); /* Center align and slight tilt */
+    color: white; /* Text color for contrast */
+    z-index: 3; /* Ensure it appears on top */
+    white-space: nowrap; /* Prevent wrapping */
 }
-
 
 
 .hero-description {
