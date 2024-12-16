@@ -147,6 +147,10 @@ iframe {
         font-size: 1rem;
     }
 }
+  .hero-mascot img {
+    max-width: 200px; /* Adjust mascot image size */
+    margin-top: 20px; /* Add spacing */
+  }
 /* Hero Section Styling */
 .hero-container {
   display: flex;
