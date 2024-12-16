@@ -4,94 +4,94 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bleu - Home</title>
-  <!-- Link to External CSS -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Load Particles.js -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <!-- JavaScript to include navbar -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch(error => console.error("Error loading navbar:", error));
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
 </head>
 <body>
-  <!-- Navbar Placeholder -->
-  <div id="navbar-placeholder"></div>
+  <!-- Navbar -->
+  <header class="navbar">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between py-4 px-3">
+      <h1 class="text-white text-2xl font-bold flex items-center gap-2">
+        <img src="images/logo.png" class="w-10 h-10" alt="Logo">Bleu<span class="text-blue-400">Coin</span>
+      </h1>
+      <ul class="hidden md:flex items-center gap-7">
+        <li><a href="#home" class="text-white hover:text-blue-400">Home</a></li>
+        <li><a href="#tokenomics" class="text-white hover:text-blue-400">Tokenomics</a></li>
+        <li><a href="#about" class="text-white hover:text-blue-400">About</a></li>
+      </ul>
+      <button class="md:hidden">
+        <span class="text-white text-3xl">☰</span>
+      </button>
+    </nav>
+  </header>
 
-  <!-- Interactive Floating Network -->
-  <div id="particles-js"></div>
+  <!-- Particles Background -->
+  <div id="tsparticles"></div>
 
-  <!-- Image Section -->
-  <div class="image-section">
-    <img src="images/DOGCOIN.jpg" alt="Dog Coin Image">
-  </div>
+  <!-- Hero Section -->
+  <section id="hero" class="relative w-full h-screen flex flex-col items-center justify-center text-center text-white">
+    <h1 class="text-5xl md:text-7xl font-extrabold">The Dog's Coin</h1>
+    <p class="mt-5 text-lg text-gray-300">Empowering the future for dogs around the world!</p>
+  </section>
 
   <!-- Tokenomics Section -->
-  <section class="tokenomics-section">
-    <h2 class="tokenomics-title">TOKENOMICS</h2>
-    <div class="tokenomics-container">
-      <!-- Card 1 -->
-      <div class="tokenomics-card">
-        <div class="shape-down-sm"></div>
-        <h1>0</h1>
-        <h2>TAX</h2>
+  <section id="tokenomics" class="bg-gray-900 text-white py-12">
+    <h2 class="text-4xl font-bold text-center mb-8">TOKENOMICS</h2>
+    <div class="flex flex-wrap justify-center gap-6">
+      <div class="bg-gray-800 p-6 rounded-lg text-center shadow-lg">
+        <h3 class="text-blue-400 text-3xl font-bold">0</h3>
+        <p class="text-gray-300">Tax</p>
       </div>
-      <!-- Card 2 -->
-      <div class="tokenomics-card">
-        <div class="shape-down-sm"></div>
-        <h1>BURN</h1>
-        <h2>LP</h2>
+      <div class="bg-gray-800 p-6 rounded-lg text-center shadow-lg">
+        <h3 class="text-blue-400 text-3xl font-bold">BURN</h3>
+        <p class="text-gray-300">LP</p>
       </div>
-      <!-- Card 3 -->
-      <div class="tokenomics-card">
-        <div class="shape-down-sm"></div>
-        <h1>1,000,000,000</h1>
-        <h2>SUPPLY</h2>
+      <div class="bg-gray-800 p-6 rounded-lg text-center shadow-lg">
+        <h3 class="text-blue-400 text-3xl font-bold">1,000,000,000</h3>
+        <p class="text-gray-300">Supply</p>
       </div>
-      <!-- Card 4 -->
-      <div class="tokenomics-card">
-        <div class="shape-down-sm"></div>
-        <h1>TRON</h1>
-        <h2>CHAIN</h2>
+      <div class="bg-gray-800 p-6 rounded-lg text-center shadow-lg">
+        <h3 class="text-blue-400 text-3xl font-bold">TRON</h3>
+        <p class="text-gray-300">Chain</p>
       </div>
     </div>
   </section>
 
-  <!-- Particles.js Script -->
+  <!-- Particles Script -->
   <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#00bfff" }, /* Blue Color */
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5, "random": true },
-        "size": { "value": 3, "random": true },
-        "line_linked": { 
-          "enable": true, 
-          "distance": 150, 
-          "color": "#00bfff", /* Blue Lines */
-          "opacity": 0.4, 
-          "width": 1 
+    tsParticles.load("tsparticles", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#00bfff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 4, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#00bfff",
+          opacity: 0.4,
+          width: 1
         },
-        "move": { "enable": true, "speed": 2 }
-      },
-      "interactivity": {
-        "events": {
-          "onhover": { "enable": true, "mode": "repulse" },
-          "onclick": { "enable": true, "mode": "push" }
-        },
-        "modes": {
-          "repulse": { "distance": 100, "duration": 0.4 },
-          "push": { "particles_nb": 4 }
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          bounce: false
         }
       },
-      "retina_detect": true
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        }
+      },
+      retina_detect: true
     });
   </script>
 </body>
