@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bleu - My Mission</title>
   <!-- Link to Universal CSS -->
+    <!-- JavaScript to include navbar -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("navbar-placeholder").innerHTML = data;
+        })
+        .catch(error => console.error("Error loading navbar:", error));
+    });
+  </script>
   <link rel="stylesheet" href="styles.css">
   <!-- Font Awesome CDN for Icons -->
   <link
