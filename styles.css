@@ -153,10 +153,10 @@ iframe {
   justify-content: space-between;
   align-items: center;
   padding: 60px 20px;
-  background-color: #111; /* Dark background for contrast */
   color: white;
   max-width: 1280px;
   margin: 0 auto;
+  background-color: transparent; /* Remove background color */
 }
 
 .hero-content {
