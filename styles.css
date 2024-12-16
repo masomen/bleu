@@ -124,40 +124,56 @@ body {
   text-align: left;
 }
 
-/* Brushed Strike-through Effect */
-.strikethrough {
+/* Hero Title Styling */
+.hero-title {
+  position: relative;
+  font-size: 3rem; /* Main title size */
+  font-family: 'BatmanForever', Arial, sans-serif;
+  color: white;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* Container for Strikethrough and Replacement Text */
+.strikethrough-container {
   position: relative;
   display: inline-block;
+}
+
+/* Brush Stroke Over "People" */
+.strikethrough {
+  position: relative;
   color: white;
-  z-index: 1; /* Keep text above the brush stroke */
+  z-index: 2; /* Text above the brush */
 }
 
 .strikethrough::after {
   content: "";
   position: absolute;
-  top: 45%; /* Adjust brush position */
-  left: -5px; /* Slight offset for a natural look */
-  width: 110%; /* Slightly wider brush stroke */
-  height: 25px; /* Brush stroke thickness */
+  top: 45%; /* Adjust brush vertically */
+  left: -5px; /* Align slightly to the left */
+  width: 120%; /* Extend beyond the text for natural look */
+  height: 30px; /* Brush stroke thickness */
   background: url('images/brush-stroke.png') no-repeat center;
-  background-size: cover; /* Scale to cover area */
-  transform: rotate(-8deg); /* Adds a natural tilt */
-  opacity: 0.9; /* More visible brush stroke */
-  z-index: -1; /* Place brush stroke behind the text */
+  background-size: cover;
+  transform: rotate(-8deg); /* Slight angle for a natural brush effect */
+  z-index: 1; /* Brush sits behind the text */
 }
 
-/* Handwritten "Dog" Text */
+/* Handwritten "Dog" Above "People" */
 .replacement-text {
   position: absolute;
-  top: -20px; /* Position "Dog" above the word "People" */
-  left: 10px; /* Align text horizontally */
-  color: yellow;
-  font-family: 'Permanent Marker', cursive; /* Handwritten font */
-  font-size: 2rem; /* Larger text size */
+  top: -20px; /* Position above "People's" */
+  left: 10px; /* Align horizontally with the word */
+  color: yellow; /* Highlight color for visibility */
+  font-family: 'Permanent Marker', cursive; /* Handwritten font style */
+  font-size: 2.5rem; /* Larger text for "Dog" */
+  line-height: 1;
   transform: rotate(-5deg); /* Slight tilt for handwritten effect */
-  pointer-events: none;
-  z-index: 2; /* Keep it above everything else */
+  z-index: 3; /* Text above everything */
+  white-space: nowrap;
 }
+
 
 
 
