@@ -6,6 +6,8 @@
   <title>Bleu - Home</title>
   <!-- Link to External CSS -->
   <link rel="stylesheet" href="styles.css">
+  <!-- Load Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <!-- JavaScript to include navbar -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -17,78 +19,13 @@
         .catch(error => console.error("Error loading navbar:", error));
     });
   </script>
-  <style>
-    /* Responsive styling for the main homepage image */
-    .image-section img {
-      max-width: 800px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    /* Tokenomics Section Styling */
-    .tokenomics-section {
-      background: url('images/bg-white.jpg') no-repeat center center/cover;
-      padding: 60px 20px;
-      text-align: center;
-      position: relative;
-    }
-
-    .tokenomics-title {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-    }
-
-    /* Tokenomics Grid */
-    .tokenomics-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Individual Card */
-    .tokenomics-card {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      position: relative;
-      text-align: center;
-    }
-
-    .tokenomics-card h1 {
-      color: #ef4444;
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .tokenomics-card h2 {
-      color: #555;
-      font-size: 1.2rem;
-    }
-
-    /* Decorative Shape */
-    .shape-down-sm {
-      position: absolute;
-      width: 40px;
-      height: 20px;
-      background-color: #ef4444;
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  </style>
 </head>
 <body>
   <!-- Navbar Placeholder -->
   <div id="navbar-placeholder"></div>
+
+  <!-- Interactive Floating Network -->
+  <div id="particles-js"></div>
 
   <!-- Image Section -->
   <div class="image-section">
@@ -125,5 +62,37 @@
       </div>
     </div>
   </section>
+
+  <!-- Particles.js Script -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#00bfff" }, /* Blue Color */
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": { 
+          "enable": true, 
+          "distance": 150, 
+          "color": "#00bfff", /* Blue Lines */
+          "opacity": 0.4, 
+          "width": 1 
+        },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        },
+        "modes": {
+          "repulse": { "distance": 100, "duration": 0.4 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
 </body>
 </html>
