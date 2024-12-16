@@ -161,9 +161,11 @@ iframe {
 }
 
 .hero-content {
-  flex: 1;
+  flex: 2; /* Make content take up more space */
   text-align: left;
-  background: none; /* Transparent content */
+  max-width: 700px; /* Optional: Adjust max-width for fine-tuning */
+  padding-right: 20px; /* Add spacing between content and mascot */
+  background: none;
 }
 
 .hero-title {
@@ -178,7 +180,7 @@ iframe {
   font-size: 1rem;
   line-height: 1.6;
   color: #ccc;
-  max-width: 700px;
+  max-width: 500px;
   margin-bottom: 20px;
   background: none; /* Transparent description */
 }
