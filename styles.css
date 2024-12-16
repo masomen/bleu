@@ -5,94 +5,43 @@
   box-sizing: border-box;
 }
 
-/* Body Styling */
 body {
-  max-width: 1280px;
-  margin: 0 auto;
-  background-color: #000; /* Dark background */
-  color: white;
   font-family: Arial, sans-serif;
-  text-align: center;
-  position: relative;
+  background-color: #000;
+  color: white;
   overflow-x: hidden;
 }
 
-/* Navbar Placeholder */
-#navbar-placeholder {
-  margin-bottom: 20px;
+/* Navbar Styling */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-/* Particles.js Background */
-#particles-js {
+.navbar a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #00bfff;
+}
+
+/* Particles Background */
+#tsparticles {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Full viewport height */
-  z-index: -1; /* Push behind all content */
-}
-
-/* Image Section */
-.image-section img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 50px auto;
+  height: 100vh;
+  z-index: -1;
 }
 
 /* Tokenomics Section */
-.tokenomics-section {
-  padding: 60px 20px;
-  background: url('images/bg-white.jpg') no-repeat center center/cover;
-  position: relative;
-  z-index: 1; /* Above particles */
-}
-
-.tokenomics-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #00bfff;
-  margin-bottom: 40px;
-  text-transform: uppercase;
-}
-
-/* Tokenomics Cards */
-.tokenomics-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.tokenomics-card {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  position: relative;
-}
-
-.tokenomics-card h1 {
-  font-size: 2rem;
-  color: #00bfff;
-  font-weight: bold;
-}
-
-.tokenomics-card h2 {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-/* Decorative Shape */
-.shape-down-sm {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 20px;
-  background-color: #00bfff;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+#tokenomics div {
+  max-width: 300px;
 }
