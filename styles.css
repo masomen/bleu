@@ -252,7 +252,7 @@ h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
   text-align: center;
   padding: 30px 20px;
   margin-top: 50px;
-  border-radius: 10px 10px 0 0; /* Rounded top corners */
+  border-radius: 10px 10px 0 0;
 }
 
 .footer-container {
@@ -269,20 +269,19 @@ h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
 }
 
 .footer-icon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
+  color: #00bfff; /* Match Bleu’s highlight color */
+  font-size: 1.2rem; /* Adjust icon size */
 }
 
 .footer-link {
-  color: #00bfff; /* Match Bleu’s highlight color */
+  color: #00bfff;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-  color: #0080ff; /* Slight color change on hover */
+  color: #0080ff;
 }
 
 .footer-text p {
@@ -295,7 +294,7 @@ h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
 .footer-disclaimer {
   font-size: 0.8rem;
   color: #999;
-  max-width: 800px; /* Keep disclaimer readable on larger screens */
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -310,3 +309,4 @@ h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
   opacity: 1;
   transform: translateY(0);
 }
+
