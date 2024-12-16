@@ -129,6 +129,24 @@
       margin-top: 40px;
     }
   </style>
+  <style>
+  /* TSParticles Background for this Page */
+  #tsparticles {
+    position: fixed; /* Fixed background */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Push behind the content */
+    pointer-events: none; /* Allow interaction with content */
+  }
+
+  /* Specific Fix for Content on this Page */
+  .mission-container, #navbar-placeholder, .footer {
+    position: relative; /* Ensures content appears above particles */
+    z-index: 1; /* Stacks content above background */
+  }
+</style>
 </head>
 <body>
   <!-- Navbar Placeholder -->
