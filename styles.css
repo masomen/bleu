@@ -152,16 +152,18 @@ iframe {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 60px 20px;
+  padding: 60px 20px; /* Adjust spacing */
   color: white;
   max-width: 1280px;
   margin: 0 auto;
-  background-color: transparent; /* Remove background color */
+  background: none; /* Ensure background is transparent */
+  box-shadow: none; /* Remove any box shadows */
 }
 
 .hero-content {
   flex: 1;
   text-align: left;
+  background: none; /* Transparent content */
 }
 
 .hero-title {
@@ -169,6 +171,7 @@ iframe {
   font-size: 3rem;
   color: #00bfff;
   margin-bottom: 20px;
+  background: none; /* Transparent title */
 }
 
 .hero-description {
@@ -177,6 +180,7 @@ iframe {
   color: #ccc;
   max-width: 500px;
   margin-bottom: 20px;
+  background: none; /* Transparent description */
 }
 
 .hero-button {
@@ -200,11 +204,12 @@ iframe {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: none; /* Ensure mascot background is transparent */
 }
 
 .hero-mascot img {
   max-width: 100%;
   height: auto;
-  max-height: 300px; /* Adjust size of mascot */
+  max-height: 300px;
 }
 
