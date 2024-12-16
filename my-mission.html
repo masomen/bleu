@@ -6,111 +6,184 @@
   <title>Bleu - My Mission</title>
   <!-- Link to Universal CSS -->
   <link rel="stylesheet" href="styles.css">
-  <!-- JavaScript to include navbar -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch(error => console.error("Error loading navbar:", error));
-    });
-  </script>
+  <!-- Font Awesome CDN for Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnH/PRcZTJqHcS3OXx/jT+u66GH8HgG8GQZRqXvP0/D9+kzP2nZhL6fVLo9TFDTBk5yB4IfXw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    h1, h2 {
-        font-family: 'BatmanForever', Arial, sans-serif; /* Match navbar font */
-        color: orange; /* Set titles to orange */
+    /* General Page Styles */
+    body {
+      background: linear-gradient(135deg, #111, #222); /* Dark gradient background */
+      color: white;
+      font-family: 'Poppins', Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Titles (Headings) */
-    h1, h2 {
-        font-family: 'BatmanForever', Arial, sans-serif; /* Match navbar font */
-        color: orange; /* Set titles to orange */
-        margin-bottom: 20px; /* Add spacing below each heading */
+    .mission-container {
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent container */
+      padding: 30px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle box shadow */
+      max-width: 900px; /* Prevent text from stretching */
     }
 
-    /* Paragraphs */
+    h1, h2 {
+      font-family: 'BatmanForever', Arial, sans-serif; /* Custom title font */
+      color: orange;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px); /* Smooth reveal setup */
+      transition: all 1s ease-out;
+    }
+
+    h1.show, h2.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     p {
-        margin-bottom: 20px; /* Add spacing below each paragraph */
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
 
-    /* Bullet Points - Centered */
+    /* Highlight for Key Phrases */
+    .highlight {
+      color: #ffcc00; /* Bright yellow */
+      font-weight: bold;
+    }
+
+    /* Styled Divider */
+    .divider {
+      border: none;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #00bfff, transparent);
+      margin: 30px auto;
+      max-width: 80%;
+    }
+
+    /* Mission Image */
+    .mission-image {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Bullet Points */
     ul.mission-points {
-        list-style: disc inside; /* Ensure bullet points are visible and inside the text container */
-        margin: 0 auto; /* Center the list horizontally */
-        display: inline-block; /* Make the list content act like an inline element */
-        text-align: left; /* Align text properly relative to bullets */
-        margin-bottom: 20px; /* Add spacing below the list */
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      display: inline-block;
+      text-align: left;
     }
 
     ul.mission-points li {
-        margin-bottom: 10px; /* Add spacing between list items */
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      font-size: 1rem;
     }
 
-    /* Ensure container spacing */
-    .mission-container {
-        padding: 20px; /* Add internal padding to the container */
+    ul.mission-points i {
+      color: #00bfff; /* Light blue icons */
+      font-size: 1.2rem;
     }
 
-    /* Responsive Image Styling */
-    .mission-image {
-        display: block;
-        margin: 0 auto 20px; /* Center image and add spacing below it */
-        max-width: 100%; /* Image will scale down for smaller screens */
-        height: auto; /* Maintain aspect ratio */
-        max-height: 500px; /* Cap height for larger screens */
+    /* Footer Styling */
+    .footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
   <!-- Navbar Placeholder -->
   <div id="navbar-placeholder"></div>
-    
+
   <!-- Mission Content -->
   <div class="mission-container">
     <img src="images/bleucity.png" alt="Bleu City at Night" class="mission-image">
-    <h1>My Mission</h1>
-    <h2>Calling All Humans and Four-Legged Friends!</h2>
+    <h1 class="hidden-title">My Mission</h1>
+    <h2 class="hidden-title">Calling All Humans and Four-Legged Friends!</h2>
     <p>
-        I am Bleu, the Robinhood of Dogs. My dream is to create a world where every stray feels the joy of a full belly and the wag of a hopeful tail. Together, we’ll turn this dream into reality, one burger at a time.
+      I am Bleu, the Robinhood of Dogs. My dream is to create a world where <span class="highlight">every stray feels the joy of a full belly</span> and the wag of a hopeful tail. Together, we’ll turn this dream into reality, one burger at a time.
     </p>
 
-    <h2>Who Am I?</h2>
+    <div class="divider"></div>
+
+    <h2 class="hidden-title">Who Am I?</h2>
     <p>
-        I’m not your average dog. I am a voice for the voiceless, a fighter for justice, and a champion for change. While some chase their tails, I chase my mission: to ensure no dog goes hungry, no paw is uncared for, and every street dog gets to enjoy the simple pleasure of a burger—or even a cheeseburger, if we’re feeling fancy.
+      I’m not your average dog. I am a <span class="highlight">voice for the voiceless</span>, a fighter for justice, and a champion for change. While some chase their tails, I chase my mission: to ensure <span class="highlight">no dog goes hungry</span>, no paw is uncared for, and every street dog gets to enjoy the simple pleasure of a burger—or even a cheeseburger, if we’re feeling fancy.
     </p>
 
-    <h2>What Drives My Mission?</h2>
+    <h2 class="hidden-title">What Drives My Mission?</h2>
     <ul class="mission-points">
-        <li>Transform overlooked resources into meals for dogs in need.</li>
-        <li>Utilize blockchain technology to create a network of kindness and hope for stray dogs.</li>
-        <li>Fight hunger and illness by delivering food, providing care, and building safe shelters.</li>
+      <li><i class="fas fa-paw"></i> Transform overlooked resources into meals for dogs in need.</li>
+      <li><i class="fas fa-paw"></i> Utilize blockchain technology to create a network of kindness and hope.</li>
+      <li><i class="fas fa-paw"></i> Fight hunger and illness by delivering food, providing care, and building safe shelters.</li>
     </ul>
+
     <p>
-        Through blockchain, we turn everyday human actions into extraordinary change. Every burger you buy, every token you share, becomes part of a movement to feed bellies, heal paws, and offer hope. This is more than a mission; it’s a revolution.
+      Through blockchain, we turn everyday human actions into extraordinary change. Every burger you buy, every token you share, becomes part of a movement to feed bellies, heal paws, and offer hope. <span class="highlight">This is more than a mission; it’s a revolution.</span>
     </p>
 
-    <h2>A Message to My Homeless Dog Siblings</h2>
+    <div class="divider"></div>
+
+    <h2 class="hidden-title">A Message to My Homeless Dog Siblings</h2>
     <p>
-        To my brothers and sisters on the streets: I see you, I hear you, and I am here for you. Every act of human kindness fuels my fight to fill your bowls, heal your wounds, and bring you hope.
+      To my brothers and sisters on the streets: I see you, I hear you, and I am here for you. Every act of human kindness fuels my fight to fill your bowls, heal your wounds, and bring you hope.
     </p>
     <p>
-        Every burger I fetch is for you. Every wag of my tail is a promise of a brighter tomorrow. Together, we won’t just taste victory—we’ll live it.
+      Every burger I fetch is for you. Every wag of my tail is a promise of a <span class="highlight">brighter tomorrow</span>. Together, we won’t just taste victory—we’ll live it.
     </p>
 
-    <h2>A Call to Humans Who Believe in Change</h2>
+    <div class="divider"></div>
+
+    <h2 class="hidden-title">A Call to Humans Who Believe in Change</h2>
     <p>
-        This is your chance to make a difference. By joining me, you’re supporting a movement where burgers symbolize justice and tokens deliver hope. Small actions can create monumental change for the dogs who need it most.
+      This is your chance to make a difference. By joining me, you’re supporting a movement where burgers symbolize justice and tokens deliver hope. <span class="highlight">Small actions can create monumental change</span> for the dogs who need it most.
     </p>
     <p>
-        Let’s build a future where no dog is forgotten. Together, we’ll transform lives—one burger, one wag, and one act of kindness at a time.
+      Let’s build a future where no dog is forgotten. Together, we’ll transform lives—<span class="highlight">one burger, one wag, and one act of kindness at a time</span>.
     </p>
   </div>
 
   <!-- Footer -->
   <footer class="footer">
-      <p>© 2024 Bleu - The Robinhood of Dogs</p>
+    <p>© 2024 Bleu - The Robinhood of Dogs</p>
   </footer>
+
+  <!-- Smooth Title Reveal -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const titles = document.querySelectorAll('.hidden-title');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+      titles.forEach(title => observer.observe(title));
+    });
+  </script>
 </body>
 </html>
