@@ -149,6 +149,50 @@
     size: 10, /* Bone size */
   });
 </script>
+  <script>
+  tsParticles.load("tsparticles", {
+    particles: {
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: "#00bfff" }, /* Network visuals color */
+      shape: {
+        type: ["circle", "bone"], /* Keep circles and custom bone shape */
+      },
+      opacity: { value: 0.5, random: true },
+      size: { value: 4, random: true }, /* Size for circles */
+      line_linked: {
+        enable: true, /* Keep network lines */
+        distance: 150,
+        color: "#00bfff",
+        opacity: 0.4,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 1, /* Slow movement */
+        direction: "none",
+        random: false,
+        straight: false,
+        out_mode: "out",
+        bounce: false
+      }
+    },
+    interactivity: {
+      events: {
+        onhover: { enable: true, mode: "grab" }, /* Connect on hover */
+        onclick: { enable: true, mode: "push" }
+      },
+      modes: {
+        grab: {
+          distance: 200,
+          line_linked: { opacity: 1 }
+        },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+</script>
+
 
 
 
