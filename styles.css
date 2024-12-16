@@ -341,11 +341,20 @@ h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
   transform: translateY(0);
 }
 
-/* Add a global wrapper class for centering */
-.global-wrapper {
-  width: 100%;
-  max-width: 1280px; /* Restrict width */
-  margin: 0 auto; /* Center horizontally */
-  padding: 0 20px; /* Add slight padding for responsiveness */
-  box-sizing: border-box;
+/* Mission Page Specific Centering Fix */
+body.mission-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Centers content vertically */
 }
+
+.global-wrapper {
+    width: 100%;
+    max-width: 900px; /* Adjust the width for the mission page */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
