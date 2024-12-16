@@ -359,4 +359,9 @@ body.mission-page {
     padding: 20px;
     box-sizing: border-box;
 }
-
+.mission-container img {
+    max-width: 100%; /* Ensures the image does not exceed the container width */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 10px; /* Matches the container's border radius */
+    margin-bottom: 20px; /* Adds spacing below the image */
+}
