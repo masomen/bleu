@@ -157,20 +157,13 @@
       number: { value: 80, density: { enable: true, value_area: 800 } },
       color: { value: "#00bfff" }, /* Blue for network visuals */
       shape: {
-        type: ["circle", "polygon"], /* Use 'polygon' to define custom shapes */
-        options: {
-          polygon: {
-            sides: 5, /* Basic visual placeholder for dog bones */
-          },
-        },
+        type: ["circle", "polygon"], /* Add circle and polygon shapes */
+        polygon: { sides: 6 }, /* Approximate a simple 'dog bone' */
       },
       opacity: { value: 0.5, random: true },
-      size: {
-        value: 4,
-        random: true,
-      },
+      size: { value: 10, random: true }, /* Adjust size for bones */
       line_linked: {
-        enable: true,
+        enable: true, /* Network lines */
         distance: 150,
         color: "#00bfff",
         opacity: 0.4,
@@ -178,7 +171,7 @@
       },
       move: {
         enable: true,
-        speed: 1,
+        speed: 1, /* Slower movement */
         direction: "none",
         random: false,
         straight: false,
@@ -188,7 +181,7 @@
     },
     interactivity: {
       events: {
-        onhover: { enable: true, mode: "grab" }, /* Connect lines */
+        onhover: { enable: true, mode: "grab" }, /* Connect on hover */
         onclick: { enable: true, mode: "push" },
       },
       modes: {
@@ -196,14 +189,13 @@
           distance: 200,
           line_linked: { opacity: 1 },
         },
-        push: {
-          particles_nb: 4,
-        },
+        push: { particles_nb: 4 },
       },
     },
     retina_detect: true,
   });
 </script>
+
 
 
 
