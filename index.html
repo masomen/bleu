@@ -231,88 +231,82 @@
     <p class="bsc-text">🐾 <span class="highlight">Paw-ered</span> by Binance Smart Chain Network</p>
   </div>
 </section>
-<!-- Combined TSParticles Configuration -->
 <script>
-  tsParticles.load("tsparticles", {
-    particles: {
-      number: {
-        value: 80, // Total particles: circles + bones
-        density: { enable: true, value_area: 800 }
-      },
-      color: {
-        value: ["#00bfff", "#ffffff"] // Blue for network, white for bones
-      },
-      shape: {
-        type: ["circle", "bone"], // Add both network circles and bones
-        options: {
-          bone: {} // Keep placeholder for possible customization
-        }
-      },
-      opacity: {
-        value: 0.5,
-        random: true
-      },
-      size: {
-        value: 6, // Size for both circles and bones
-        random: true
-      },
-      line_linked: {
-        enable: true, // Network lines
-        distance: 150,
-        color: "#00bfff",
-        opacity: 0.4,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 1.5, // Floating speed
-        direction: "none",
-        out_mode: "out"
+  // Register the custom "bone" shape
+  (async () => {
+    await tsParticles.addShape("bone", {
+      draw: (context, particle, radius) => {
+        context.save();
+        context.beginPath();
+        context.fillStyle = "white";
+
+        // Bone shape parameters
+        const width = radius * 2;  // Bone width
+        const height = radius / 2; // Bone height
+
+        // Left circle
+        context.arc(-width / 2, 0, height, 0, Math.PI * 2);
+        // Right circle
+        context.arc(width / 2, 0, height, 0, Math.PI * 2);
+
+        // Center rectangle
+        context.rect(-width / 2, -height / 2, width, height);
+
+        context.fill();
+        context.restore();
       }
-    },
-    interactivity: {
-      events: {
-        onhover: { enable: true, mode: "grab" },
-        onclick: { enable: true, mode: "push" }
-      },
-      modes: {
-        grab: {
-          distance: 200,
-          line_linked: { opacity: 1 }
+    });
+
+    // TSParticles Configuration
+    tsParticles.load("tsparticles", {
+      particles: {
+        number: {
+          value: 80, // Total particles
+          density: { enable: true, value_area: 800 }
         },
-        push: {
-          particles_nb: 4
+        color: {
+          value: ["#00bfff", "#ffffff"] // Blue for circles, white for bones
+        },
+        shape: {
+          type: ["circle", "bone"] // Add network circles + bones
+        },
+        opacity: {
+          value: 0.8,
+          random: true
+        },
+        size: {
+          value: 6,
+          random: true
+        },
+        line_linked: {
+          enable: true, // Network lines
+          distance: 150,
+          color: "#00bfff",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.5,
+          direction: "none",
+          out_mode: "out"
         }
-      }
-    },
-    retina_detect: true,
-    // Register custom bone shape
-    custom: {
-      bone: {
-        draw: (context, particle, radius) => {
-          context.save();
-          context.beginPath();
-          context.fillStyle = "white";
-
-          // Draw bone shape (two circles + rectangle)
-          const width = radius * 2;
-          const height = radius / 2;
-
-          // Left circle
-          context.arc(-width / 2, 0, height, 0, Math.PI * 2);
-          // Right circle
-          context.arc(width / 2, 0, height, 0, Math.PI * 2);
-
-          // Center rectangle
-          context.rect(-width / 2, -height / 2, width, height);
-
-          context.fill();
-          context.restore();
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 200, line_linked: { opacity: 1 } },
+          push: { particles_nb: 4 }
         }
-      }
-    }
-  });
+      },
+      retina_detect: true
+    });
+  })();
 </script>
+
 
   <!-- JavaScript for Scroll Reveal -->
 <script>
