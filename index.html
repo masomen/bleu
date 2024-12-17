@@ -266,48 +266,67 @@
   });
 
   // Floating Bones Effect
-  (async () => {
-    await tsParticles.addShape("bone", {
-      draw: (context, particle, radius) => {
-        context.save();
-        context.beginPath();
-        context.fillStyle = "white";
+(async () => {
+  // Register the custom "bone" shape
+  await tsParticles.addShape("bone", {
+    draw: (context, particle, radius) => {
+      context.save();
+      context.beginPath();
+      context.fillStyle = "white"; // Bone color
+      context.strokeStyle = "black"; // Outline color
+      context.lineWidth = 2;
 
-        const width = radius * 2;  // Bone width
-        const height = radius / 2; // Bone height
+      const boneLength = radius * 3; // Length of the bone
+      const boneThickness = radius; // Thickness of the bone
+      const endCircleRadius = radius * 1.5; // Radius of the rounded ends
 
-        // Left circle
-        context.arc(-width / 2, 0, height, 0, Math.PI * 2);
-        // Right circle
-        context.arc(width / 2, 0, height, 0, Math.PI * 2);
+      // Left rounded end
+      context.arc(-boneLength / 2, 0, endCircleRadius, 0, Math.PI * 2);
+      context.fill();
+      context.stroke();
 
-        // Center rectangle
-        context.rect(-width / 2, -height / 2, width, height);
+      // Right rounded end
+      context.beginPath();
+      context.arc(boneLength / 2, 0, endCircleRadius, 0, Math.PI * 2);
+      context.fill();
+      context.stroke();
 
-        context.fill();
-        context.restore();
-      }
-    });
+      // Center rectangle
+      context.beginPath();
+      context.rect(
+        -boneLength / 2,
+        -boneThickness / 2,
+        boneLength,
+        boneThickness
+      );
+      context.fill();
+      context.stroke();
 
-    tsParticles.load("tsparticles-bones", {
-      particles: {
-        number: {
-          value: 20, // Number of bones
-          density: { enable: true, value_area: 800 }
-        },
-        shape: { type: "bone" }, // Custom bone shape
-        opacity: { value: 0.8, random: false },
-        size: { value: 10, random: true }, // Bone size
-        move: {
-          enable: true,
-          speed: 1.5, // Floating speed
-          direction: "none",
-          out_mode: "out"
-        }
+      context.restore();
+    },
+  });
+
+  // Initialize TSParticles for bones
+  tsParticles.load("tsparticles-bones", {
+    particles: {
+      number: {
+        value: 20, // Number of bones
+        density: { enable: true, value_area: 800 },
       },
-      retina_detect: true
-    });
-  })();
+      shape: { type: "bone" }, // Custom bone shape
+      opacity: { value: 0.8, random: false },
+      size: { value: 10, random: true }, // Bone size
+      move: {
+        enable: true,
+        speed: 1.5, // Floating speed
+        direction: "none",
+        out_mode: "out", // Continue moving outside the container
+      },
+    },
+    retina_detect: true,
+  });
+})();
+
 </script>
 
 
