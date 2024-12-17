@@ -1,11 +1,10 @@
-// JavaScript to Ensure Video Plays and Debug Issues
-document.addEventListener("DOMContentLoaded", function () {
-    const video = document.getElementById("background-video");
-
-    // Attempt to play the video
-    video.play().then(() => {
-        console.log("Video is playing successfully.");
-    }).catch(err => {
-        console.error("Video playback failed:", err);
-    });
-});
+// Function to copy the contract address
+function copyContractAddress() {
+  const address = document.getElementById("contract-address-text").innerText;
+  navigator.clipboard.writeText(address).then(() => {
+    alert("Contract Address Copied!");
+  }).catch(err => {
+    console.error("Failed to copy text: ", err);
+    alert("Failed to copy. Please try again!");
+  });
+}
