@@ -21,7 +21,7 @@
     body {
       font-family: 'Poppins', Arial, sans-serif;
       color: white;
-      background-color: black; /* Fixed to solid black */
+      background-color: black;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -67,18 +67,19 @@
     .global-wrapper {
       max-width: 1280px;
       margin: 20px auto;
-      background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
-      border-radius: 10px;
       padding: 30px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
       text-align: center;
       position: relative;
-      z-index: 10; /* Keep content above particles */
+      z-index: 10;
     }
 
-    /* Section Styling */
+    /* Section Styling with Grey Background */
     .section {
       margin-bottom: 30px;
+      background: rgba(40, 40, 40, 0.7); /* Grey background for sections */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .section h2 {
@@ -90,13 +91,16 @@
     /* Wallet Address Styling */
     .wallet-address {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 10px;
       align-items: center;
       background: rgba(255, 255, 255, 0.1);
       padding: 10px;
       border-radius: 5px;
       color: #ccc;
       font-size: 0.9rem;
+      margin: 10px auto;
+      max-width: 400px;
     }
 
     .copy-button {
@@ -114,7 +118,6 @@
       color: white;
     }
 
-    /* Donate Button */
     .donate-button {
       background-color: #00bfff;
       border: none;
@@ -124,7 +127,7 @@
       cursor: pointer;
       border-radius: 8px;
       transition: background 0.3s ease;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .donate-button:hover {
@@ -132,7 +135,7 @@
       color: white;
     }
 
-    /* Modal */
+    /* Modal Styling */
     .modal {
       display: none;
       position: fixed;
@@ -151,12 +154,13 @@
       padding: 20px;
       border-radius: 10px;
       text-align: center;
+      width: 300px;
     }
 
     .modal h3 {
-      margin-bottom: 20px;
-      color: #00bfff;
+      color: white; /* White "Choose Payment" text */
       font-family: 'BatmanForever', Arial, sans-serif;
+      margin-bottom: 20px;
     }
 
     .payment-options {
@@ -168,15 +172,22 @@
 
     .payment-button {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
       background: #00bfff;
       color: #000;
       border: none;
       border-radius: 8px;
-      padding: 10px 15px;
+      padding: 10px;
       cursor: pointer;
       transition: background 0.3s ease;
+      font-size: 0.8rem;
+    }
+
+    .payment-button img {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 5px;
     }
 
     .payment-button:hover {
@@ -184,14 +195,10 @@
       color: white;
     }
 
-    /* TSParticles Background */
-    #tsparticles-network {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1; /* Underneath content */
+    .donate-button.modal-close {
+      background: white;
+      color: black;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -232,18 +239,18 @@
   <!-- Modal -->
   <div id="donationModal" class="modal">
     <div class="modal-content">
-      <h3 id="modalTitle"></h3>
+      <h3 id="modalTitle">Choose Payment</h3>
       <div class="payment-options">
-        <button class="payment-button">BNB</button>
-        <button class="payment-button">USDT (BEP20)</button>
-        <button class="payment-button">ETH</button>
-        <button class="payment-button">USDT (ERC20)</button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB">BNB</button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT-BEP20">USDT (BEP20)</button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">ETH</button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT-ERC20">USDT (ERC20)</button>
       </div>
-      <button class="donate-button" onclick="closeModal()">Close</button>
+      <button class="donate-button modal-close" onclick="closeModal()">Close</button>
     </div>
   </div>
 
-  <!-- TSParticles Network -->
+  <!-- TSParticles Background -->
   <div id="tsparticles-network"></div>
 
   <script>
@@ -261,7 +268,6 @@
       document.getElementById('donationModal').style.display = 'none';
     }
 
-    // TSParticles Network Effect
     tsParticles.load("tsparticles-network", {
       particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -271,9 +277,7 @@
         size: { value: 4, random: true },
         line_linked: { enable: true, distance: 150, color: "#00bfff", opacity: 0.4, width: 1 },
         move: { enable: true, speed: 0.75, direction: "none", out_mode: "out" }
-      },
-      interactivity: { events: { onhover: { enable: true, mode: "grab" } }, modes: { grab: { distance: 200, line_linked: { opacity: 1 } } } },
-      retina_detect: true
+      }
     });
   </script>
 </body>
