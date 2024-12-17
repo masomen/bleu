@@ -271,28 +271,23 @@
   await tsParticles.addShape("bone", {
     draw: (context, particle, radius) => {
       context.save();
-      context.beginPath();
-
       const boneLength = radius * 4; // Length of the bone
       const boneThickness = radius * 1.5; // Thickness of the bone
       const endCircleRadius = boneThickness; // Circle radius for ends
 
       // Set transparent fill and white outline
       context.strokeStyle = "white"; // White outline
-      context.fillStyle = "rgba(0,0,0,0)"; // Transparent fill
-      context.lineWidth = 2; // Outline thickness
+      context.lineWidth = 2;
 
       // Left rounded end
       context.beginPath();
       context.arc(-boneLength / 2, 0, endCircleRadius, 0, Math.PI * 2);
       context.stroke();
-      context.fill();
 
       // Right rounded end
       context.beginPath();
       context.arc(boneLength / 2, 0, endCircleRadius, 0, Math.PI * 2);
       context.stroke();
-      context.fill();
 
       // Center rectangle
       context.beginPath();
@@ -307,34 +302,45 @@
     },
   });
 
-  // Initialize TSParticles with the improved bone shape
-  tsParticles.load("tsparticles-bones", {
+  // Network Effect
+  tsParticles.load("tsparticles-network", {
     particles: {
-      number: { value: 15, density: { enable: true, value_area: 800 } }, // Adjust number of bones
-      shape: { type: "bone" }, // Use custom shape
-      opacity: { value: 1, random: false },
-      size: { value: 10, random: true }, // Bone size
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: "#00bfff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5, random: true },
+      size: { value: 4, random: true },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#00bfff",
+        opacity: 0.4,
+        width: 1,
+      },
       move: {
         enable: true,
-        speed: 1.5, // Floating speed
+        speed: 1,
         direction: "none",
-        out_mode: "out", // Continue floating out of bounds
+        out_mode: "out",
       },
+    },
+    interactivity: {
+      events: { onhover: { enable: true, mode: "grab" } },
+      modes: { grab: { distance: 200, line_linked: { opacity: 1 } } },
     },
     retina_detect: true,
   });
-})();
 
-  // Load TSParticles for bones
+  // Floating Bones Effect
   tsParticles.load("tsparticles-bones", {
     particles: {
-      number: { value: 15, density: { enable: true, value_area: 800 } }, // Adjust count
-      shape: { type: "bone" }, // Use the improved bone shape
+      number: { value: 15, density: { enable: true, value_area: 800 } },
+      shape: { type: "bone" }, // Custom bone shape
       opacity: { value: 1, random: false },
-      size: { value: 15, random: true }, // Adjust bone size
+      size: { value: 10, random: true },
       move: {
         enable: true,
-        speed: 1.2, // Floating speed
+        speed: 1.5,
         direction: "none",
         out_mode: "out",
       },
@@ -342,6 +348,7 @@
     retina_detect: true,
   });
 })();
+
 
 
 </script>
