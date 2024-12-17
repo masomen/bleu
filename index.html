@@ -355,14 +355,18 @@
 
   // Buy Tokens
   async function buyTokens(paymentType) {
-    if (!window.ethereum) {
-      alert("Please install MetaMask first!");
-      return;
-    }
+  if (!window.ethereum) {
+    alert("MetaMask is not installed. Please install it to proceed.");
+    return;
+  }
+
+  try {
+    // Ensure MetaMask is connected
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
+
     const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee";
-    const abi = [
+    const contractAbi = [
       {
         "inputs": [
           { "internalType": "string", "name": "paymentType", "type": "string" },
@@ -375,20 +379,64 @@
       }
     ];
 
-    try {
-      const amount = prompt(`Enter the amount of ${paymentType} to spend:`);
-      if (!amount) return;
-      const contract = new ethers.Contract(contractAddress, abi, signer);
+    const contract = new ethers.Contract(contractAddress, contractAbi, signer);
+
+    // Prompt user for transaction amount
+    const amount = prompt(`Enter the amount of ${paymentType} to spend:`);
+    if (!amount) return; // Stop if user cancels
+
+    if (paymentType === "BNB" || paymentType === "ETH") {
+      // Send native currency (BNB or ETH)
       const valueToSend = ethers.utils.parseEther(amount);
+      console.log(`Initiating ${paymentType} transaction for ${amount}...`);
 
       const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
       await tx.wait();
-      alert("Purchase successful! BLEU tokens have been sent to your wallet.");
-    } catch (error) {
-      console.error(error);
-      alert("Transaction failed. Check console for details.");
+
+      alert(`Transaction successful! BLEU tokens have been sent to your wallet.`);
+    } 
+    else if (paymentType === "USDT-BEP20" || paymentType === "USDT-ERC20") {
+      // USDT requires approval first
+      const usdtAddress = paymentType === "USDT-BEP20" 
+        ? "0x55d398326f99059fF775485246999027B3197955" // USDT BEP-20
+        : "0xdAC17F958D2ee523a2206206994597C13D831ec7"; // USDT ERC-20
+
+      const usdtAbi = [
+        {
+          "inputs": [
+            { "name": "spender", "type": "address" },
+            { "name": "amount", "type": "uint256" }
+          ],
+          "name": "approve",
+          "outputs": [{ "name": "", "type": "bool" }],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ];
+
+      const usdtContract = new ethers.Contract(usdtAddress, usdtAbi, signer);
+      const amountInWei = ethers.utils.parseUnits(amount, 18);
+
+      console.log(`Approving ${amount} USDT to spend...`);
+      const approveTx = await usdtContract.approve(contractAddress, amountInWei);
+      await approveTx.wait();
+
+      console.log("USDT approved. Sending transaction...");
+      const tx = await contract.buyTokens(paymentType, amountInWei);
+      await tx.wait();
+
+      alert("Transaction successful! BLEU tokens have been sent to your wallet.");
+    } 
+    else {
+      alert("Invalid payment option selected.");
     }
+
+  } catch (error) {
+    console.error("Transaction failed:", error);
+    alert("Transaction failed. Please check the console for details.");
   }
+}
+
 </script>
 
 <style>
