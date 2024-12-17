@@ -4,89 +4,147 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donate to Bleu</title>
+   <!-- Load TSParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
   <style>
-    /* Gradient Background Section */
-    .section {
-      background: linear-gradient(to bottom, #111, #000);
-      margin: 20px 0;
-      padding: 40px 20px;
+    /* Page Background */
+    body {
+      background: linear-gradient(to bottom, #000, #111);
+      color: white;
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
+
+    .navbar ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li a, .navbar ul button {
+      font-family: 'BatmanForever', Arial, sans-serif;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .navbar ul li a:hover, .navbar ul button:hover {
+      opacity: 1;
+    }
+
+    /* Main Wrapper */
+    .global-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Section Styling */
+    .section {
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 10px;
+      background: rgba(17, 17, 17, 0.8);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .section h2 {
+      font-family: 'BatmanForever', Arial, sans-serif;
+      font-size: 2rem;
+      color: #00bfff;
+      margin-bottom: 15px;
+    }
+
+    /* Payment Options */
+    .payment-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      justify-items: center;
+      margin-top: 20px;
+    }
+
+    .payment-button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      padding: 10px 15px;
+      background: #00bfff;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .payment-button:hover {
+      background: #0080ff;
+    }
+
+    .payment-button img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .payment-label {
+      color: #000;
+      font-weight: bold;
     }
 
     /* Wallet Address Styling */
     .wallet-address {
-      font-size: 1rem;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 5px;
       color: #ccc;
-      margin: 15px auto;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 8px 12px;
-      border-radius: 5px;
-      word-break: break-word;
-      max-width: 90%;
+      font-size: 0.9rem;
+      margin-top: 10px;
     }
 
-    /* Button Styles */
-    .donate-button {
-      background-color: #00bfff;
-      color: black;
+    .copy-button {
+      background: #00bfff;
       border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
+      color: black;
       border-radius: 5px;
-      transition: 0.3s ease;
-    }
-
-    .donate-button:hover {
-      background-color: #0080ff;
-      color: white;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 1000;
-    }
-
-    .modal-content {
-      background: #111;
-      border-radius: 10px;
-      color: white;
-      max-width: 400px;
-      margin: 15% auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .modal-content img {
-      width: 50px;
-      margin: 10px;
       cursor: pointer;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      transition: background 0.3s;
     }
 
-    .payment-label {
-      color: #00bfff;
-      font-size: 1rem;
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.5rem;
-      color: #fff;
-      cursor: pointer;
+    .copy-button:hover {
+      background: #0080ff;
+      color: white;
     }
   </style>
 </head>
@@ -102,82 +160,96 @@
       </li>
       <li><a href="my-mission.html">My Mission</a></li>
       <li><a href="socials.html">Socials</a></li>
-      <button class="hero-button" id="scroll-to-buy">Buy</button>
+      <button>Buy</button>
     </ul>
   </nav>
 
-  <!-- TSParticles Background -->
-  <div id="tsparticles"></div>
-
-  <!-- Page Content -->
+  <!-- Main Wrapper -->
   <div class="global-wrapper">
-    <h1 class="hero-title hidden-section">Support Bleu's Mission</h1>
-
-    <!-- Section 1: Donate to Bleu -->
-    <div class="section hidden-section">
-      <h2 class="hero-title">Donate to Bleu Project</h2>
-      <p>Help us keep the Bleu project alive and thriving. Donations go to development and maintenance.</p>
-      <div class="wallet-address">0xMainWalletAddressHere</div>
-      <button class="donate-button" onclick="openModal()">Donate to Bleu</button>
+    <!-- Donate to Bleu -->
+    <div class="section">
+      <h2>Donate to Bleu Project</h2>
+      <p>Support development and maintenance of Bleu to keep the dream alive.</p>
+      <div class="wallet-address">
+        0xMainWalletAddressHere
+        <button class="copy-button" onclick="copyToClipboard('0xMainWalletAddressHere')">Copy</button>
+      </div>
+      <div class="payment-options">
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png"> <span class="payment-label">BNB</span></button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/tether-usdt-logo.png"> <span class="payment-label">USDT (BEP20)</span></button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png"> <span class="payment-label">ETH</span></button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/tether-usdt-logo.png"> <span class="payment-label">USDT (ERC20)</span></button>
+      </div>
     </div>
 
-    <!-- Section 2: Donate to Charity -->
-    <div class="section hidden-section">
-      <h2 class="hero-title">Donate to Charity</h2>
-      <p>Support dog charities worldwide. Your help makes tails wag and hearts full.</p>
-      <div class="wallet-address">0xCharityWalletAddressHere</div>
-      <button class="donate-button" onclick="openModal()">Donate to Charity</button>
-    </div>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal" id="donate-modal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeModal()">&times;</span>
-      <h2>Select Payment Method</h2>
-      <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" onclick="alert('BNB Selected')">
-      <div class="payment-label">BNB</div>
-      <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" onclick="alert('ETH Selected')">
-      <div class="payment-label">ETH</div>
-      <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT" onclick="alert('USDT-BEP20 Selected')">
-      <div class="payment-label">USDT (BEP20)</div>
+    <!-- Donate to Charity -->
+    <div class="section">
+      <h2>Donate to Charity</h2>
+      <p>Help us feed dogs worldwide and support charities that make a difference.</p>
+      <div class="wallet-address">
+        0xCharityWalletAddressHere
+        <button class="copy-button" onclick="copyToClipboard('0xCharityWalletAddressHere')">Copy</button>
+      </div>
+      <div class="payment-options">
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png"> <span class="payment-label">BNB</span></button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/tether-usdt-logo.png"> <span class="payment-label">USDT (BEP20)</span></button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png"> <span class="payment-label">ETH</span></button>
+        <button class="payment-button"><img src="https://cryptologos.cc/logos/tether-usdt-logo.png"> <span class="payment-label">USDT (ERC20)</span></button>
+      </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="footer hidden-section">
+  <footer class="footer">
     <p>© 2024 Bleu - The Robinhood of Dogs</p>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
   <script>
-    // Initialize Particles
-    tsParticles.load("tsparticles", {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#00bfff" },
-        shape: { type: "circle" },
-        size: { value: 3, random: true },
-        move: { enable: true, speed: 1, out_mode: "out" },
-        line_linked: { enable: true, distance: 150, color: "#00bfff" }
-      }
-    });
-
-    // Reveal Effect
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('.hidden-section').forEach(section => {
-        section.classList.add('show');
-      });
-    });
-
-    // Modal Functions
-    function openModal() {
-      document.getElementById('donate-modal').style.display = 'block';
-    }
-    function closeModal() {
-      document.getElementById('donate-modal').style.display = 'none';
+    function copyToClipboard(address) {
+      navigator.clipboard.writeText(address);
+      alert('Address copied: ' + address);
     }
   </script>
+  <!-- TSParticles Containers -->
+<div id="tsparticles-network" style="width: 100%; height: 100vh; position: absolute; top: 0; left: 0; z-index: -1;"></div>
+
+  <script>
+  // Original Network Effect
+  tsParticles.load("tsparticles-network", {
+    particles: {
+      number: {
+        value: 80,
+        density: { enable: true, value_area: 800 }
+      },
+      color: { value: "#00bfff" }, // Blue circles
+      shape: { type: "circle" },
+      opacity: { value: 0.5, random: true },
+      size: { value: 4, random: true },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#00bfff",
+        opacity: 0.4,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 0.75,
+        direction: "none",
+        out_mode: "out"
+      }
+    },
+    interactivity: {
+      events: { onhover: { enable: true, mode: "grab" } },
+      modes: { grab: { distance: 200, line_linked: { opacity: 1 } } }
+    },
+    retina_detect: true
+  });
+
+
+
+
+
+</script>
 </body>
 </html>
