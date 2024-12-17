@@ -9,36 +9,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
   <style>
-    /* Page-Specific Styles */
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-
-    .global-wrapper {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
-
-    /* Gradient Section Styling */
+    /* Gradient Background Section */
     .section {
       background: linear-gradient(to bottom, #111, #000);
       margin: 20px 0;
-      padding: 30px;
+      padding: 40px 20px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
-    /* Wallet Address */
+    /* Wallet Address Styling */
     .wallet-address {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: #ccc;
-      margin: 10px auto;
+      margin: 15px auto;
       background-color: rgba(255, 255, 255, 0.1);
       padding: 8px 12px;
       border-radius: 5px;
@@ -46,7 +30,7 @@
       max-width: 90%;
     }
 
-    /* Buttons */
+    /* Button Styles */
     .donate-button {
       background-color: #00bfff;
       color: black;
@@ -93,7 +77,7 @@
 
     .payment-label {
       color: #00bfff;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .close-modal {
@@ -107,30 +91,42 @@
   </style>
 </head>
 <body>
-  <!-- TSParticles -->
-  <div id="tsparticles"></div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li class="logo-tab">
+        <a href="index.html">
+          <img src="https://iili.io/2W6xlhN.png" alt="Bleu Logo">
+          <span class="navbar-title">Bleu</span>
+        </a>
+      </li>
+      <li><a href="my-mission.html">My Mission</a></li>
+      <li><a href="socials.html">Socials</a></li>
+      <button class="hero-button" id="scroll-to-buy">Buy</button>
+    </ul>
+  </nav>
 
-  <!-- Navbar Placeholder -->
-  <div id="navbar-placeholder"></div>
+  <!-- TSParticles Background -->
+  <div id="tsparticles"></div>
 
   <!-- Page Content -->
   <div class="global-wrapper">
-    <h1 class="hidden-section">Support Bleu's Mission</h1>
+    <h1 class="hero-title hidden-section">Support Bleu's Mission</h1>
 
     <!-- Section 1: Donate to Bleu -->
-    <div class="section">
-      <h2>Donate to Bleu Project</h2>
+    <div class="section hidden-section">
+      <h2 class="hero-title">Donate to Bleu Project</h2>
       <p>Help us keep the Bleu project alive and thriving. Donations go to development and maintenance.</p>
-      <div class="wallet-address" id="main-wallet">0xMainWalletAddressHere</div>
-      <button class="donate-button" onclick="openModal('main')">Donate to Bleu</button>
+      <div class="wallet-address">0xMainWalletAddressHere</div>
+      <button class="donate-button" onclick="openModal()">Donate to Bleu</button>
     </div>
 
     <!-- Section 2: Donate to Charity -->
-    <div class="section">
-      <h2>Donate to Charity</h2>
+    <div class="section hidden-section">
+      <h2 class="hero-title">Donate to Charity</h2>
       <p>Support dog charities worldwide. Your help makes tails wag and hearts full.</p>
-      <div class="wallet-address" id="charity-wallet">0xCharityWalletAddressHere</div>
-      <button class="donate-button" onclick="openModal('charity')">Donate to Charity</button>
+      <div class="wallet-address">0xCharityWalletAddressHere</div>
+      <button class="donate-button" onclick="openModal()">Donate to Charity</button>
     </div>
   </div>
 
@@ -139,14 +135,12 @@
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal()">&times;</span>
       <h2>Select Payment Method</h2>
-      <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" onclick="donate('BNB')">
+      <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" onclick="alert('BNB Selected')">
       <div class="payment-label">BNB</div>
-      <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" onclick="donate('ETH')">
+      <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" onclick="alert('ETH Selected')">
       <div class="payment-label">ETH</div>
-      <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT-BEP20" onclick="donate('USDT-BEP20')">
+      <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT" onclick="alert('USDT-BEP20 Selected')">
       <div class="payment-label">USDT (BEP20)</div>
-      <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT-ERC20" onclick="donate('USDT-ERC20')">
-      <div class="payment-label">USDT (ERC20)</div>
     </div>
   </div>
 
@@ -158,38 +152,32 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
   <script>
+    // Initialize Particles
     tsParticles.load("tsparticles", {
       particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
         color: { value: "#00bfff" },
         shape: { type: "circle" },
         size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#00bfff" },
-        move: { enable: true, speed: 1, out_mode: "out" }
+        move: { enable: true, speed: 1, out_mode: "out" },
+        line_linked: { enable: true, distance: 150, color: "#00bfff" }
       }
     });
 
-    function openModal(walletType) {
-      document.getElementById('donate-modal').style.display = 'block';
-    }
-
-    function closeModal() {
-      document.getElementById('donate-modal').style.display = 'none';
-    }
-
-    function donate(method) {
-      alert(`Donating with ${method}`);
-    }
-
+    // Reveal Effect
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('.hidden-section').forEach(section => {
         section.classList.add('show');
       });
-
-      fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => document.getElementById("navbar-placeholder").innerHTML = data);
     });
+
+    // Modal Functions
+    function openModal() {
+      document.getElementById('donate-modal').style.display = 'block';
+    }
+    function closeModal() {
+      document.getElementById('donate-modal').style.display = 'none';
+    }
   </script>
 </body>
 </html>
