@@ -445,3 +445,8 @@ body.mission-page {
     color: orange;
     font-weight: bold;
 }
+.buy-button img {
+    width: 30px; /* Adjust to desired size */
+    height: 30px; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures proper fitting without distortion */
+}
