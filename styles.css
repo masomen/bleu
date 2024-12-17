@@ -11,12 +11,6 @@
     src: url('fonts/batmfa__.ttf') format('truetype');
     font-display: swap;
 }
-@font-face {
-    font-family: 'SilentBrush';
-    src: url('fonts/SilentBrush-Regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
 
 /* Body Styling */
 body {
@@ -120,83 +114,12 @@ body {
     padding-right: 30px;
 }
 
-/* Hero Title Container */
 .hero-title {
-  position: relative;
-  font-size: 3rem; /* Main title size */
-  font-family: 'BatmanForever', Arial, sans-serif;
-  color: white;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-/* Hero Title Styling */
-.hero-title {
-  position: relative;
-  font-size: 3rem; /* Main title size */
-  font-family: 'BatmanForever', Arial, sans-serif;
-  color: white;
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-/* Hero Title Styling */
-.hero-title {
-  position: relative;
-  font-size: 3rem; /* Main title size */
-  font-family: 'BatmanForever', Arial, sans-serif;
-  color: white;
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-/* Container for the Strike Effect */
-.strike-container {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    margin-bottom: 20px; /* Space below the effect */
-}
-
-/* Crossed Text ("People's Coin") */
-.crossed-text {
     font-family: 'BatmanForever', Arial, sans-serif;
     font-size: 3rem;
-    color: white;
-    position: relative;
-    z-index: 1; /* Base layer: "People" text */
+    color: #00bfff;
+    margin-bottom: 20px;
 }
-
-/* Highlight Word "People" */
-.cross-word {
-    position: relative;
-    z-index: 3; /* Higher than base text, but lower than brush stroke */
-}
-
-/* Brush Stroke Image */
-.brush-stroke {
-    position: absolute;
-    bottom: 10px; /* Align brush stroke over "People" */
-    left: 50%;
-    transform: translateX(-50%) rotate(-10deg) scale(0.9); /* 20% smaller (0.9) */
-    z-index: 4; /* Place above the word "People" */
-    width: 240px; /* Adjust width for better size */
-    opacity: 0.8; /* Slight transparency */
-    pointer-events: none; /* Non-interactive */
-}
-/* Handwritten "DOG" */
-.word-dog {
-    font-family: 'SilentBrush', Arial, sans-serif;
-    font-size: 5rem; /* Larger size for prominence */
-    position: absolute;
-    top: -40px; /* Position above the word "People" */
-    left: 50%;
-    transform: translateX(-50%) rotate(-5deg); /* Slight tilt for style */
-    color: yellow; /* Highlight color */
-    z-index: 5; /* Highest layer, above brush stroke */
-    white-space: nowrap;
-}
-
 
 .hero-description {
     font-size: 1rem;
@@ -448,24 +371,4 @@ body.mission-page {
     height: auto; /* Maintains aspect ratio */
     border-radius: 10px; /* Matches the container's border radius */
     margin-bottom: 20px; /* Adds spacing below the image */
-}
-/* Responsive Adjustments for Mobile */
-@media (max-width: 768px) {
-  .brush-stroke {
-    width: 150px; /* Smaller size for mobile */
-    bottom: 5px; /* Adjust position slightly higher */
-    opacity: 0.7; /* Keep transparency for balance */
-    transform: translateX(-50%) rotate(-10deg) scale(0.8); /* Further reduce size */
-  }
-
-  .word-dog {
-    font-size: 2rem; /* Slightly smaller font for mobile */
-    top: -15px; /* Adjust position closer to "People" */
-    left: 50%;
-    transform: translateX(-50%) rotate(-5deg); /* Maintain center alignment */
-  }
-
-  .crossed-text {
-    font-size: 2.2rem; /* Reduce text size to fit smaller screens */
-  }
 }
