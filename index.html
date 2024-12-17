@@ -267,47 +267,63 @@
 
   // Floating Bones Effect
 (async () => {
-  // Register the custom "bone" shape
+  // Register the custom "bone" shape with white outline and transparent body
   await tsParticles.addShape("bone", {
     draw: (context, particle, radius) => {
       context.save();
       context.beginPath();
 
-      const boneLength = radius * 4; // Adjust bone length
-      const boneThickness = radius * 1.5; // Adjust thickness
-      const endCircleRadius = boneThickness * 0.6; // Rounded ends
+      const boneLength = radius * 4; // Length of the bone
+      const boneThickness = radius * 1.5; // Thickness of the bone
+      const endCircleRadius = boneThickness; // Circle radius for ends
 
-      // Set bone color and outline
-      context.fillStyle = "#F8E79E"; // Bone color (light yellow)
-      context.strokeStyle = "#222"; // Dark outline
-      context.lineWidth = 2;
+      // Set transparent fill and white outline
+      context.strokeStyle = "white"; // White outline
+      context.fillStyle = "rgba(0,0,0,0)"; // Transparent fill
+      context.lineWidth = 2; // Outline thickness
 
       // Left rounded end
       context.beginPath();
       context.arc(-boneLength / 2, 0, endCircleRadius, 0, Math.PI * 2);
-      context.fill();
       context.stroke();
+      context.fill();
 
       // Right rounded end
       context.beginPath();
       context.arc(boneLength / 2, 0, endCircleRadius, 0, Math.PI * 2);
-      context.fill();
       context.stroke();
-
-      // Rectangle body connecting the ends
-      context.beginPath();
-      context.rect(
-        -boneLength / 2 + endCircleRadius,
-        -boneThickness / 2,
-        boneLength - 2 * endCircleRadius,
-        boneThickness
-      );
       context.fill();
+
+      // Center rectangle
+      context.beginPath();
+      context.moveTo(-boneLength / 2 + endCircleRadius, -boneThickness / 2);
+      context.lineTo(boneLength / 2 - endCircleRadius, -boneThickness / 2);
+      context.lineTo(boneLength / 2 - endCircleRadius, boneThickness / 2);
+      context.lineTo(-boneLength / 2 + endCircleRadius, boneThickness / 2);
+      context.closePath();
       context.stroke();
 
       context.restore();
     },
   });
+
+  // Initialize TSParticles with the improved bone shape
+  tsParticles.load("tsparticles-bones", {
+    particles: {
+      number: { value: 15, density: { enable: true, value_area: 800 } }, // Adjust number of bones
+      shape: { type: "bone" }, // Use custom shape
+      opacity: { value: 1, random: false },
+      size: { value: 10, random: true }, // Bone size
+      move: {
+        enable: true,
+        speed: 1.5, // Floating speed
+        direction: "none",
+        out_mode: "out", // Continue floating out of bounds
+      },
+    },
+    retina_detect: true,
+  });
+})();
 
   // Load TSParticles for bones
   tsParticles.load("tsparticles-bones", {
