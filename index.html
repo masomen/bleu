@@ -221,37 +221,47 @@
     <p class="bsc-text">🐾 <span class="highlight">Paw-ered</span> by Binance Smart Chain Network</p>
   </div>
 </section>
-<!-- Buy BLEU Tokens Section -->
+<!-- Buy BLEU Section -->
 <section id="buy-bleu" class="buy-section hidden-section">
-  <div class="buy-container">
-    <h2 class="buy-title">🐾 Buy <span class="highlight">BLEU Tokens</span></h2>
-    <p class="buy-description">Choose your preferred payment method to join the movement and support dogs everywhere!</p>
+  <h2 class="buy-title">🐾 How to Buy <span class="highlight">BLEU Tokens</span></h2>
+  <p class="buy-subtitle">Follow these easy steps to join the movement!</p>
 
-    <div class="buy-actions">
-      <!-- Connect Wallet -->
-      <div class="wallet-connect">
-        <button class="button" onclick="connectMetaMask()">Connect Wallet</button>
-        <div id="wallet-address">Not connected</div>
-      </div>
+  <!-- Step 1: Connect Wallet -->
+  <div class="buy-step step-1">
+    <h3><span>1.</span> Connect Your Wallet</h3>
+    <button class="buy-button" onclick="connectMetaMask()">Connect MetaMask</button>
+    <div id="wallet-address" class="wallet-status">Not Connected</div>
+  </div>
 
-      <!-- Payment Options -->
-      <div class="payment-options">
-        <button class="button" onclick="buyTokens('BNB')">
-          Buy with BNB <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB Logo">
-        </button>
-        <button class="button" onclick="buyTokens('ETH')">
-          Buy with ETH <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH Logo">
-        </button>
-        <button class="button" onclick="buyTokens('USDT-BEP20')">
-          Buy with USDT (BEP-20) <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT Logo">
-        </button>
-        <button class="button" onclick="buyTokens('USDT-ERC20')">
-          Buy with USDT (ERC-20) <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT Logo">
-        </button>
-      </div>
+  <!-- Step 2: Choose Payment Type -->
+  <div class="buy-step step-2">
+    <h3><span>2.</span> Choose Payment Method</h3>
+    <div class="payment-options">
+      <button class="payment-button" onclick="buyTokens('BNB')">
+        Buy with BNB <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB">
+      </button>
+      <button class="payment-button" onclick="buyTokens('ETH')">
+        Buy with ETH <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">
+      </button>
+      <button class="payment-button" onclick="buyTokens('USDT-BEP20')">
+        Buy with USDT (BEP-20) <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT">
+      </button>
+      <button class="payment-button" onclick="buyTokens('USDT-ERC20')">
+        Buy with USDT (ERC-20) <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT">
+      </button>
+    </div>
+  </div>
+
+  <!-- Step 3: Contract Address -->
+  <div class="buy-step step-3">
+    <h3><span>3.</span> Contract Address</h3>
+    <div class="contract-address">
+      <span id="contract-address-text">0x43088e2aa5d73615136305de6aa68557057a1bee</span>
+      <button class="copy-button" onclick="copyContractAddress()">Copy Address</button>
     </div>
   </div>
 </section>
+
 
 
   <!-- TSParticles Configuration -->
