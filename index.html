@@ -340,32 +340,57 @@
     });
   });
 </script>
-  <script>
-  let userWalletAddress = "";
-  const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Replace with your actual contract address
+<!-- Buy BLEU Section -->
+<section id="buy-bleu" class="buy-section hidden-section">
+  <h2 class="buy-title">🐾 How to Buy <span class="highlight">BLEU Tokens</span></h2>
+  <p class="buy-subtitle">Follow these easy steps to join the movement!</p>
 
-  const abi = [
-    {
-      "inputs": [
-        { "internalType": "string", "name": "paymentType", "type": "string" },
-        { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
-      ],
-      "name": "buyTokens",
-      "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    }
-  ];
+  <!-- Step 1: Connect Wallet -->
+  <div class="buy-step step-1">
+    <h3><span>1.</span> Connect Your Wallet</h3>
+    <div class="address-container">
+      <div id="wallet-address" class="address-text">Not Connected</div>
+      <button class="address-button" onclick="connectMetaMask()">Connect MetaMask</button>
+    </div>
+  </div>
 
+  <!-- Step 2: Choose Payment Type -->
+  <div class="buy-step step-2">
+    <h3><span>2.</span> Choose Payment Method</h3>
+    <div class="payment-options">
+      <button class="payment-button" onclick="buyTokens('BNB')">
+        Buy with BNB <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB">
+      </button>
+      <button class="payment-button" onclick="buyTokens('ETH')">
+        Buy with ETH <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">
+      </button>
+      <button class="payment-button" onclick="buyTokens('USDT-BEP20')">
+        Buy with USDT (BEP-20) <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT">
+      </button>
+      <button class="payment-button" onclick="buyTokens('USDT-ERC20')">
+        Buy with USDT (ERC-20) <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT">
+      </button>
+    </div>
+  </div>
+
+  <!-- Step 3: Contract Address -->
+  <div class="buy-step step-3">
+    <h3><span>3.</span> Contract Address</h3>
+    <div class="address-container">
+      <div id="contract-address" class="address-text">0x43088e2aa5d73615136305de6aa68557057a1bee</div>
+      <button class="address-button" onclick="copyContractAddress()">Copy Address</button>
+    </div>
+  </div>
+</section>
+
+<script>
   // Connect MetaMask
   async function connectMetaMask() {
     if (window.ethereum) {
       try {
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        userWalletAddress = accounts[0];
-        document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
+        document.getElementById('wallet-address').innerText = `Connected: ${accounts[0]}`;
       } catch (error) {
-        console.error("Connection failed:", error);
         alert("Failed to connect MetaMask. Please try again.");
       }
     } else {
@@ -373,38 +398,127 @@
     }
   }
 
-  // Buy Tokens Function
+  // Copy Contract Address
+  function copyContractAddress() {
+    const address = document.getElementById("contract-address").innerText;
+    navigator.clipboard.writeText(address).then(() => alert("Contract Address Copied!"));
+  }
+
+  // Buy Tokens
   async function buyTokens(paymentType) {
-    if (!userWalletAddress) {
-      alert("Please connect your MetaMask wallet first!");
+    if (!window.ethereum) {
+      alert("Please install MetaMask first!");
       return;
     }
-
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    const contract = new ethers.Contract(contractAddress, abi, signer);
+    const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee";
+    const abi = [
+      {
+        "inputs": [
+          { "internalType": "string", "name": "paymentType", "type": "string" },
+          { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
+        ],
+        "name": "buyTokens",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+      }
+    ];
 
     try {
       const amount = prompt(`Enter the amount of ${paymentType} to spend:`);
+      if (!amount) return;
+      const contract = new ethers.Contract(contractAddress, abi, signer);
       const valueToSend = ethers.utils.parseEther(amount);
 
-      console.log(`Sending ${paymentType} transaction...`);
       const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
       await tx.wait();
-
-      alert(`Purchase successful! BLEU tokens have been sent to your wallet.`);
+      alert("Purchase successful! BLEU tokens have been sent to your wallet.");
     } catch (error) {
-      console.error("Transaction failed:", error);
-      alert("Transaction failed! Check the console for details.");
+      console.error(error);
+      alert("Transaction failed. Check console for details.");
     }
   }
 </script>
-  <div class="address-container">
-  <div id="contract-address" class="address-text">
-    Contract Address: 0x43088e2aa5d73615136305de6aa68557057a1bee
-  </div>
-  <button class="address-button" onclick="copyContractAddress()">Copy Address</button>
-</div>
+
+<style>
+  .buy-section {
+    background-color: #111;
+    padding: 60px 20px;
+    color: white;
+    text-align: center;
+  }
+
+  .buy-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .buy-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #ccc;
+  }
+
+  .buy-step {
+    margin-bottom: 40px;
+  }
+
+  .buy-step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .address-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .address-text {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    word-break: break-all;
+    font-size: 1rem;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .address-button, .buy-button, .payment-button {
+    padding: 10px 20px;
+    background-color: #00bfff;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+  }
+
+  .address-button:hover, .buy-button:hover, .payment-button:hover {
+    background-color: #0080ff;
+    color: white;
+  }
+
+  .payment-button img {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .address-text {
+      font-size: 0.9rem;
+    }
+
+    .buy-title {
+      font-size: 2rem;
+    }
+  }
+</style>
 
 </body>
 </html>
