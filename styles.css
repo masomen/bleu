@@ -178,12 +178,12 @@ body {
     position: absolute;
     bottom: 10px; /* Align brush stroke over "People" */
     left: 50%;
-    transform: translateX(-50%) rotate(-10deg) scale(1.1); /* Adjust rotation and scaling */
+    transform: translateX(-50%) rotate(-10deg) scale(0.9); /* 20% smaller (0.9) */
     z-index: 4; /* Place above the word "People" */
-    width: 250px; /* Adjust size for fit */
+    width: 200px; /* Adjust width for better size */
+    opacity: 0.8; /* Slight transparency */
     pointer-events: none; /* Non-interactive */
 }
-
 /* Handwritten "DOG" */
 .word-dog {
     font-family: 'SilentBrush', Arial, sans-serif;
