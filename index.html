@@ -272,15 +272,18 @@
     draw: (context, particle, radius) => {
       context.save();
       context.beginPath();
-      context.fillStyle = "white"; // Bone color
-      context.strokeStyle = "black"; // Outline color
+
+      const boneLength = radius * 4; // Adjust bone length
+      const boneThickness = radius * 1.5; // Adjust thickness
+      const endCircleRadius = boneThickness * 0.6; // Rounded ends
+
+      // Set bone color and outline
+      context.fillStyle = "#F8E79E"; // Bone color (light yellow)
+      context.strokeStyle = "#222"; // Dark outline
       context.lineWidth = 2;
 
-      const boneLength = radius * 3; // Length of the bone
-      const boneThickness = radius; // Thickness of the bone
-      const endCircleRadius = radius * 1.5; // Radius of the rounded ends
-
       // Left rounded end
+      context.beginPath();
       context.arc(-boneLength / 2, 0, endCircleRadius, 0, Math.PI * 2);
       context.fill();
       context.stroke();
@@ -291,12 +294,12 @@
       context.fill();
       context.stroke();
 
-      // Center rectangle
+      // Rectangle body connecting the ends
       context.beginPath();
       context.rect(
-        -boneLength / 2,
+        -boneLength / 2 + endCircleRadius,
         -boneThickness / 2,
-        boneLength,
+        boneLength - 2 * endCircleRadius,
         boneThickness
       );
       context.fill();
@@ -306,26 +309,24 @@
     },
   });
 
-  // Initialize TSParticles for bones
+  // Load TSParticles for bones
   tsParticles.load("tsparticles-bones", {
     particles: {
-      number: {
-        value: 20, // Number of bones
-        density: { enable: true, value_area: 800 },
-      },
-      shape: { type: "bone" }, // Custom bone shape
-      opacity: { value: 0.8, random: false },
-      size: { value: 10, random: true }, // Bone size
+      number: { value: 15, density: { enable: true, value_area: 800 } }, // Adjust count
+      shape: { type: "bone" }, // Use the improved bone shape
+      opacity: { value: 1, random: false },
+      size: { value: 15, random: true }, // Adjust bone size
       move: {
         enable: true,
-        speed: 1.5, // Floating speed
+        speed: 1.2, // Floating speed
         direction: "none",
-        out_mode: "out", // Continue moving outside the container
+        out_mode: "out",
       },
     },
     retina_detect: true,
   });
 })();
+
 
 </script>
 
