@@ -9,18 +9,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
   <style>
+    /* Global Styles */
     body {
       background-color: #000;
       color: white;
       font-family: 'Poppins', Arial, sans-serif;
       margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
 
-    /* Global Wrapper */
+    /* Page Wrapper */
     .global-wrapper {
       max-width: 1280px;
       margin: 0 auto;
       padding: 20px;
+      box-sizing: border-box;
       text-align: center;
     }
 
@@ -28,39 +32,51 @@
     h1 {
       font-family: 'BatmanForever', Arial, sans-serif;
       color: #00bfff;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-out;
     }
 
-    /* Section Cards */
-    .donate-card {
-      background-color: #222;
-      padding: 30px;
+    h1.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Gradient Background */
+    .section {
+      background: linear-gradient(to bottom, #111, #000);
       margin: 20px auto;
+      padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      max-width: 500px;
-      text-align: center;
     }
 
     .donate-card h2 {
       color: #00bfff;
-      margin-bottom: 10px;
     }
 
-    .donate-card p {
+    /* Wallet Address */
+    .wallet-address {
+      word-wrap: break-word;
+      background-color: rgba(255, 255, 255, 0.1);
       color: #ccc;
-      font-size: 1rem;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px auto;
+      font-size: 0.9rem;
+      max-width: 90%;
     }
 
     .donate-button {
       background-color: #00bfff;
-      color: #000;
-      padding: 10px 20px;
+      color: black;
       border: none;
-      border-radius: 5px;
+      padding: 10px 20px;
       font-size: 1rem;
+      border-radius: 5px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.3s ease;
     }
 
     .donate-button:hover {
@@ -68,7 +84,7 @@
       color: white;
     }
 
-    /* Modal Styling */
+    /* Payment Modal */
     .modal {
       display: none;
       position: fixed;
@@ -81,15 +97,13 @@
     }
 
     .modal-content {
-      position: relative;
-      margin: 10% auto;
       background: #111;
-      color: white;
-      padding: 20px;
       border-radius: 10px;
+      color: white;
       max-width: 400px;
+      margin: 15% auto;
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
     .modal-content img {
@@ -98,107 +112,129 @@
       cursor: pointer;
     }
 
+    .payment-label {
+      color: #00bfff;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
     .close-modal {
       position: absolute;
       top: 10px;
-      right: 10px;
+      right: 15px;
       font-size: 1.5rem;
-      cursor: pointer;
       color: #fff;
+      cursor: pointer;
+    }
+
+    /* Particles */
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      color: #ccc;
+      text-align: center;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <!-- Universal Navbar -->
+  <!-- TSParticles Background -->
+  <div id="tsparticles"></div>
+
+  <!-- Navbar Placeholder -->
   <div id="navbar-placeholder"></div>
 
-  <!-- Donate Page Content -->
+  <!-- Donate Page -->
   <div class="global-wrapper">
-    <h1>Support Bleu's Mission</h1>
+    <h1 class="hidden-title">Support Bleu's Mission</h1>
 
-    <!-- Donate to Bleu Project -->
-    <div class="donate-card">
+    <!-- Section 1: Bleu Project -->
+    <div class="section donate-card">
       <h2>Donate to Bleu Project</h2>
-      <p>Support the development and maintenance of the Bleu Project. Your contribution helps us keep the mission alive.</p>
+      <p>Help us keep the Bleu Project alive and growing. Your donations go to development and maintenance.</p>
+      <div class="wallet-address" id="main-wallet">0xMainWalletAddressHere</div>
       <button class="donate-button" onclick="openModal('main')">Donate to Bleu</button>
     </div>
 
-    <!-- Donate to Charity -->
-    <div class="donate-card">
+    <!-- Section 2: Charity -->
+    <div class="section donate-card">
       <h2>Donate to Charity</h2>
-      <p>Donate to Bleu's cause and help dog charities across the world. Your kindness will make tails wag and hearts full.</p>
+      <p>Support dog charities worldwide. Every donation makes tails wag and hearts full.</p>
+      <div class="wallet-address" id="charity-wallet">0xCharityWalletAddressHere</div>
       <button class="donate-button" onclick="openModal('charity')">Donate to Charity</button>
     </div>
   </div>
 
-  <!-- Donation Modal -->
+  <!-- Modal -->
   <div class="modal" id="donate-modal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal()">&times;</span>
       <h2>Select Payment Method</h2>
-      <div id="payment-methods">
+      <div>
         <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB" onclick="donate('BNB')">
+        <div class="payment-label">BNB</div>
         <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" onclick="donate('ETH')">
+        <div class="payment-label">ETH</div>
         <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT-BEP20" onclick="donate('USDT-BEP20')">
+        <div class="payment-label">USDT (BEP20)</div>
         <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT-ERC20" onclick="donate('USDT-ERC20')">
+        <div class="payment-label">USDT (ERC20)</div>
       </div>
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2024 Bleu - The Robinhood of Dogs</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
   <script>
-    // Wallet Addresses
-    const wallets = {
-      main: "0xMainWalletAddress",
-      charity: "0xCharityWalletAddress"
-    };
+    // Particles
+    tsParticles.load("tsparticles", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#00bfff" },
+        shape: { type: "circle" },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#00bfff" },
+        move: { enable: true, speed: 1, out_mode: "out" }
+      }
+    });
 
+    // Modal Logic
     let currentWallet = "";
-
-    // Open Modal and Set Wallet
-    function openModal(type) {
-      currentWallet = wallets[type];
+    function openModal(walletType) {
+      currentWallet = document.getElementById(walletType + '-wallet').innerText;
       document.getElementById('donate-modal').style.display = 'block';
     }
 
-    // Close Modal
     function closeModal() {
       document.getElementById('donate-modal').style.display = 'none';
     }
 
-    // MetaMask Donation
-    async function donate(paymentType) {
-      if (!window.ethereum) {
-        alert("MetaMask is not installed. Please install it to proceed.");
-        return;
-      }
-
-      try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        await provider.send("eth_requestAccounts", []);
-        const signer = provider.getSigner();
-
-        const amount = prompt(`Enter the donation amount (${paymentType}):`);
-        if (!amount || isNaN(amount)) return;
-
-        const transaction = {
-          to: currentWallet,
-          value: ethers.utils.parseEther(amount)
-        };
-
-        await signer.sendTransaction(transaction);
-        alert("Thank you for your donation!");
-        closeModal();
-      } catch (error) {
-        console.error("Donation failed:", error);
-        alert("Transaction failed. Please try again.");
-      }
+    function donate(method) {
+      alert(`Donating with ${method} to wallet: ${currentWallet}`);
     }
 
-    // Load Navbar
+    // Navbar
     document.addEventListener("DOMContentLoaded", function () {
       fetch("navbar.html")
         .then(response => response.text())
         .then(data => document.getElementById("navbar-placeholder").innerHTML = data);
+
+      document.querySelector('.hidden-title').classList.add('show');
     });
   </script>
 </body>
