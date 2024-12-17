@@ -20,15 +20,24 @@
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
   <!-- JavaScript to include navbar -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch(error => console.error("Error loading navbar:", error));
-    });
-  </script>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+
+        // Add event listener to the "Buy" button after navbar loads
+        document.getElementById("scroll-to-buy").addEventListener("click", function () {
+          document.getElementById("buy-bleu").scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        });
+      })
+      .catch(error => console.error("Error loading navbar:", error));
+  });
+</script>
+
   <style>
     /* Responsive styling for the image */
     .image-section img {
