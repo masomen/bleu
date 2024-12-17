@@ -3,151 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bleu - My Mission</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts -->
+  <title>Bleu - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  
+  <!-- Font Awesome CDN -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  integrity="sha512-Fo3rlrZj/k7ujTnH/PRcZTJqHcS3OXx/jT+u66GH8HgG8GQZRqXvP0/D9+kzP2nZhL6fVLo9TFDTBk5yB4IfXw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+  <!-- Link to Universal CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Load TSParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
+  <!-- JavaScript to include navbar -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("navbar-placeholder").innerHTML = data;
+        })
+        .catch(error => console.error("Error loading navbar:", error));
+    });
+  </script>
   <style>
-    /* General Page Styling */
-    body {
-      background-color: #000;
-      color: white;
-      font-family: 'Poppins', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Page Wrapper */
-    .global-wrapper {
-      max-width: 1280px;
+    /* Responsive styling for the image */
+    .image-section img {
+      max-width: 100%;
+      height: auto;
+      display: block;
       margin: 0 auto;
-      padding: 0 20px; /* Adds slight padding on small screens */
-      box-sizing: border-box;
     }
 
-    .mission-container {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 30px;
-      margin: 50px auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-      max-width: 900px;
-      text-align: center;
-    }
-    
-    h1, h2 {
-      font-family: 'BatmanForever', Arial, sans-serif;
-      color: orange;
-      margin-bottom: 20px;
-    }
-
-    .footer {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      color: #ccc;
-      text-align: center;
-      margin-top: 40px;
-    }
-
+    /* TSParticles Background */
     #tsparticles {
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      z-index: -1;
+      height: 100vh;
+      z-index: -1; /* Push behind all content */
+    }
+
+    /* Hero Section Styling */
+    .hero-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 20px;
+      color: white;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-family: 'BatmanForever', Arial, sans-serif;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .hero-button {
+      background-color: #00bfff;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-button:hover {
+      background-color: #0080ff;
+    }
+
+    .hero-mascot img {
+      max-width: 300px;
+      height: auto;
+    }
+
+    /* Bleu Info Section */
+  .bleu-info-section {
+      background-color: #111;
+      padding: 60px 20px;
+      text-align: center;
+      color: white;
+    }
+    .bleu-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .bleu-title .highlight {
+      color: #00bfff;
+    }
+
+    .bleu-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      color: #ccc;
+    }
+
+    .bleu-steps-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .bleu-step {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 280px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .step-number {
+      background-color: #00bfff;
+      color: #111;
+      font-weight: bold;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      margin: 0 auto -20px;
+    }
+
+    .bleu-step h3 {
+      margin: 30px 0 10px;
+      color: #00bfff;
+    }
+
+    .bleu-step p {
+      font-size: 0.9rem;
+      color: #ccc;
     }
   </style>
 </head>
-  <body class="mission-page">
-  <div class="global-wrapper">
-    <!-- TSParticles Background -->
-    <div id="tsparticles"></div>
+<body>
+  <!-- Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
 
-    <!-- Navbar Placeholder -->
-    <div id="navbar-placeholder"></div>
-    
-  <!-- Mission Content -->
-  <div class="mission-container">
-    <img src="images/bleucity.png" alt="Bleu City at Night" class="mission-image">
-    <h1 class="hidden-title">My Mission</h1>
-    <h2 class="hidden-title">Calling All Humans and Four-Legged Friends!</h2>
-    <p>
-      I am Bleu, the Robinhood of Dogs. My dream is to create a world where <span class="highlight">every stray feels the joy of a full belly</span> and the wag of a hopeful tail. Together, we’ll turn this dream into reality, one burger at a time.
-    </p>
+  <!-- Floating Network Effect -->
+  <div id="tsparticles"></div>
 
-    <div class="divider"></div>
-
-    <h2 class="hidden-title">Who Am I?</h2>
-    <p>
-      I’m not your average dog. I am a <span class="highlight">voice for the voiceless</span>, a fighter for justice, and a champion for change. While some chase their tails, I chase my mission: to ensure <span class="highlight">no dog goes hungry</span>, no paw is uncared for, and every street dog gets to enjoy the simple pleasure of a burger—or even a cheeseburger, if we’re feeling fancy.
-    </p>
-   
-    <div class="divider"></div>
-
-    <h2 class="hidden-title">What Drives My Mission?</h2>
-    <ul class="mission-points">
-      <li><i class="fas fa-paw"></i> Transform overlooked resources into meals for dogs in need.</li>
-      <li><i class="fas fa-paw"></i> Utilize blockchain technology to create a network of kindness and hope.</li>
-      <li><i class="fas fa-paw"></i> Fight hunger and illness by delivering food, providing care, and building safe shelters.</li>
-    </ul>
-
-    <p>
-      Through blockchain, we turn everyday human actions into extraordinary change. Every burger you buy, every token you share, becomes part of a movement to feed bellies, heal paws, and offer hope. <span class="highlight">This is more than a mission; it’s a revolution.</span>
-    </p>
-
-    <div class="divider"></div>
-
-    <h2 class="hidden-title">A Message to My Homeless Dog Siblings</h2>
-    <p>
-      To my brothers and sisters on the streets: I see you, I hear you, and I am here for you. Every act of human kindness fuels my fight to fill your bowls, heal your wounds, and bring you hope.
-    </p>
-    <p>
-      Every burger I fetch is for you. Every wag of my tail is a promise of a <span class="highlight">brighter tomorrow</span>. Together, we won’t just taste victory—we’ll live it.
-    </p>
-
-    <div class="divider"></div>
-
-    <h2 class="hidden-title">A Call to Humans Who Believe in Change</h2>
-    <p>
-      This is your chance to make a difference. By joining me, you’re supporting a movement where burgers symbolize justice and tokens deliver hope. <span class="highlight">Small actions can create monumental change</span> for the dogs who need it most.
-    </p>
-    <p>
-      Let’s build a future where no dog is forgotten. Together, we’ll transform lives—<span class="highlight">one burger, one wag, and one act of kindness at a time</span>.
-    </p>
+<!-- Hero Section -->
+<section id="hero-section" class="hero-container hidden-section">
+  <div class="hero-content">
+    <h1 class="hero-title">NOT PEOPLE'S COIN</h1>
+    <div class="hero-description">
+      Bleu Token is the world’s first true dog token created <strong>for the dogs</strong>. More than just a meme, 
+      Bleu is a <span class="highlight">su-paw-hero</span> on a mission to make a difference. 
+      Join the movement, because Bleu isn’t here to <span class="highlight">fetch profits</span>—he’s here to 
+      <span class="highlight">fetch hope</span> for dogs everywhere!
+    </div>
+    <button class="hero-button">Learn More</button>
   </div>
-
-<!-- Footer -->
-    <footer class="footer">
-      <p>© 2024 Bleu - The Robinhood of Dogs</p>
-    </footer>
+  <!-- Animated Mascot -->
+  <div class="hero-mascot">
+    <img src="images/superbleu.png" alt="SuperBleu">
   </div>
+</section>
 
-  <!-- Smooth Reveal Script -->
+<!-- What is Bleu Section -->
+<section class="bleu-info-section hidden-section" id="bleu-info">
+  <div class="bleu-info-header">
+    <h2 class="bleu-title">🐾 WHAT IS <span class="highlight">BLEU</span></h2>
+    <p class="bleu-subtitle">Let us share how Bleu Coin works to support dogs worldwide!</p>
+  </div>
+  <div class="bleu-steps-container">
+    <div class="bleu-step">
+      <div class="step-number">1</div>
+      <h3>ON-CHAIN TRANSACTIONS</h3>
+      <p>Every Bleu transaction happens securely on the blockchain.</p>
+    </div>
+    <div class="bleu-step">
+      <div class="step-number">2</div>
+      <h3>1% FEE GOES TO CHARITY WALLET</h3>
+      <p>A small 1% fee is automatically sent to the charity wallet.</p>
+    </div>
+    <div class="bleu-step">
+      <div class="step-number">3</div>
+      <h3>BLEU DONATES TO DOG CHARITIES</h3>
+      <p>Funds from Bleu's charity wallet are donated to dog charities worldwide.</p>
+    </div>
+    <div class="bleu-step">
+      <div class="step-number">4</div>
+      <h3>🐶 TAILS WAG, TUMMIES FULL 🍔</h3>
+      <p>Your support ensures dogs get the care, food, and love they deserve!</p>
+    </div>
+  </div>
+</section>
+  <!-- Powered by Binance Smart Chain Section -->
+<section class="bsc-powered hidden-section">
+  <div class="bsc-container">
+    <img src="images/bsc-logo.png" alt="Binance Smart Chain" class="bsc-logo">
+    <p class="bsc-text">🐾 <span class="highlight">Paw-ered</span> by Binance Smart Chain Network</p>
+  </div>
+</section>
+
+
+  <!-- TSParticles Configuration -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const navbarPlaceholder = document.getElementById("navbar-placeholder");
-      fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => navbarPlaceholder.innerHTML = data);
-
-      tsParticles.load("tsparticles", {
-        particles: {
-          number: { value: 80, density: { enable: true, value_area: 800 } },
-          color: { value: "#00bfff" },
-          shape: { type: "circle" },
-          opacity: { value: 0.5, random: true },
-          size: { value: 3, random: true },
-          line_linked: { enable: true, distance: 150, color: "#00bfff", opacity: 0.4, width: 1 },
-          move: { enable: true, speed: 1.5, out_mode: "out" }
-        }
-      });
+    tsParticles.load("tsparticles", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#00bfff" },
+        shape: { type: ["circle"] },
+        opacity: { value: 0.5, random: true },
+        size: { value: 4, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#00bfff",
+          opacity: 0.4,
+          width: 1,
+        },
+        move: { enable: true, speed: 1, direction: "none", out_mode: "out" },
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: "grab" } },
+        modes: { grab: { distance: 200, line_linked: { opacity: 1 } } },
+      },
+      retina_detect: true,
     });
   </script>
-  <!-- TSParticles -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
+  <!-- JavaScript for Scroll Reveal -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hiddenSections = document.querySelectorAll('.hidden-section');
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target); // Stop observing after reveal
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% of the section is visible
+    );
+
+    hiddenSections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
+<!-- Footer Section -->
+<footer class="footer hidden-section">
+  <div class="footer-container">
+    <!-- Email with Font Awesome Icon -->
+    <div class="footer-email">
+      <i class="fas fa-envelope footer-icon"></i>
+      <a href="mailto:xxxxxx@bleutoken.com" class="footer-link">xxxxxx@bleutoken.com</a>
+    </div>
+    <!-- Copyright & Disclaimer -->
+    <div class="footer-text">
+      <p>&copy; BleuToken 2024 | All Rights Are Not Reserved.</p>
+      <p class="footer-disclaimer">
+        Disclaimer: $BLEU is a meme/charity token that is intended for entertainment and charity purposes only. 
+        It does not promise or guarantee any financial returns. 
+      </p>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
