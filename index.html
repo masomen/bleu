@@ -176,7 +176,6 @@
 
   <!-- TSParticles Containers -->
 <div id="tsparticles-network" style="width: 100%; height: 100vh; position: absolute; top: 0; left: 0; z-index: -1;"></div>
-<div id="tsparticles-bones" style="width: 100%; height: 100vh; position: absolute; top: 0; left: 0; z-index: -1;"></div>
 
 <!-- Hero Section -->
 <section id="hero-section" class="hero-container hidden-section">
@@ -265,89 +264,7 @@
     retina_detect: true
   });
 
-  // Floating Bones Effect
-(async () => {
-  // Register the custom "bone" shape with white outline and transparent body
-  await tsParticles.addShape("bone", {
-    draw: (context, particle, radius) => {
-      context.save();
-      const boneLength = radius * 4; // Length of the bone
-      const boneThickness = radius * 1.5; // Thickness of the bone
-      const endCircleRadius = boneThickness; // Circle radius for ends
 
-      // Set transparent fill and white outline
-      context.strokeStyle = "white"; // White outline
-      context.lineWidth = 2;
-
-      // Left rounded end
-      context.beginPath();
-      context.arc(-boneLength / 2, 0, endCircleRadius, 0, Math.PI * 2);
-      context.stroke();
-
-      // Right rounded end
-      context.beginPath();
-      context.arc(boneLength / 2, 0, endCircleRadius, 0, Math.PI * 2);
-      context.stroke();
-
-      // Center rectangle
-      context.beginPath();
-      context.moveTo(-boneLength / 2 + endCircleRadius, -boneThickness / 2);
-      context.lineTo(boneLength / 2 - endCircleRadius, -boneThickness / 2);
-      context.lineTo(boneLength / 2 - endCircleRadius, boneThickness / 2);
-      context.lineTo(-boneLength / 2 + endCircleRadius, boneThickness / 2);
-      context.closePath();
-      context.stroke();
-
-      context.restore();
-    },
-  });
-
-  // Network Effect
-  tsParticles.load("tsparticles-network", {
-    particles: {
-      number: { value: 80, density: { enable: true, value_area: 800 } },
-      color: { value: "#00bfff" },
-      shape: { type: "circle" },
-      opacity: { value: 0.5, random: true },
-      size: { value: 4, random: true },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: "#00bfff",
-        opacity: 0.4,
-        width: 1,
-      },
-      move: {
-        enable: true,
-        speed: 1,
-        direction: "none",
-        out_mode: "out",
-      },
-    },
-    interactivity: {
-      events: { onhover: { enable: true, mode: "grab" } },
-      modes: { grab: { distance: 200, line_linked: { opacity: 1 } } },
-    },
-    retina_detect: true,
-  });
-
-  // Floating Bones Effect
-  tsParticles.load("tsparticles-bones", {
-    particles: {
-      number: { value: 15, density: { enable: true, value_area: 800 } },
-      shape: { type: "bone" }, // Custom bone shape
-      opacity: { value: 1, random: false },
-      size: { value: 10, random: true },
-      move: {
-        enable: true,
-        speed: 1.5,
-        direction: "none",
-        out_mode: "out",
-      },
-    },
-    retina_detect: true,
-  });
-})();
 
 
 
