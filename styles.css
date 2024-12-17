@@ -150,44 +150,53 @@ body {
   margin-bottom: 20px;
 }
 
-/* Container for Strikethrough and Replacement Text */
-.strikethrough-container {
-  position: relative;
-  display: inline-block;
+/* Strike Container */
+.strike-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px; /* Space below the effect */
 }
 
-/* Brush Stroke Over "People" */
-.strikethrough {
-  position: relative;
-  color: white;
-  z-index: 2; /* Text above the brush */
-}
-
-.strikethrough::after {
-  content: "";
-  position: absolute;
-  top: 50%; /* Adjust brush vertically */
-  left: -5px; /* Align slightly to the left */
-  width: 110%; /* Moderate width */
-  height: 20px; /* Adjusted brush stroke thickness */
-  background: url('images/brush-stroke.png') no-repeat center;
-  background-size: contain; /* Resize brush for balance */
-  transform: rotate(-8deg); /* Slight angle for natural effect */
-  z-index: 1; /* Brush sits behind the text */
-}
-
-/* Handwritten "Dog" Above 'People' */
+/* Handwritten "DOG" */
 .word-dog {
-    font-family: 'SilentBrush', Arial, sans-serif; /* Apply new font */
-    font-size: 2.5rem; /* Adjust size for visibility */
+    font-family: 'SilentBrush', Arial, sans-serif;
+    font-size: 2.5rem; /* Adjust size */
     position: absolute;
-    top: -20px; /* Slightly above the word "People" */
-    left: 50%; /* Horizontally center relative to the parent */
-    transform: translateX(-50%) rotate(-5deg); /* Center align and slight tilt */
-    color: white; /* Text color for contrast */
-    z-index: 3; /* Ensure it appears on top */
-    white-space: nowrap; /* Prevent wrapping */
+    top: -20px; /* Position above 'People' */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    z-index: 3;
+    white-space: nowrap;
 }
+
+/* Crossed Text */
+.crossed-text {
+    font-family: 'BatmanForever', Arial, sans-serif;
+    font-size: 3rem;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+/* Brush Stroke Image */
+.brush-stroke {
+    position: absolute;
+    bottom: 10px; /* Align with the word "People" */
+    left: 50%;
+    transform: translateX(-50%) scale(0.9); /* Center and resize */
+    z-index: 1; /* Below the text */
+    width: 250px; /* Adjust size for better fit */
+    pointer-events: none;
+}
+
+/* Highlight Word "People" */
+.cross-word {
+    position: relative;
+    z-index: 2;
+}
+
 
 
 .hero-description {
