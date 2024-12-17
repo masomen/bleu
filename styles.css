@@ -150,7 +150,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* Strike Container */
+/* Container for the Strike Effect */
 .strike-container {
     position: relative;
     display: inline-block;
@@ -158,45 +158,44 @@ body {
     margin-bottom: 20px; /* Space below the effect */
 }
 
-/* Handwritten "DOG" */
-.word-dog {
-    font-family: 'SilentBrush', Arial, sans-serif;
-    font-size: 3.5rem; /* Increase the size */
-    position: absolute;
-    top: -25px; /* Adjust positioning to move it above "People" */
-    left: 50%;
-    transform: translateX(-50%) rotate(-5deg); /* Slight tilt for style */
-    color: yellow; /* Highlight color to stand out */
-    z-index: 4; /* Ensure it sits above everything */
-    white-space: nowrap;
-}
-
-/* Crossed Text */
+/* Crossed Text ("People's Coin") */
 .crossed-text {
     font-family: 'BatmanForever', Arial, sans-serif;
     font-size: 3rem;
     color: white;
     position: relative;
-    z-index: 2;
-}
-
-/* Brush Stroke Image */
-.brush-stroke {
-    position: absolute;
-    bottom: 10px; /* Align with the word "People" */
-    left: 50%;
-    transform: translateX(-50%) scale(0.9); /* Center and resize */
-    z-index: 1; /* Below the text */
-    width: 250px; /* Adjust size for better fit */
-    pointer-events: none;
+    z-index: 1; /* Base layer: "People" text */
 }
 
 /* Highlight Word "People" */
 .cross-word {
     position: relative;
-    z-index: 2;
+    z-index: 3; /* Higher than base text, but lower than brush stroke */
 }
 
+/* Brush Stroke Image */
+.brush-stroke {
+    position: absolute;
+    bottom: 10px; /* Align brush stroke over "People" */
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg) scale(1.1); /* Adjust rotation and scaling */
+    z-index: 4; /* Place above the word "People" */
+    width: 250px; /* Adjust size for fit */
+    pointer-events: none; /* Non-interactive */
+}
+
+/* Handwritten "DOG" */
+.word-dog {
+    font-family: 'SilentBrush', Arial, sans-serif;
+    font-size: 3.5rem; /* Larger size for prominence */
+    position: absolute;
+    top: -40px; /* Position above the word "People" */
+    left: 50%;
+    transform: translateX(-50%) rotate(-5deg); /* Slight tilt for style */
+    color: yellow; /* Highlight color */
+    z-index: 5; /* Highest layer, above brush stroke */
+    white-space: nowrap;
+}
 
 
 .hero-description {
