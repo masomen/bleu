@@ -377,3 +377,71 @@ body.mission-page {
     display: block;
     margin: 0 auto 20px; /* Center the image */
 }
+/* Buy Section Styling */
+.buy-section {
+    background-color: #111; /* Dark background for contrast */
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.buy-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: orange;
+}
+
+.buy-description {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+.buy-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.payment-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.wallet-connect .button,
+.payment-options .button {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wallet-connect .button:hover,
+.payment-options .button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.payment-options img {
+    width: 20px;
+    height: 20px;
+}
+
+#wallet-address {
+    margin-top: 10px;
+    color: orange;
+    font-weight: bold;
+}
