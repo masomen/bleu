@@ -555,10 +555,11 @@ body.mission-page {
 /* Woofonomics Section Styling */
 #woofonomics-section {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(17, 17, 17, 0.9));
-  padding: 80px 20px;
+  padding: 100px 20px; /* Increased spacing */
   color: white;
   position: relative;
   overflow: hidden;
+  margin-top: 50px; /* Space from hero section */
 }
 
 .woofonomics-container {
@@ -569,6 +570,18 @@ body.mission-page {
   z-index: 1;
 }
 
+/* Decorative Image */
+.woofonomics-image img {
+  max-width: 150px;
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 50%; /* Rounded edges for the image */
+  border: 3px solid #00bfff;
+  box-shadow: 0 0 10px #00bfff;
+}
+
+/* Section Title */
 .woofonomics-title {
   font-family: 'BatmanForever', Arial, sans-serif;
   font-size: 3rem;
@@ -584,6 +597,7 @@ body.mission-page {
   margin-bottom: 50px;
 }
 
+/* Tokenomics Cards */
 .woofonomics-cards {
   display: flex;
   justify-content: center;
@@ -594,14 +608,12 @@ body.mission-page {
 .woof-card {
   background: rgba(0, 0, 0, 0.8);
   border: 1px solid #00bfff;
-  border-radius: 15px;
+  border-radius: 15px; /* Fully rounded edges */
   padding: 30px 20px;
   text-align: center;
   width: 250px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
 .woof-card:hover {
@@ -627,7 +639,7 @@ body.mission-page {
   color: #ddd;
 }
 
-/* Subtle Animation for Icons */
+/* Icon Bounce Animation */
 @keyframes bounce {
   0%, 100% {
     transform: translateY(0);
@@ -637,29 +649,7 @@ body.mission-page {
   }
 }
 
-/* Glowing Background Effect */
-#woofonomics-section::before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  left: -50px;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(0, 191, 255, 0.2), transparent 70%);
-  animation: rotateGlow 15s linear infinite;
-  z-index: 0;
-}
-
-@keyframes rotateGlow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive Adjustments */
+/* Responsive Design */
 @media (max-width: 768px) {
   .woofonomics-title {
     font-size: 2.2rem;
@@ -671,5 +661,9 @@ body.mission-page {
 
   .woofonomics-cards {
     flex-direction: column;
+  }
+
+  .woofonomics-image img {
+    max-width: 100px;
   }
 }
