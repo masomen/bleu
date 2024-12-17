@@ -22,12 +22,19 @@
       font-family: 'Poppins', Arial, sans-serif;
       color: white;
       background-color: black;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
       position: relative;
       overflow-x: hidden;
+    }
+
+    /* Transparent Black Background */
+    .full-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
     }
 
     /* Navbar */
@@ -46,8 +53,6 @@
       display: flex;
       gap: 20px;
       list-style: none;
-      margin: 0;
-      padding: 0;
     }
 
     .navbar ul li a {
@@ -76,7 +81,7 @@
     /* Section Styling with Grey Background */
     .section {
       margin-bottom: 30px;
-      background: rgba(40, 40, 40, 0.7); /* Grey background for sections */
+      background: rgba(40, 40, 40, 0.7);
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -110,12 +115,6 @@
       border-radius: 5px;
       cursor: pointer;
       padding: 5px 10px;
-      transition: background 0.3s ease;
-    }
-
-    .copy-button:hover {
-      background: #0080ff;
-      color: white;
     }
 
     .donate-button {
@@ -126,13 +125,20 @@
       font-size: 1rem;
       cursor: pointer;
       border-radius: 8px;
-      transition: background 0.3s ease;
-      margin-top: 10px;
     }
 
     .donate-button:hover {
       background-color: #0080ff;
       color: white;
+    }
+
+    /* Footer Styling */
+    .footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
     }
 
     /* Modal Styling */
@@ -158,7 +164,7 @@
     }
 
     .modal h3 {
-      color: white; /* White "Choose Payment" text */
+      color: white;
       font-family: 'BatmanForever', Arial, sans-serif;
       margin-bottom: 20px;
     }
@@ -170,29 +176,9 @@
       justify-items: center;
     }
 
-    .payment-button {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #00bfff;
-      color: #000;
-      border: none;
-      border-radius: 8px;
-      padding: 10px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      font-size: 0.8rem;
-    }
-
     .payment-button img {
       width: 30px;
       height: 30px;
-      margin-bottom: 5px;
-    }
-
-    .payment-button:hover {
-      background: #0080ff;
-      color: white;
     }
 
     .donate-button.modal-close {
@@ -203,6 +189,9 @@
   </style>
 </head>
 <body>
+  <!-- Full Transparent Background -->
+  <div class="full-bg"></div>
+
   <!-- Navbar -->
   <nav class="navbar">
     <ul>
@@ -236,6 +225,11 @@
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2024 Bleu - The Robinhood of Dogs. All Rights Reserved.</p>
+  </footer>
+
   <!-- Modal -->
   <div id="donationModal" class="modal">
     <div class="modal-content">
@@ -250,9 +244,7 @@
     </div>
   </div>
 
-  <!-- TSParticles Background -->
-  <div id="tsparticles-network"></div>
-
+  <!-- Scripts -->
   <script>
     function copyToClipboard(address) {
       navigator.clipboard.writeText(address);
