@@ -340,5 +340,64 @@
     });
   });
 </script>
+  <script>
+  let userWalletAddress = "";
+  const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee"; // Replace with your actual contract address
+
+  const abi = [
+    {
+      "inputs": [
+        { "internalType": "string", "name": "paymentType", "type": "string" },
+        { "internalType": "uint256", "name": "usdtAmount", "type": "uint256" }
+      ],
+      "name": "buyTokens",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ];
+
+  // Connect MetaMask
+  async function connectMetaMask() {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        userWalletAddress = accounts[0];
+        document.getElementById('wallet-address').innerText = `Connected: ${userWalletAddress}`;
+      } catch (error) {
+        console.error("Connection failed:", error);
+        alert("Failed to connect MetaMask. Please try again.");
+      }
+    } else {
+      alert("MetaMask is not installed. Please install it to use this feature!");
+    }
+  }
+
+  // Buy Tokens Function
+  async function buyTokens(paymentType) {
+    if (!userWalletAddress) {
+      alert("Please connect your MetaMask wallet first!");
+      return;
+    }
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(contractAddress, abi, signer);
+
+    try {
+      const amount = prompt(`Enter the amount of ${paymentType} to spend:`);
+      const valueToSend = ethers.utils.parseEther(amount);
+
+      console.log(`Sending ${paymentType} transaction...`);
+      const tx = await contract.buyTokens(paymentType, 0, { value: valueToSend });
+      await tx.wait();
+
+      alert(`Purchase successful! BLEU tokens have been sent to your wallet.`);
+    } catch (error) {
+      console.error("Transaction failed:", error);
+      alert("Transaction failed! Check the console for details.");
+    }
+  }
+</script>
 </body>
 </html>
