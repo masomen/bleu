@@ -187,7 +187,7 @@ body {
 /* Handwritten "DOG" */
 .word-dog {
     font-family: 'SilentBrush', Arial, sans-serif;
-    font-size: 3.5rem; /* Larger size for prominence */
+    font-size: 5rem; /* Larger size for prominence */
     position: absolute;
     top: -40px; /* Position above the word "People" */
     left: 50%;
