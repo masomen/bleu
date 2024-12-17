@@ -506,4 +506,49 @@ body.mission-page {
   background-color: #0080ff;
   color: white;
 }
+/* Responsive Container for Contract and Wallet Addresses */
+.address-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between elements */
+    word-break: break-word; /* Ensures text wraps on smaller screens */
+    max-width: 100%; /* Prevents overflow */
+    padding: 10px;
+}
 
+.address-text {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for visibility */
+    padding: 8px 10px;
+    border-radius: 5px;
+    width: 100%;
+    overflow-wrap: break-word; /* Force address to wrap */
+    white-space: normal; /* Allow normal wrapping */
+    box-sizing: border-box;
+}
+
+.address-button {
+    background-color: #00bfff;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.address-button:hover {
+    background-color: #0080ff;
+    color: white;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .address-text {
+        font-size: 0.8rem; /* Smaller font for mobile screens */
+    }
+}
