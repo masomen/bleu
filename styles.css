@@ -180,7 +180,7 @@ body {
     left: 50%;
     transform: translateX(-50%) rotate(-10deg) scale(0.9); /* 20% smaller (0.9) */
     z-index: 4; /* Place above the word "People" */
-    width: 200px; /* Adjust width for better size */
+    width: 240px; /* Adjust width for better size */
     opacity: 0.8; /* Slight transparency */
     pointer-events: none; /* Non-interactive */
 }
