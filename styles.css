@@ -161,13 +161,13 @@ body {
 /* Handwritten "DOG" */
 .word-dog {
     font-family: 'SilentBrush', Arial, sans-serif;
-    font-size: 2.5rem; /* Adjust size */
+    font-size: 3.5rem; /* Increase the size */
     position: absolute;
-    top: -20px; /* Position above 'People' */
+    top: -25px; /* Adjust positioning to move it above "People" */
     left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    z-index: 3;
+    transform: translateX(-50%) rotate(-5deg); /* Slight tilt for style */
+    color: yellow; /* Highlight color to stand out */
+    z-index: 4; /* Ensure it sits above everything */
     white-space: nowrap;
 }
 
