@@ -413,15 +413,12 @@
     return;
   }
 
-  if (typeof ethers === "undefined") {
-    console.error("Ethers.js not loaded.");
-    return;
-  }
-
   try {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
+    // Connect to MetaMask using BrowserProvider
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
 
+    // Smart contract details
     const contractAddress = "0x43088e2aa5d73615136305de6aa68557057a1bee";
     const contractAbi = [
       {
@@ -436,21 +433,26 @@
       },
     ];
 
+    // Initialize the contract
     const contract = new ethers.Contract(contractAddress, contractAbi, signer);
 
+    // Prompt the user for the transaction amount
     const amount = prompt(`Enter the amount of ${paymentType} to spend:`);
     if (!amount) return;
 
     if (paymentType === "BNB" || paymentType === "ETH") {
-      const valueToSend = ethers.utils.parseEther(amount);
+      // Convert the amount to Ether format
+      const valueToSend = ethers.parseEther(amount);
       console.log(`Initiating ${paymentType} transaction for ${amount}...`);
 
+      // Call the buyTokens function on the contract
       const tx = await contract.buyTokens(paymentType, 0, {
         value: valueToSend,
-        gasLimit: ethers.utils.hexlify(300000), // Optional, adjust as needed
+        gasLimit: 300000, // Optional gas limit
       });
-      await tx.wait();
 
+      // Wait for the transaction to be mined
+      await tx.wait();
       alert(`Transaction successful! BLEU tokens have been sent to your wallet.`);
     } else {
       alert("Invalid payment option selected.");
