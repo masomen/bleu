@@ -79,15 +79,25 @@
     <!-- TSParticles Background -->
     <div id="tsparticles"></div>
 
-     <!-- Navbar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">Bleu</a></li>
-      <li><a href="my-mission.html">My Mission</a></li>
-      <li><a href="socials.html">Socials</a></li>
-      <li><a href="index.html#buy-bleu">Buy</a></li>
-    </ul>
-  </nav>
+<!-- JavaScript to include navbar -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+
+        // Add event listener to the "Buy" button after navbar loads
+        document.getElementById("scroll-to-buy").addEventListener("click", function () {
+          document.getElementById("buy-bleu").scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        });
+      })
+      .catch(error => console.error("Error loading navbar:", error));
+  });
+</script>
     
     <!-- Mission Content -->
     <div class="mission-container">
