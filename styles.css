@@ -583,7 +583,7 @@ body.mission-page {
 .woofonomics-title {
   font-family: 'BatmanForever', Arial, sans-serif;
   font-size: 2.5rem;
-  color: #00bfff;
+  color: solid #00bfff;
   text-transform: uppercase;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
@@ -605,7 +605,7 @@ body.mission-page {
 
 .woof-card {
   background: rgba(0, 0, 0, 0.8);
-  border: 1px #00bfff;
+  border: 1px solid #00bfff;
   border-radius: 20px; /* Fully rounded corners */
   padding: 20px;
   text-align: center;
