@@ -93,13 +93,22 @@
         document.getElementById("navbar-placeholder").innerHTML = data;
 
         // Add event listener to the "Buy" button after navbar loads
-        document.getElementById("scroll-to-buy").addEventListener("click", function () {
-          document.getElementById("buy-bleu").scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-          });
+        document.addEventListener("DOMContentLoaded", function () {
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+
+      // Fix: Redirect to index.html with a hash link
+      const buyButton = document.getElementById("scroll-to-buy");
+      if (buyButton) {
+        buyButton.addEventListener("click", function () {
+          window.location.href = "index.html#buy-bleu"; // Redirect to index page and scroll
         });
-      })
+      }
+    })
+    .catch(error => console.error("Error loading navbar:", error));
+});
       .catch(error => console.error("Error loading navbar:", error));
   });
 </script>
