@@ -412,20 +412,20 @@
   }
 
   // Buy Tokens
-  async function buyTokens(paymentType) {
+ // Buy BLEU Tokens
+async function buyTokens(paymentType) {
   if (!window.ethereum) {
     alert("MetaMask is not installed. Please install it to proceed.");
     return;
   }
 
   try {
-    // Connect to MetaMask
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
 
-    // Smart contract details
-    const contractAddress = "0x65e122676d3a84B12F65daF2F882C4cDE81F1025"; // Proxy address
-    const contractAbi = [
+    // Contract Details
+    const contractAddress = "0x65e122676d3a84B12F65daF2F882C4cDE81F1025"; // Proxy Address
+    const abi = [
       {
         inputs: [
           { internalType: "uint256", name: "tokenAmount", type: "uint256" },
@@ -439,46 +439,61 @@
       },
     ];
 
-    // Initialize the contract
-    const contract = new ethers.Contract(contractAddress, contractAbi, signer);
+    const contract = new ethers.Contract(contractAddress, abi, signer);
 
-    // Prompt the user for the amount of BNB/ETH to spend
-    const amountToSpend = prompt(`Enter the amount of ${paymentType} to spend:`); // In whole numbers
-    if (!amountToSpend) return;
-
-    // Convert the amount to Ether format
-    const valueToSend = ethers.parseEther(amountToSpend);
-
-    // Fetch BLEU token price in USD
-    const tokenPriceUSD = 0.0005; // BLEU token price in USD
-    const bnbPriceUSD = await getBNBPrice(); // Fetch BNB/USD price dynamically
-
-    // Calculate the number of BLEU tokens the user will receive
-    const bleuTokensToReceive = (valueToSend * bnbPriceUSD) / tokenPriceUSD;
-
-    console.log(
-      `You are spending ${amountToSpend} ${paymentType} to purchase approximately ${bleuTokensToReceive} BLEU tokens.`
-    );
-
-    // Call the `buyToken` function on the contract
-    const tx = await contract.buyToken(
-      ethers.utils.parseUnits(bleuTokensToReceive.toFixed(18), 18), // Token amount in 18 decimals
-      paymentType,
-      0, // USDT amount is 0 for BNB/ETH
+    // Fetch BNB Price from Chainlink Oracle
+    const oracleAddress = "0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE"; // BNB/USD Oracle on Binance Testnet
+    const oracleAbi = [
       {
-        value: valueToSend,
+        inputs: [],
+        name: "latestRoundData",
+        outputs: [
+          { internalType: "uint80", name: "roundId", type: "uint80" },
+          { internalType: "int256", name: "answer", type: "int256" },
+          { internalType: "uint256", name: "startedAt", type: "uint256" },
+          { internalType: "uint256", name: "updatedAt", type: "uint256" },
+          { internalType: "uint80", name: "answeredInRound", type: "uint80" },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+    ];
+
+    const oracleContract = new ethers.Contract(oracleAddress, oracleAbi, provider);
+    const roundData = await oracleContract.latestRoundData();
+    const bnbPriceUSD = parseFloat(ethers.formatUnits(roundData.answer, 8));
+
+    // Prompt for BNB amount
+    const bnbAmount = parseFloat(prompt("Enter the amount of BNB to spend:"));
+    if (isNaN(bnbAmount) || bnbAmount <= 0) {
+      alert("Invalid BNB amount.");
+      return;
+    }
+
+    const tokenPriceUSD = 0.0005; // Example: BLEU price in USD
+    const tokenAmount = Math.floor((bnbAmount * bnbPriceUSD) / tokenPriceUSD);
+
+    console.log(`Buying ${tokenAmount} BLEU Tokens for ${bnbAmount} BNB.`);
+
+    const tx = await contract.buyToken(
+      tokenAmount, // Calculated token amount
+      paymentType, // Payment type ("BNB" in this case)
+      0, // USDT amount is 0 since we're paying in BNB
+      {
+        value: ethers.parseEther(bnbAmount.toString()),
         gasLimit: 300000, // Optional gas limit
       }
     );
 
-    // Wait for the transaction to be mined
+    // Wait for the transaction to complete
     await tx.wait();
-    alert(`Transaction successful! You purchased ${bleuTokensToReceive} BLEU tokens.`);
+    alert("Transaction successful! BLEU tokens have been sent to your wallet.");
   } catch (error) {
     console.error("Transaction failed:", error);
     alert("Transaction failed. Check the console for details.");
   }
 }
+
 
 /**
  * Function to get the current price of BNB in USD using Chainlink
