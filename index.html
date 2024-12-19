@@ -388,17 +388,21 @@
 <script>
   // Connect MetaMask
   async function connectMetaMask() {
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        document.getElementById('wallet-address').innerText = `Connected: ${accounts[0]}`;
-      } catch (error) {
-        alert("Failed to connect MetaMask. Please try again.");
+  if (window.ethereum) {
+    try {
+      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+      document.getElementById("wallet-address").innerText = `Connected: ${accounts[0]}`;
+    } catch (error) {
+      if (error.code === 4001) {
+        alert("User rejected the connection request.");
+      } else {
+        alert("An error occurred while connecting to MetaMask.");
       }
-    } else {
-      alert("MetaMask is not installed. Please install it to use this feature!");
     }
+  } else {
+    alert("MetaMask is not installed. Please install it to use this feature!");
   }
+}
 
   // Copy Contract Address
   function copyContractAddress() {
@@ -414,55 +418,66 @@
   }
 
   try {
-    // Connect to MetaMask using BrowserProvider
+    // Connect to MetaMask
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
 
     // Smart contract details
-    const contractAddress = "0x65e122676d3a84B12F65daF2F882C4cDE81F1025";
+    const contractAddress = "0x65e122676d3a84B12F65daF2F882C4cDE81F1025"; // Proxy address
     const contractAbi = [
-  {
-    inputs: [
-      { internalType: "uint256", name: "tokenAmount", type: "uint256" },
-      { internalType: "string", name: "paymentType", type: "string" },
-      { internalType: "uint256", name: "usdtAmount", type: "uint256" },
-    ],
-    name: "buyToken",
-    outputs: [],
-    stateMutability: "payable",
-    type: "function",
-  },
-];
+      {
+        inputs: [
+          { internalType: "uint256", name: "tokenAmount", type: "uint256" },
+          { internalType: "string", name: "paymentType", type: "string" },
+          { internalType: "uint256", name: "usdtAmount", type: "uint256" },
+        ],
+        name: "buyToken",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function",
+      },
+    ];
 
     // Initialize the contract
     const contract = new ethers.Contract(contractAddress, contractAbi, signer);
 
-    // Prompt the user for the transaction amount
-    const amount = prompt(`Enter the amount of ${paymentType} to spend:`);
-    if (!amount) return;
+    // Prompt the user for the number of tokens they want to buy
+    const tokenAmount = prompt(`Enter the number of BLEU tokens to purchase:`); // In whole numbers
+    if (!tokenAmount) return;
 
+    // Handle payment types
     if (paymentType === "BNB" || paymentType === "ETH") {
-      // Convert the amount to Ether format
-      const valueToSend = ethers.parseEther(amount);
-      console.log(`Initiating ${paymentType} transaction for ${amount}...`);
+      // Prompt the user for the amount of BNB or ETH to send
+      const amountToSend = prompt(`Enter the amount of ${paymentType} to spend:`); // In whole numbers
+      if (!amountToSend) return;
 
-      // Call the buyTokens function on the contract
-      const tx = await contract.buyTokens(paymentType, 0, {
-        value: valueToSend,
-        gasLimit: 300000, // Optional gas limit
-      });
+      // Convert to Ether format
+      const valueToSend = ethers.parseEther(amountToSend);
+      console.log(`Initiating ${paymentType} transaction for ${amountToSend}...`);
+
+      // Call the `buyToken` function on the contract
+      const tx = await contract.buyToken(
+        ethers.utils.parseUnits(tokenAmount, 18), // Convert token amount to 18 decimals
+        paymentType,
+        0, // USDT amount is 0 for BNB/ETH
+        {
+          value: valueToSend,
+          gasLimit: 300000, // Optional gas limit
+        }
+      );
 
       // Wait for the transaction to be mined
       await tx.wait();
       alert(`Transaction successful! BLEU tokens have been sent to your wallet.`);
     } else {
-      alert("Invalid payment option selected.");
+      alert("Only BNB and ETH payments are supported at this time.");
     }
   } catch (error) {
     console.error("Transaction failed:", error);
     alert("Transaction failed. Check the console for details.");
   }
 }
+
 
 
 </script>
