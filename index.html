@@ -498,57 +498,56 @@ async function buyTokens(paymentType) {
 /**
  * Function to get the current price of BNB in USD using Chainlink
  */
- async function testBNBPriceOracle() {
-      try {
-        console.log("Fetching BNB price..."); // Debugging: Check if this runs when the button is clicked.
+async function testBNBPriceOracle() {
+  try {
+    console.log("Fetching BNB price...");
 
-        // Check if Ethers.js is loaded
-        if (typeof ethers === "undefined") {
-          console.error("Ethers.js is not loaded.");
-          throw new Error("Ethers.js is not loaded.");
-        }
-
-        // Check if MetaMask is installed
-        if (!window.ethereum) {
-          alert("MetaMask is not installed. Please install it to use this feature.");
-          return;
-        }
-
-        // Create a provider from MetaMask
-        const provider = new ethers.BrowserProvider(window.ethereum);
-
-        // Chainlink Oracle details
-        const oracleAddress = "0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE"; // BNB/USD on Binance Testnet
-        const oracleAbi = [
-          {
-            inputs: [],
-            name: "latestRoundData",
-            outputs: [
-              { internalType: "uint80", name: "roundId", type: "uint80" },
-              { internalType: "int256", name: "answer", type: "int256" },
-              { internalType: "uint256", name: "startedAt", type: "uint256" },
-              { internalType: "uint256", name: "updatedAt", type: "uint256" },
-              { internalType: "uint80", name: "answeredInRound", type: "uint80" },
-            ],
-            stateMutability: "view",
-            type: "function",
-          },
-        ];
-
-        // Initialize the oracle contract
-        const oracleContract = new ethers.Contract(oracleAddress, oracleAbi, provider);
-
-        // Fetch the latest BNB price
-        const roundData = await oracleContract.latestRoundData();
-        const bnbPriceUSD = parseFloat(ethers.formatUnits(roundData.answer, 8));
-
-        console.log(`BNB/USD Price: $${bnbPriceUSD}`); // Debugging: Log the fetched price
-        alert(`BNB/USD Price: $${bnbPriceUSD}`); // Display the price to the user
-      } catch (error) {
-        console.error("Failed to fetch BNB price:", error);
-        alert("Failed to fetch BNB price. Please try again later.");
-      }
+    // Check if Ethers.js and MetaMask are available
+    if (typeof ethers === "undefined") {
+      throw new Error("Ethers.js is not loaded.");
     }
+    if (!window.ethereum) {
+      alert("MetaMask is not installed. Please install it to use this feature.");
+      return;
+    }
+
+    // Connect to MetaMask
+    const provider = new ethers.BrowserProvider(window.ethereum);
+
+    // Correct Chainlink Oracle for BNB/USD on Binance Testnet
+    const oracleAddress = ethers.getAddress("0x16f2712a4d797045F9cFCB61D3fcB9dE11fF30C0");
+    const oracleAbi = [
+      {
+        inputs: [],
+        name: "latestRoundData",
+        outputs: [
+          { internalType: "uint80", name: "roundId", type: "uint80" },
+          { internalType: "int256", name: "answer", type: "int256" },
+          { internalType: "uint256", name: "startedAt", type: "uint256" },
+          { internalType: "uint256", name: "updatedAt", type: "uint256" },
+          { internalType: "uint80", name: "answeredInRound", type: "uint80" },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+    ];
+
+    // Initialize the Oracle contract
+    const oracleContract = new ethers.Contract(oracleAddress, oracleAbi, provider);
+
+    // Call the Oracle to fetch the latest BNB price
+    const roundData = await oracleContract.latestRoundData();
+    const bnbPriceUSD = parseFloat(ethers.formatUnits(roundData.answer, 8)); // 8 decimals
+
+    console.log(`BNB/USD Price: $${bnbPriceUSD}`);
+    alert(`BNB/USD Price: $${bnbPriceUSD}`);
+    return bnbPriceUSD;
+  } catch (error) {
+    console.error("Failed to fetch BNB price:", error);
+    alert("Failed to fetch BNB price. Please try again later.");
+  }
+}
+
 
 
 
