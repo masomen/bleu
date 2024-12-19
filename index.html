@@ -442,7 +442,7 @@ async function buyTokens(paymentType) {
     const contract = new ethers.Contract(contractAddress, abi, signer);
 
     // Fetch BNB Price from Chainlink Oracle
-    const oracleAddress = "0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE"; // BNB/USD Oracle on Binance Testnet
+    const oracleAddress = "0x16f2712a4d797045F9cFCB61D3fcB9dE11fF30C0"; // BNB/USD Oracle on Binance Testnet
     const oracleAbi = [
       {
         inputs: [],
