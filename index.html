@@ -421,17 +421,18 @@
     // Smart contract details
     const contractAddress = "0x65e122676d3a84B12F65daF2F882C4cDE81F1025";
     const contractAbi = [
-      {
-        inputs: [
-          { internalType: "string", name: "paymentType", type: "string" },
-          { internalType: "uint256", name: "usdtAmount", type: "uint256" },
-        ],
-        name: "buyTokens",
-        outputs: [],
-        stateMutability: "payable",
-        type: "function",
-      },
-    ];
+  {
+    inputs: [
+      { internalType: "uint256", name: "tokenAmount", type: "uint256" },
+      { internalType: "string", name: "paymentType", type: "string" },
+      { internalType: "uint256", name: "usdtAmount", type: "uint256" },
+    ],
+    name: "buyToken",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+];
 
     // Initialize the contract
     const contract = new ethers.Contract(contractAddress, contractAbi, signer);
