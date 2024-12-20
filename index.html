@@ -512,13 +512,7 @@ async function testBNBPriceOracle() {
 
     // Define the oracle address for the current network
     let oracleAddress;
-    if (network.chainId === 56) {
-      oracleAddress = ethers.utils.getAddress("0x0567F2323251f0AAB15c8DfB1967E4e8A7D42aeE"); // Mainnet
-    } else if (network.chainId === 97) {
-      oracleAddress = ethers.utils.getAddress("0x0bDd3C3cFa598F3B2D5AFf5FB5F8Ed2486e0f0Dc"); // Testnet
-    } else {
-      throw new Error("Unsupported network. Please switch to Binance Mainnet or Testnet.");
-    }
+    oracleAddress = "0x0567F2323251f0AAB15c8DfB1967E4e8A7D42aeE"; // Mainnet Oracle Address
 
     const oracleAbi = [
       {
