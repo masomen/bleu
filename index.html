@@ -424,7 +424,7 @@ async function buyTokens(paymentType) {
     const signer = await provider.getSigner();
 
     // Contract Details
-    const contractAddress = "0x1e608241e62ff87D3CA8EBee752EC3fBe6dE0ED9"; // Proxy Address
+    const contractAddress = ethers.utils.getAddress("0x1e608241e62ff87D3CA8EBee752EC3fBe6dE0ED9"); // Proxy Address
     const abi = [
       {
         inputs: [
@@ -442,7 +442,7 @@ async function buyTokens(paymentType) {
     const contract = new ethers.Contract(contractAddress, abi, signer);
 
     // Fetch BNB Price from Chainlink Oracle
-    const oracleAddress = "0x0bDd3C3cFa598F3B2D5AFf5FB5F8Ed2486e0f0Dc"; // BNB/USD Oracle on Binance Testnet
+    oracleAddress = ethers.utils.getAddress("0x0bDd3C3cFa598F3B2D5AFf5FB5F8Ed2486e0f0Dc"); // BNB/USD Oracle on Binance Testnet
     const oracleAbi = [
       {
         inputs: [],
