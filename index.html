@@ -463,12 +463,46 @@ async function buyTokens(paymentType) {
     const roundData = await oracleContract.latestRoundData();
     const bnbPriceUSD = parseFloat(ethers.formatUnits(roundData.answer, 8));
 
-    // Prompt for BNB amount
-    const bnbAmount = parseFloat(prompt("Enter the amount of BNB to spend:"));
-    if (isNaN(bnbAmount) || bnbAmount <= 0) {
-      alert("Invalid BNB amount.");
-      return;
-    }
+    if (paymentType === "BNB") {
+  const bnbAmount = parseFloat(prompt("Enter the amount of BNB to spend:"));
+  if (isNaN(bnbAmount) || bnbAmount <= 0) {
+    alert("Invalid BNB amount.");
+    return;
+  }
+
+  // Calculate token amount
+  const tokenPriceUSD = 0.0005; // Example: BLEU price in USD
+  const tokenAmount = Math.floor((bnbAmount * bnbPriceUSD) / tokenPriceUSD);
+
+  console.log(`Buying ${tokenAmount} BLEU Tokens for ${bnbAmount} BNB.`);
+  await contract.buyToken(tokenAmount, paymentType, 0, {
+    value: ethers.parseEther(bnbAmount.toString()),
+    gasLimit: 300000,
+  });
+} else if (paymentType === "ETH") {
+  const ethAmount = parseFloat(prompt("Enter the amount of ETH to spend:"));
+  if (isNaN(ethAmount) || ethAmount <= 0) {
+    alert("Invalid ETH amount.");
+    return;
+  }
+
+  console.log(`Buying with ETH: ${ethAmount} ETH.`);
+  await contract.buyToken(0, paymentType, 0, {
+    value: ethers.parseEther(ethAmount.toString()),
+    gasLimit: 300000,
+  });
+} else if (paymentType.startsWith("USDT")) {
+  const usdtAmount = parseFloat(prompt("Enter the amount of USDT to spend:"));
+  if (isNaN(usdtAmount) || usdtAmount <= 0) {
+    alert("Invalid USDT amount.");
+    return;
+  }
+
+  console.log(`Buying with USDT: ${usdtAmount} ${paymentType}.`);
+  await contract.buyToken(0, paymentType, ethers.parseUnits(usdtAmount.toString(), 18));
+} else {
+  alert("Unsupported payment type.");
+}
 
     const tokenPriceUSD = 0.0005; // Example: BLEU price in USD
     const tokenAmount = Math.floor((bnbAmount * bnbPriceUSD) / tokenPriceUSD);
