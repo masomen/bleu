@@ -470,8 +470,7 @@ async function buyTokens(paymentType) {
     return;
   }
 
-  // Calculate token amount
-  const tokenPriceUSD = 0.0005; // Example: BLEU price in USD
+  const tokenPriceUSD = 0.0005; // BLEU price in USD
   const tokenAmount = Math.floor((bnbAmount * bnbPriceUSD) / tokenPriceUSD);
 
   console.log(`Buying ${tokenAmount} BLEU Tokens for ${bnbAmount} BNB.`);
@@ -491,18 +490,28 @@ async function buyTokens(paymentType) {
     value: ethers.parseEther(ethAmount.toString()),
     gasLimit: 300000,
   });
-} else if (paymentType.startsWith("USDT")) {
-  const usdtAmount = parseFloat(prompt("Enter the amount of USDT to spend:"));
+} else if (paymentType === "USDT-BEP20") {
+  const usdtAmount = parseFloat(prompt("Enter the amount of USDT-BEP20 to spend:"));
   if (isNaN(usdtAmount) || usdtAmount <= 0) {
-    alert("Invalid USDT amount.");
+    alert("Invalid USDT-BEP20 amount.");
     return;
   }
 
-  console.log(`Buying with USDT: ${usdtAmount} ${paymentType}.`);
+  console.log(`Buying with USDT-BEP20: ${usdtAmount} USDT.`);
+  await contract.buyToken(0, paymentType, ethers.parseUnits(usdtAmount.toString(), 18));
+} else if (paymentType === "USDT-ERC20") {
+  const usdtAmount = parseFloat(prompt("Enter the amount of USDT-ERC20 to spend:"));
+  if (isNaN(usdtAmount) || usdtAmount <= 0) {
+    alert("Invalid USDT-ERC20 amount.");
+    return;
+  }
+
+  console.log(`Buying with USDT-ERC20: ${usdtAmount} USDT.`);
   await contract.buyToken(0, paymentType, ethers.parseUnits(usdtAmount.toString(), 18));
 } else {
   alert("Unsupported payment type.");
 }
+
 
     const tokenPriceUSD = 0.0005; // Example: BLEU price in USD
     const tokenAmount = Math.floor((bnbAmount * bnbPriceUSD) / tokenPriceUSD);
