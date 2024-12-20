@@ -508,16 +508,25 @@ async function testBNBPriceOracle() {
     }
 
     const provider = new ethers.BrowserProvider(window.ethereum);
+    const network = await provider.getNetwork();
 
-    // Use a valid checksummed address
-    const oracleAddress = "0x0bDd3C3cFa598F3B2D5AFf5FB5F8Ed2486e0f0Dc"; // Correct Chainlink BNB/USD Oracle
+    // Define the oracle address for the current network
+    let oracleAddress;
+    if (network.chainId === 56) {
+      oracleAddress = ethers.utils.getAddress("0x0567F2323251f0AAB15c8DfB1967E4e8A7D42aeE"); // Mainnet
+    } else if (network.chainId === 97) {
+      oracleAddress = ethers.utils.getAddress("0x0bDd3C3cFa598F3B2D5AFf5FB5F8Ed2486e0f0Dc"); // Testnet
+    } else {
+      throw new Error("Unsupported network. Please switch to Binance Mainnet or Testnet.");
+    }
+
     const oracleAbi = [
       {
         inputs: [],
         name: "latestRoundData",
         outputs: [
           { internalType: "uint80", name: "roundId", type: "uint80" },
-          { internalType: "int256", name: "answer", type: "int256" },
+          { internalType: "int256", name: "answer", type: "int256" }, // Price
           { internalType: "uint256", name: "startedAt", type: "uint256" },
           { internalType: "uint256", name: "updatedAt", type: "uint256" },
           { internalType: "uint80", name: "answeredInRound", type: "uint80" },
@@ -536,10 +545,9 @@ async function testBNBPriceOracle() {
     return bnbPriceUSD;
   } catch (error) {
     console.error("Failed to fetch BNB price:", error);
-    alert("Failed to fetch BNB price. Please try again later.");
+    alert("Failed to fetch BNB price. Please check your network and try again.");
   }
 }
-
 
 
 
