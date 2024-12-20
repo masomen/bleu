@@ -502,20 +502,15 @@ async function testBNBPriceOracle() {
   try {
     console.log("Fetching BNB price...");
 
-    // Check if Ethers.js and MetaMask are available
-    if (typeof ethers === "undefined") {
-      throw new Error("Ethers.js is not loaded.");
-    }
     if (!window.ethereum) {
       alert("MetaMask is not installed. Please install it to use this feature.");
       return;
     }
 
-    // Connect to MetaMask
     const provider = new ethers.BrowserProvider(window.ethereum);
 
-    // Correct Chainlink Oracle for BNB/USD on Binance Testnet
-    const oracleAddress = "0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE";
+    // Use a valid checksummed address
+    const oracleAddress = "0x0567F2323251f0AAB15c8DfB1967E4e8A7D42aeE"; // Correct Chainlink BNB/USD Oracle
     const oracleAbi = [
       {
         inputs: [],
@@ -532,12 +527,9 @@ async function testBNBPriceOracle() {
       },
     ];
 
-    // Initialize the Oracle contract
     const oracleContract = new ethers.Contract(oracleAddress, oracleAbi, provider);
-
-    // Call the Oracle to fetch the latest BNB price
     const roundData = await oracleContract.latestRoundData();
-    const bnbPriceUSD = parseFloat(ethers.formatUnits(roundData.answer, 8)); // 8 decimals
+    const bnbPriceUSD = parseFloat(ethers.formatUnits(roundData.answer, 8));
 
     console.log(`BNB/USD Price: $${bnbPriceUSD}`);
     alert(`BNB/USD Price: $${bnbPriceUSD}`);
@@ -547,6 +539,7 @@ async function testBNBPriceOracle() {
     alert("Failed to fetch BNB price. Please try again later.");
   }
 }
+
 
 
 
