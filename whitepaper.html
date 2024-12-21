@@ -7,18 +7,85 @@
   <script src="script.js"></script>
   <!-- Link to Universal CSS -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Navbar Placeholder -->
-  <div id="navbar-placeholder"></div>
-  <link rel="stylesheet" href="styles.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Additional Styling for Whitepaper */
+    .whitepaper-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      max-width: 900px;
+      text-align: left;
+    }
+
+    .whitepaper-container h1, .whitepaper-container h2 {
+      font-family: 'BatmanForever', Arial, sans-serif;
+      color: orange;
+      margin-bottom: 20px;
+    }
+
+    .whitepaper-container p, ul {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .whitepaper-container ul {
+      padding-left: 20px;
+    }
+
+    .whitepaper-container ul li {
+      margin-bottom: 10px;
+    }
+
+    .divider {
+      border: none;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #00bfff, transparent);
+      margin: 30px auto;
+      width: 80%;
+      opacity: 0.8;
+    }
+
+    .table-of-contents {
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: rgba(17, 17, 17, 0.5);
+      border-radius: 10px;
+    }
+
+    .table-of-contents a {
+      color: #00bfff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .table-of-contents a:hover {
+      color: #0080ff;
+    }
+
+    .table-of-contents ul {
+      padding-left: 20px;
+    }
+
+    .table-of-contents ul li {
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
-<body class="whitepaper-page">
+<body>
   <div class="global-wrapper">
     <!-- TSParticles Background -->
     <div id="tsparticles"></div>
+
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
 
     <!-- Whitepaper Content -->
     <div class="whitepaper-container">
@@ -26,36 +93,109 @@
       <h2>Version 1.0 | Published: [Insert Date]</h2>
       <div class="divider"></div>
 
-      <h2>Introduction</h2>
-      <p>BleuToken is a blockchain project combining meme culture with meaningful charitable contributions. Built on Binance Smart Chain (BSC), BleuToken aims to support dog welfare organizations worldwide while engaging the crypto community.</p>
-      
+      <!-- Table of Contents -->
+      <div class="table-of-contents">
+        <h2>Table of Contents</h2>
+        <ul>
+          <li><a href="#introduction">1. Introduction</a></li>
+          <li><a href="#vision-mission">2. Vision and Mission</a></li>
+          <li><a href="#problem">3. The Problem</a></li>
+          <li><a href="#solution">4. Our Solution</a></li>
+          <li><a href="#tokenomics">5. Tokenomics</a></li>
+          <li><a href="#use-cases">6. Use Cases</a></li>
+          <li><a href="#charity-contributions">7. Charity Contributions</a></li>
+          <li><a href="#technology-security">8. Technology and Security</a></li>
+          <li><a href="#roadmap">9. Roadmap</a></li>
+          <li><a href="#team">10. Team</a></li>
+          <li><a href="#legal-disclaimer">11. Legal Disclaimer</a></li>
+        </ul>
+      </div>
+
       <div class="divider"></div>
 
-      <h2>Vision and Mission</h2>
-      <p><strong>Vision:</strong> Empower dog charities globally using blockchain technology.</p>
-      <p><strong>Mission:</strong> Create scalable cryptocurrency while distributing funds transparently to support canine welfare worldwide.</p>
-      
+      <!-- Sections -->
+      <h2 id="introduction">1. Introduction</h2>
+      <p>BleuToken is a revolutionary blockchain project aimed at blending meme culture with meaningful charitable contributions. Built on Binance Smart Chain (BSC), BleuToken ($BLEU) is designed to bring real-world impact to dog welfare organizations globally while giving the crypto community an opportunity to support an inspiring cause.</p>
+
       <div class="divider"></div>
 
-      <h2>Tokenomics</h2>
+      <h2 id="vision-mission">2. Vision and Mission</h2>
+      <p><strong>Vision:</strong> To create a world where blockchain empowers global dog charities while entertaining the crypto community.</p>
+      <p><strong>Mission:</strong></p>
+      <ul>
+        <li>To deliver a scalable and user-friendly cryptocurrency.</li>
+        <li>To allocate funds transparently to dog charities.</li>
+        <li>To use raised liquidity to grow our presence on major exchanges.</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2 id="problem">3. The Problem</h2>
+      <p>Globally, millions of dogs are neglected or suffer due to a lack of resources in shelters and charity organizations. Despite advancements in charity technologies, there is little to no transparency in how funds are distributed or used.</p>
+
+      <div class="divider"></div>
+
+      <h2 id="solution">4. Our Solution</h2>
+      <p>BleuToken introduces a transparent, blockchain-based system where every transaction contributes to meaningful causes. With smart contract integration, 1% of every token sale is sent directly to the charity wallet, ensuring traceability and accountability. Raised funds during the pre-sale and subsequent transactions will also be used to secure listings on major cryptocurrency exchanges, helping to expand the reach and liquidity of BleuToken.</p>
+
+      <div class="divider"></div>
+
+      <h2 id="tokenomics">5. Tokenomics</h2>
+      <p><strong>Token Details:</strong></p>
       <ul>
         <li><strong>Token Name:</strong> BleuToken</li>
         <li><strong>Ticker Symbol:</strong> $BLEU</li>
+        <li><strong>Network:</strong> Binance Smart Chain</li>
         <li><strong>Total Supply:</strong> 1 Billion $BLEU</li>
       </ul>
-      <p>Pre-sale funds will be used for liquidity and exchange listings. 1% of all transactions are directed to a charity wallet.</p>
-      
+      <p><strong>Distribution:</strong></p>
+      <ul>
+        <li>Charity Wallet: 1% of all transactions.</li>
+        <li>Maintenance Wallet: 0.02% of all transactions for minimal upkeep.</li>
+        <li>Marketing and Ads: 50% of raised funds will go toward advertising the token.</li>
+        <li>Liquidity Pool and Exchange Listings: 40% of raised funds to secure liquidity and listing fees.</li>
+        <li>Founder Support: 10% for ongoing maintenance, operational support, and growth.</li>
+      </ul>
+
       <div class="divider"></div>
 
-      <h2>Roadmap</h2>
-      <p><strong>Phase 1:</strong> Token creation, whitepaper release, pre-sale launch.</p>
-      <p><strong>Phase 2:</strong> Marketing, liquidity acquisition, exchange listings.</p>
-      <p><strong>Phase 3:</strong> Partnering with global charities, NFT launch.</p>
-      
+      <h2 id="use-cases">6. Use Cases</h2>
+      <p><strong>Donation Mechanism:</strong> Direct support to dog charities with every token sale.</p>
+      <p><strong>Community Token:</strong> Grow your wallet while being part of a community-driven initiative.</p>
+      <p><strong>Exchange Liquidity:</strong> Funds raised in the pre-sale will be used to secure liquidity on major exchanges.</p>
+
       <div class="divider"></div>
 
-      <h2>How to Get Involved</h2>
-      <p>Buy $BLEU tokens during the pre-sale to join the mission. Support charitable contributions while holding a community-backed cryptocurrency with real-world impact.</p>
+      <h2 id="charity-contributions">7. Charity Contributions</h2>
+      <p>1% of every transaction goes to the charity wallet, which will be donated to global and local dog shelters periodically. Contributions will be publicly viewable on the blockchain for full transparency.</p>
+
+      <div class="divider"></div>
+
+      <h2 id="technology-security">8. Technology and Security</h2>
+      <ul>
+        <li><strong>Built on Binance Smart Chain (BSC):</strong> Low fees and high scalability.</li>
+        <li><strong>Chainlink Oracles:</strong> For fetching live price data.</li>
+        <li><strong>Upgradeable Contracts:</strong> Built with OpenZeppelin to ensure long-term adaptability.</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2 id="roadmap">9. Roadmap</h2>
+      <ul>
+        <li><strong>Phase 1:</strong> Token creation, whitepaper release, pre-sale launch.</li>
+        <li><strong>Phase 2:</strong> Marketing, liquidity acquisition, exchange listings.</li>
+        <li><strong>Phase 3:</strong> Partnering with global charities, NFT launch.</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2 id="team">10. Team</h2>
+      <p>Our team consists of blockchain enthusiasts, dog welfare advocates, and marketing strategists passionate about leveraging technology for impactful causes.</p>
+
+      <div class="divider"></div>
+
+      <h2 id="legal-disclaimer">11. Legal Disclaimer</h2>
+      <p>This document is for informational purposes only. BleuToken is not intended as financial advice or a security. Cryptocurrency investments carry inherent risks. Please consult a financial advisor before investing.</p>
     </div>
 
     <!-- Footer -->
@@ -81,18 +221,6 @@
         .then(response => response.text())
         .then(data => navbarPlaceholder.innerHTML = data);
 
-      const titles = document.querySelectorAll('.hidden-section');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-            observer.unobserve(entry.target);
-          }
-        });
-      });
-
-      titles.forEach(title => observer.observe(title));
-
       tsParticles.load("tsparticles", {
         particles: {
           number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -106,7 +234,6 @@
       });
     });
   </script>
-  <!-- TSParticles -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
 </body>
 </html>
