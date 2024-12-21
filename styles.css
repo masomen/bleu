@@ -714,3 +714,41 @@ body.mission-page {
 .navbar-links li a:hover {
   opacity: 1;
 }
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger-menu span {
+    background-color: white;
+    height: 3px;
+    width: 25px;
+    margin: 3px 0;
+}
+
+/* Collapsible Menu */
+.collapsible {
+    display: none;
+    flex-direction: column;
+    background-color: #000;
+    padding: 10px;
+}
+
+/* Show collapsible menu when active */
+.collapsible.active {
+    display: flex;
+}
+
+/* Responsive Navbar for Mobile */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none; /* Hide regular navbar links */
+    }
+}
