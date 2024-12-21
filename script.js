@@ -1,4 +1,4 @@
-<script>
+
   // Function to copy the contract address
   function copyContractAddress() {
     try {
@@ -62,7 +62,7 @@
     }
   }
 
-</script>
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const hamburgerMenu = document.getElementById("hamburger-menu");
