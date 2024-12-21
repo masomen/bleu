@@ -757,3 +757,6 @@ body.mission-page {
   }
 }
 
+.navbar a {
+  text-decoration: none; /* Removes underline from all navbar links */
+}
