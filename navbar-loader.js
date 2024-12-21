@@ -2,28 +2,29 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("navbar.html")
     .then(response => response.text())
     .then(data => {
-      // Insert navbar content into the placeholder
-      document.getElementById("navbar-placeholder").innerHTML = data;
+      const navbarPlaceholder = document.getElementById("navbar-placeholder");
+      navbarPlaceholder.innerHTML = data;
 
-      // Attach the menu toggle functionality
+      // Define toggleMenu globally
+      window.toggleMenu = function () {
+        const menu = document.querySelector(".navbar-links");
+        menu?.classList.toggle("show");
+      };
+
+      // Attach event listener to hamburger button
       const menuToggle = document.querySelector(".menu-toggle");
-      const navbarLinks = document.querySelector(".navbar-links");
-
-      if (menuToggle && navbarLinks) {
-        menuToggle.addEventListener("click", () => {
-          navbarLinks.classList.toggle("show");
-        });
-
-        // Close the menu when any link is clicked
-        const navbarLinksArray = document.querySelectorAll(".navbar-links a");
-        navbarLinksArray.forEach(link => {
-          link.addEventListener("click", () => {
-            navbarLinks.classList.remove("show");
-          });
-        });
-      } else {
-        console.error("Menu toggle button or navbar links not found.");
+      if (menuToggle) {
+        menuToggle.addEventListener("click", window.toggleMenu);
       }
+
+      // Close menu when a link is clicked
+      const navbarLinks = document.querySelectorAll(".navbar-links a");
+      navbarLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          const menu = document.querySelector(".navbar-links");
+          menu?.classList.remove("show");
+        });
+      });
 
       // Fix for Buy button navigation
       const buyButton = document.getElementById("scroll-to-buy");
