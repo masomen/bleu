@@ -782,3 +782,48 @@ body.mission-page {
 #hamburger-menu.open {
     display: block;
 }
+
+
+/* Hide the desktop navbar on smaller screens */
+@media (max-width: 768px) {
+    .desktop-navbar {
+        display: none;
+    }
+
+    #hamburger-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100vh;
+        background-color: #000;
+        color: #fff;
+        z-index: 10000; /* Ensure it's above everything else */
+        overflow-y: auto;
+    }
+
+    #hamburger-menu.open {
+        display: block;
+    }
+
+    #menu-button {
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10001; /* Ensure it's above the hamburger menu */
+    }
+}
+
+/* Ensure the desktop navbar displays normally on larger screens */
+@media (min-width: 769px) {
+    #menu-button,
+    #hamburger-menu {
+        display: none;
+    }
+
+    .desktop-navbar {
+        display: block;
+    }
+}
