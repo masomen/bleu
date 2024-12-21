@@ -866,3 +866,40 @@ body.mission-page {
         display: none; /* Hide hamburger menu on larger screens */
     }
 }
+@media (max-width: 768px) {
+    .navbar {
+        display: none; /* Hide the navbar on smaller screens */
+    }
+
+    #menu-button {
+        display: block; /* Show the hamburger menu button */
+    }
+
+    #hamburger-menu {
+        display: none; /* Initially hide the hamburger menu */
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100vh;
+        background-color: #000; /* Menu background color */
+        color: #fff; /* Menu text color */
+        z-index: 10000; /* Ensure it overlays other elements */
+        overflow-y: auto; /* Enable scrolling for long menus */
+    }
+
+    #hamburger-menu.open {
+        display: block; /* Show menu when open class is added */
+    }
+}
+
+@media (min-width: 769px) {
+    .navbar {
+        display: flex; /* Show the navbar on larger screens */
+    }
+
+    #menu-button,
+    #hamburger-menu {
+        display: none; /* Hide hamburger menu on larger screens */
+    }
+}
