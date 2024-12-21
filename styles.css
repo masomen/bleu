@@ -757,6 +757,6 @@ body.mission-page {
   }
 }
 
-.navbar a {
-  text-decoration: none; /* Removes underline from all navbar links */
+.logo-tab a {
+  text-decoration: none; /* Removes underline specifically for the Bleu link */
 }
