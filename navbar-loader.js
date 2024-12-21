@@ -2,32 +2,32 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("navbar.html")
     .then(response => response.text())
     .then(data => {
+      // Inject the navbar into the placeholder
       const navbarPlaceholder = document.getElementById("navbar-placeholder");
       navbarPlaceholder.innerHTML = data;
 
-      // Define toggleMenu globally
-      window.toggleMenu = function () {
-        const menu = document.querySelector(".navbar-links");
-        menu?.classList.toggle("show");
-      };
+      // Attach event listeners for menu toggle
+      const menuToggle = navbarPlaceholder.querySelector(".menu-toggle");
+      const navbarLinks = navbarPlaceholder.querySelector(".navbar-links");
 
-      // Attach event listener to hamburger button
-      const menuToggle = document.querySelector(".menu-toggle");
-      if (menuToggle) {
-        menuToggle.addEventListener("click", window.toggleMenu);
+      if (menuToggle && navbarLinks) {
+        menuToggle.addEventListener("click", function () {
+          navbarLinks.classList.toggle("show");
+        });
+
+        // Attach event listeners to close the menu when a link is clicked
+        const navbarLinksArray = navbarPlaceholder.querySelectorAll(".navbar-links a");
+        navbarLinksArray.forEach(link => {
+          link.addEventListener("click", function () {
+            navbarLinks.classList.remove("show");
+          });
+        });
+      } else {
+        console.error("Menu toggle button or navbar links not found.");
       }
 
-      // Close menu when a link is clicked
-      const navbarLinks = document.querySelectorAll(".navbar-links a");
-      navbarLinks.forEach(link => {
-        link.addEventListener("click", () => {
-          const menu = document.querySelector(".navbar-links");
-          menu?.classList.remove("show");
-        });
-      });
-
-      // Fix for Buy button navigation
-      const buyButton = document.getElementById("scroll-to-buy");
+      // Handle the Buy button separately
+      const buyButton = navbarPlaceholder.querySelector("#scroll-to-buy");
       if (buyButton) {
         buyButton.addEventListener("click", function (event) {
           event.preventDefault();
