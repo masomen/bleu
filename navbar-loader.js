@@ -4,23 +4,30 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
       document.getElementById("navbar-placeholder").innerHTML = data;
 
-      function toggleMenu() {
+      // Define toggleMenu function globally
+      window.toggleMenu = function () {
         const menu = document.querySelector(".navbar-links");
         menu.classList.toggle("show");
-      }
+      };
 
+      // Attach event listeners for menu toggle button
       const menuToggle = document.querySelector(".menu-toggle");
       if (menuToggle) {
-        menuToggle.addEventListener("click", toggleMenu);
+        menuToggle.addEventListener("click", window.toggleMenu);
       }
 
-      document.querySelectorAll(".navbar-links a").forEach(link => {
-        link.addEventListener("click", () => {
-          const menu = document.querySelector(".navbar-links");
-          menu.classList.remove("show");
+      // Close menu when a link is clicked
+      const navbarLinks = document.querySelectorAll(".navbar-links a");
+      if (navbarLinks.length > 0) {
+        navbarLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            const menu = document.querySelector(".navbar-links");
+            menu.classList.remove("show");
+          });
         });
-      });
+      }
 
+      // Fix for Buy button navigation
       const buyButton = document.getElementById("scroll-to-buy");
       if (buyButton) {
         buyButton.addEventListener("click", function (event) {
