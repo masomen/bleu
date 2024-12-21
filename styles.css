@@ -903,3 +903,26 @@ body.mission-page {
         display: none; /* Hide hamburger menu on larger screens */
     }
 }
+#menu-button {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001; /* Above the hamburger menu */
+    background-color: #000; /* Black background */
+    color: #fff; /* White icon color */
+    padding: 15px; /* Increase padding */
+    font-size: 20px; /* Larger font size for visibility */
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Optional: Add a "Menu" label */
+#menu-button::after {
+    content: "Menu";
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 5px;
+}
