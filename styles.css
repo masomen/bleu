@@ -881,7 +881,7 @@ body.mission-page {
         top: 0;
         right: 0;
         width: 200px;
-        height: 100vh;
+        height: auto;* Dynamically adjust to content */
         background-color: #000; /* Menu background color */
         color: #fff; /* Menu text color */
         z-index: 10000; /* Ensure it overlays other elements */
