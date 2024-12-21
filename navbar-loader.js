@@ -2,53 +2,36 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("navbar.html")
     .then(response => response.text())
     .then(data => {
-      // Insert the navbar content into the placeholder
+      // Insert navbar content into the placeholder
       document.getElementById("navbar-placeholder").innerHTML = data;
 
-      // Define toggleMenu function globally
-      window.toggleMenu = function () {
-        const menu = document.querySelector(".navbar-links");
-        if (menu) {
-          menu.classList.toggle("show");
-        } else {
-          console.error("Menu element not found.");
-        }
-      };
-
-      // Attach event listener for the menu toggle button
+      // Attach the menu toggle functionality
       const menuToggle = document.querySelector(".menu-toggle");
-      if (menuToggle) {
-        menuToggle.addEventListener("click", window.toggleMenu);
-      } else {
-        console.error("Menu toggle button not found.");
-      }
+      const navbarLinks = document.querySelector(".navbar-links");
 
-      // Close the menu when a link is clicked
-      const navbarLinks = document.querySelectorAll(".navbar-links a");
-      if (navbarLinks.length > 0) {
-        navbarLinks.forEach(link => {
+      if (menuToggle && navbarLinks) {
+        menuToggle.addEventListener("click", () => {
+          navbarLinks.classList.toggle("show");
+        });
+
+        // Close the menu when any link is clicked
+        const navbarLinksArray = document.querySelectorAll(".navbar-links a");
+        navbarLinksArray.forEach(link => {
           link.addEventListener("click", () => {
-            const menu = document.querySelector(".navbar-links");
-            if (menu) {
-              menu.classList.remove("show");
-            } else {
-              console.error("Menu element not found.");
-            }
+            navbarLinks.classList.remove("show");
           });
         });
       } else {
-        console.error("Navbar links not found.");
+        console.error("Menu toggle button or navbar links not found.");
       }
 
       // Fix for Buy button navigation
       const buyButton = document.getElementById("scroll-to-buy");
       if (buyButton) {
         buyButton.addEventListener("click", function (event) {
-          event.preventDefault(); // Prevent default anchor behavior
+          event.preventDefault();
           window.location.href = "index.html#buy-bleu";
         });
-      } else {
-        console.warn("Buy button not found.");
       }
     })
     .catch(error => console.error("Error loading navbar:", error));
