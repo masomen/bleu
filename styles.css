@@ -949,15 +949,17 @@ body.mission-page {
 
 @media (max-width: 768px) {
     .logo {
-        display: block; /* Ensure the logo is visible on mobile */
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 10002;
+        display: flex; /* Use Flexbox for horizontal alignment */
+    align-items: center; /* Align items vertically in the center */
+    position: fixed; /* Keep it fixed for mobile */
+    top: 10px; /* Adjust as needed */
+    left: 10px;
+    z-index: 10002;
     }
 
     .logo img {
-        max-height: 40px; /* Adjust the logo size for mobile */
+        max-height: 40px; /* Adjust logo size */
+    margin-right: 10px; /* Add spacing between logo and text */
     }
 
     .logo .text {
