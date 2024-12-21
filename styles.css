@@ -961,10 +961,11 @@ body.mission-page {
     }
 
     .logo .text {
-        display: block;
-        font-size: 18px; /* Text size for "Bleu" */
-        color: #fff; /* White text for visibility */
-        margin-top: 5px;
+        font-family: 'BatmanForever', sans-serif; /* Use the desktop font */
+        font-size: 20px; /* Adjust for mobile size */
+        font-weight: normal; /* Match desktop weight */
+        color: #fff; /* White text for contrast */
+        letter-spacing: 2px; /* Optional: Adjust spacing if needed */
     }
 }
 
