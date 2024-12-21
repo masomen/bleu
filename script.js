@@ -1,19 +1,20 @@
 <script>
   // Function to copy the contract address
   function copyContractAddress() {
-    const address = document.getElementById("contract-address").innerText.split(": ")[1];
-    navigator.clipboard.writeText(address).then(() => {
-      alert("Contract Address Copied!");
-    });
-  }
-</script>
-<script>
-  // Function to copy the contract address
-  function copyContractAddress() {
-    const address = document.getElementById("contract-address").innerText.split(": ")[1];
-    navigator.clipboard.writeText(address).then(() => {
-      alert("Contract Address Copied!");
-    });
+    try {
+      const address = document.getElementById("contract-address").innerText.split(": ")[1];
+      if (!address) throw new Error("Contract address not found.");
+      
+      navigator.clipboard.writeText(address).then(() => {
+        alert("Contract Address Copied!");
+      }).catch((error) => {
+        console.error("Failed to copy contract address:", error);
+        alert("Failed to copy the contract address. Please try again.");
+      });
+    } catch (error) {
+      console.error("Error copying contract address:", error);
+      alert("Error copying contract address. Please verify the contract address element.");
+    }
   }
 
   // Function to fetch BNB Price from Chainlink Oracle
@@ -30,7 +31,8 @@
 
       const provider = new ethers.BrowserProvider(window.ethereum);
 
-      const oracleAddress = "0x143db3CEEfbdfe5631aDD3E50f7614B6ba708BA7"; // BNB/USD on Binance Testnet
+      // Update this to the mainnet/testnet Oracle address you are using
+      const oracleAddress = "0x143db3CEEfbdfe5631aDD3E50f7614B6ba708BA7"; // Example: BNB/USD on Binance Testnet
       const oracleAbi = [
         {
           inputs: [],
@@ -59,16 +61,18 @@
       alert("Failed to fetch BNB price. Please try again later.");
     }
   }
-</script>
-function toggleMenu() {
-  const menu = document.querySelector(".navbar-links");
-  menu.classList.toggle("show");
-}
 
-// Hide the menu when a link is clicked
-document.querySelectorAll(".navbar-links a").forEach((link) => {
-  link.addEventListener("click", () => {
+  // Function to toggle the mobile menu
+  function toggleMenu() {
     const menu = document.querySelector(".navbar-links");
-    menu.classList.remove("show");
+    menu.classList.toggle("show");
+  }
+
+  // Hide the menu when a link is clicked
+  document.querySelectorAll(".navbar-links a").forEach((link) => {
+    link.addEventListener("click", () => {
+      const menu = document.querySelector(".navbar-links");
+      menu.classList.remove("show");
+    });
   });
-});
+</script>
