@@ -60,3 +60,15 @@
     }
   }
 </script>
+function toggleMenu() {
+  const menu = document.querySelector(".navbar-links");
+  menu.classList.toggle("show");
+}
+
+// Hide the menu when a link is clicked
+document.querySelectorAll(".navbar-links a").forEach((link) => {
+  link.addEventListener("click", () => {
+    const menu = document.querySelector(".navbar-links");
+    menu.classList.remove("show");
+  });
+});
