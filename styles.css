@@ -947,3 +947,30 @@ body.mission-page {
     }
 }
 
+@media (max-width: 768px) {
+    .logo {
+        display: block; /* Ensure the logo is visible on mobile */
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10002;
+    }
+
+    .logo img {
+        max-height: 40px; /* Adjust the logo size for mobile */
+    }
+
+    .logo .text {
+        display: block;
+        font-size: 18px; /* Text size for "Bleu" */
+        color: #fff; /* White text for visibility */
+        margin-top: 5px;
+    }
+}
+
+/* Hide the logo and text on larger screens */
+@media (min-width: 769px) {
+    .logo {
+        display: none;
+    }
+}
