@@ -878,8 +878,8 @@ body.mission-page {
     #hamburger-menu {
         display: none; /* Initially hide the hamburger menu */
         position: fixed;
-        top: 0;
-        right: 0;
+        top: 50px;
+        right: 20px;
         width: 200px;
         height: auto;* Dynamically adjust to content */
         background-color: #000; /* Menu background color */
@@ -906,7 +906,7 @@ body.mission-page {
 #menu-button {
     display: block;
     position: fixed;
-    top: 20px;
+    top: 5px;
     right: 20px;
     z-index: 10001; /* Above the hamburger menu */
     background-color: #000; /* Black background */
@@ -958,9 +958,7 @@ body.mission-page {
     }
 
     .logo img {
-        max-height: 40px; /* Adjust logo size */
-    margin-right: 10px; /* Add spacing between logo and text */
-    }
+        max-height: 40px; /* Adjust logo size */    }
 
     .logo .text {
         font-family: 'BatmanForever', sans-serif; /* Use the desktop font */
