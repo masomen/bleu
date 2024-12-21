@@ -66,14 +66,17 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const hamburgerMenu = document.getElementById("hamburger-menu");
-    if (hamburgerMenu) {
-        hamburgerMenu.addEventListener("click", function () {
-            const menu = document.querySelector(".collapsible");
-            if (menu) {
-                menu.classList.toggle("active");
-            }
+    const menuButton = document.getElementById("menu-button");
+
+    // Ensure both the button and menu exist
+    if (menuButton && hamburgerMenu) {
+        // Attach event listener to the menu button (not the menu itself)
+        menuButton.addEventListener("click", function () {
+            // Toggle the "open" class directly on the hamburger menu
+            hamburgerMenu.classList.toggle("open");
         });
     } else {
-        console.error("Hamburger menu not found.");
+        // Log an error if either element is missing
+        console.error("Menu button or Hamburger menu not found in the DOM.");
     }
 });
