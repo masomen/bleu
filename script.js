@@ -73,5 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 menu.classList.toggle("active");
             }
         });
+    } else {
+        console.error("Hamburger menu not found.");
     }
 });
