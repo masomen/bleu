@@ -20,50 +20,50 @@
   <!-- Load TSParticles -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
   <!-- JavaScript to include navbar -->
+  <script>
   document.addEventListener("DOMContentLoaded", function () {
-  fetch("navbar.html")
-    .then(response => response.text())
-    .then(data => {
-      // Insert the navbar HTML into the placeholder
-      document.getElementById("navbar-placeholder").innerHTML = data;
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        // Insert the navbar HTML
+        document.getElementById("navbar-placeholder").innerHTML = data;
 
-      // Reattach event listeners to elements in the dynamically loaded navbar
-      const menuToggle = document.querySelector(".menu-toggle");
-      const menuLinks = document.querySelectorAll(".navbar-links a");
-      const scrollToBuy = document.getElementById("scroll-to-buy");
+        // Reattach event listeners to the dynamic content
+        const menuToggle = document.querySelector(".menu-toggle");
+        const menuLinks = document.querySelectorAll(".navbar-links a");
 
-      // Handle mobile menu toggle
-      if (menuToggle) {
+        // Mobile menu toggle
         menuToggle.addEventListener("click", () => {
           const menu = document.querySelector(".navbar-links");
           menu.classList.toggle("show");
         });
-      }
 
-      // Handle menu close on link click
-      menuLinks.forEach(link => {
-        link.addEventListener("click", () => {
-          const menu = document.querySelector(".navbar-links");
-          menu.classList.remove("show");
+        // Close menu when a link is clicked
+        menuLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            const menu = document.querySelector(".navbar-links");
+            menu.classList.remove("show");
+          });
         });
-      });
 
-      // Smooth scroll for the "Buy" button
-      if (scrollToBuy) {
-        scrollToBuy.addEventListener("click", function (event) {
-          event.preventDefault();
-          const buySection = document.getElementById("buy-bleu");
-          if (buySection) {
-            buySection.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-          }
-        });
-      }
-    })
-    .catch(error => console.error("Error loading navbar:", error));
-});
+        // Add event listener to the "Buy" button after navbar loads
+        const buyButton = document.getElementById("scroll-to-buy");
+        if (buyButton) {
+          buyButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            const buySection = document.getElementById("buy-bleu");
+            if (buySection) {
+              buySection.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
+            }
+          });
+        }
+      })
+      .catch(error => console.error("Error loading navbar:", error));
+  });
+</script>
 
   <style>
     /* Responsive styling for the image */
