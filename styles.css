@@ -656,4 +656,104 @@ body.mission-page {
     width: 100%;
   }
 }
+/* General Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-tab {
+  display: flex;
+  align-items: center;
+}
+
+.logo-tab img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.navbar-title {
+  font-family: 'BatmanForever', Arial, sans-serif;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-links li a {
+  font-family: 'BatmanForever', Arial, sans-serif;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.navbar-links li a:hover {
+  opacity: 1;
+}
+
+/* Mobile-Friendly Menu Toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 80%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .navbar-links.show {
+    display: flex; /* Shown when toggled */
+  }
+
+  .navbar-links li {
+    margin-bottom: 10px;
+  }
+
+  .navbar-links li:last-child {
+    margin-bottom: 0;
+  }
+}
 
