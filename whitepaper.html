@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bleu - Whitepaper</title>
+  <script src="script.js"></script>
+  <!-- Link to Universal CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="whitepaper-page">
+  <div class="global-wrapper">
+    <!-- TSParticles Background -->
+    <div id="tsparticles"></div>
+
+    <!-- Whitepaper Content -->
+    <div class="whitepaper-container">
+      <h1>BleuToken Whitepaper</h1>
+      <h2>Version 1.0 | Published: [Insert Date]</h2>
+      <div class="divider"></div>
+
+      <h2>Introduction</h2>
+      <p>BleuToken is a blockchain project combining meme culture with meaningful charitable contributions. Built on Binance Smart Chain (BSC), BleuToken aims to support dog welfare organizations worldwide while engaging the crypto community.</p>
+      
+      <div class="divider"></div>
+
+      <h2>Vision and Mission</h2>
+      <p><strong>Vision:</strong> Empower dog charities globally using blockchain technology.</p>
+      <p><strong>Mission:</strong> Create scalable cryptocurrency while distributing funds transparently to support canine welfare worldwide.</p>
+      
+      <div class="divider"></div>
+
+      <h2>Tokenomics</h2>
+      <ul>
+        <li><strong>Token Name:</strong> BleuToken</li>
+        <li><strong>Ticker Symbol:</strong> $BLEU</li>
+        <li><strong>Total Supply:</strong> 1 Billion $BLEU</li>
+      </ul>
+      <p>Pre-sale funds will be used for liquidity and exchange listings. 1% of all transactions are directed to a charity wallet.</p>
+      
+      <div class="divider"></div>
+
+      <h2>Roadmap</h2>
+      <p><strong>Phase 1:</strong> Token creation, whitepaper release, pre-sale launch.</p>
+      <p><strong>Phase 2:</strong> Marketing, liquidity acquisition, exchange listings.</p>
+      <p><strong>Phase 3:</strong> Partnering with global charities, NFT launch.</p>
+      
+      <div class="divider"></div>
+
+      <h2>How to Get Involved</h2>
+      <p>Buy $BLEU tokens during the pre-sale to join the mission. Support charitable contributions while holding a community-backed cryptocurrency with real-world impact.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-email">
+          <i class="fas fa-envelope footer-icon"></i>
+          <a href="mailto:xxxxxx@bleutoken.com" class="footer-link">xxxxxx@bleutoken.com</a>
+        </div>
+        <div class="footer-text">
+          <p>&copy; 2024 BleuToken | All Rights Reserved.</p>
+          <p class="footer-disclaimer">Disclaimer: $BLEU is for entertainment and charity purposes only. It does not guarantee financial returns.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Smooth Reveal Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbarPlaceholder = document.getElementById("navbar-placeholder");
+      fetch("navbar.html")
+        .then(response => response.text())
+        .then(data => navbarPlaceholder.innerHTML = data);
+
+      const titles = document.querySelectorAll('.hidden-section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      titles.forEach(title => observer.observe(title));
+
+      tsParticles.load("tsparticles", {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#00bfff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 150, color: "#00bfff", opacity: 0.4, width: 1 },
+          move: { enable: true, speed: 1.5, out_mode: "out" }
+        }
+      });
+    });
+  </script>
+  <!-- TSParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.3/tsparticles.bundle.min.js"></script>
+</body>
+</html>
