@@ -25,45 +25,40 @@
     fetch("navbar.html")
       .then(response => response.text())
       .then(data => {
-        // Insert the navbar HTML
         document.getElementById("navbar-placeholder").innerHTML = data;
 
-        // Reattach event listeners to the dynamic content
-        const menuToggle = document.querySelector(".menu-toggle");
-        const menuLinks = document.querySelectorAll(".navbar-links a");
-
-        // Mobile menu toggle
-        menuToggle.addEventListener("click", () => {
+        // Define the toggleMenu function after the navbar is loaded
+        function toggleMenu() {
           const menu = document.querySelector(".navbar-links");
           menu.classList.toggle("show");
-        });
+        }
 
-        // Close menu when a link is clicked
-        menuLinks.forEach((link) => {
+        // Attach event listeners to the dynamically loaded elements
+        const menuToggle = document.querySelector(".menu-toggle");
+        if (menuToggle) {
+          menuToggle.addEventListener("click", toggleMenu);
+        }
+
+        document.querySelectorAll(".navbar-links a").forEach(link => {
           link.addEventListener("click", () => {
             const menu = document.querySelector(".navbar-links");
             menu.classList.remove("show");
           });
         });
 
-        // Add event listener to the "Buy" button after navbar loads
+        // Fix for Buy button to navigate properly
         const buyButton = document.getElementById("scroll-to-buy");
         if (buyButton) {
           buyButton.addEventListener("click", function (event) {
             event.preventDefault(); // Prevent default anchor behavior
-            const buySection = document.getElementById("buy-bleu");
-            if (buySection) {
-              buySection.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-              });
-            }
+            window.location.href = "index.html#buy-bleu";
           });
         }
       })
       .catch(error => console.error("Error loading navbar:", error));
   });
 </script>
+
 
   <style>
     /* Responsive styling for the image */
