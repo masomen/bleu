@@ -76,3 +76,9 @@
     });
   });
 </script>
+
+// Toggle the collapsible menu on hamburger click
+document.getElementById("hamburger-menu").addEventListener("click", function () {
+    const menu = document.querySelector(".collapsible");
+    menu.classList.toggle("active");
+});
