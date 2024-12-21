@@ -62,23 +62,16 @@
     }
   }
 
-  // Function to toggle the mobile menu
-  function toggleMenu() {
-    const menu = document.querySelector(".navbar-links");
-    menu.classList.toggle("show");
-  }
-
-  // Hide the menu when a link is clicked
-  document.querySelectorAll(".navbar-links a").forEach((link) => {
-    link.addEventListener("click", () => {
-      const menu = document.querySelector(".navbar-links");
-      menu.classList.remove("show");
-    });
-  });
 </script>
 
-// Toggle the collapsible menu on hamburger click
-document.getElementById("hamburger-menu").addEventListener("click", function () {
-    const menu = document.querySelector(".collapsible");
-    menu.classList.toggle("active");
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburgerMenu = document.getElementById("hamburger-menu");
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener("click", function () {
+            const menu = document.querySelector(".collapsible");
+            if (menu) {
+                menu.classList.toggle("active");
+            }
+        });
+    }
 });
