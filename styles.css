@@ -715,7 +715,19 @@ body.mission-page {
   opacity: 1;
 }
 
-/* Hamburger Menu Styles */
+/* Collapsible Menu */
+.collapsible {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    background-color: #000;
+    padding: 10px;
+}
+
+.collapsible.active {
+    display: flex; /* Shown when active */
+}
+
+/* Hamburger Menu */
 .hamburger-menu {
     display: none;
     flex-direction: column;
@@ -729,20 +741,7 @@ body.mission-page {
     margin: 3px 0;
 }
 
-/* Collapsible Menu */
-.collapsible {
-    display: none;
-    flex-direction: column;
-    background-color: #000;
-    padding: 10px;
-}
-
-/* Show collapsible menu when active */
-.collapsible.active {
-    display: flex;
-}
-
-/* Responsive Navbar for Mobile */
+/* Mobile View */
 @media (max-width: 768px) {
     .hamburger-menu {
         display: flex;
