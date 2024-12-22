@@ -933,7 +933,7 @@ body.mission-page {
 @media (max-width: 768px) {
     .logo {
         display: block; /* Ensure the logo is visible */
-        position: absolute;
+        position: fixed;
         top: 10px;
         left: 10px;
         z-index: 10002;
@@ -1026,7 +1026,7 @@ body.mission-page {
 /* Responsive Styling for Mobile */
 @media (max-width: 768px) {
     .logo-tab {
-        position: absolute; /* Keep logo fixed at the top-left */
+        position: fixed; /* Keep logo fixed at the top-left */
         top: 10px;
         left: 10px;
         z-index: 10001;
