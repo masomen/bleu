@@ -358,14 +358,10 @@ h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
 }
 /* Mission Page Specific Centering Fix */
 body.mission-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Centers content vertically */
-    max-width: none; /* Override the global max-width */
-    width: 100%; /* Ensure full page width */
-    margin: 0; /* Remove conflicting centering */
+    max-width: 1280px; /* Match the global max-width */
+    margin: 0 auto; /* Center the content */
+    width: 100%; /* Full width within max-width constraints */
+    display: block; /* Revert to block layout for body */
 }
 
 .global-wrapper {
