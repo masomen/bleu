@@ -998,3 +998,41 @@ body.mission-page {
 #hamburger-menu ul li a:hover {
     color: #00f; /* Add hover effect (e.g., blue) */
 }
+/* Logo Section */
+.logo-tab {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Logo Image Styling */
+.logo-img {
+    max-height: 40px; /* Adjust logo size */
+    margin-right: 10px; /* Add spacing between logo and text */
+}
+
+/* Logo Text Styling */
+.navbar-title {
+    font-family: 'BatmanForever', sans-serif; /* Match desktop font */
+    font-size: 24px; /* Match desktop size */
+    color: #fff; /* White text */
+    letter-spacing: 2px;
+}
+
+/* Responsive Styling for Mobile */
+@media (max-width: 768px) {
+    .logo-tab {
+        position: absolute; /* Keep logo fixed at the top-left */
+        top: 10px;
+        left: 10px;
+        z-index: 10001;
+    }
+
+    .logo-img {
+        max-height: 35px; /* Slightly smaller for mobile */
+    }
+
+    .navbar-title {
+        font-size: 20px; /* Adjust text size for mobile */
+    }
+}
