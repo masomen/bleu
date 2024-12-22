@@ -1036,3 +1036,14 @@ body.mission-page {
         font-size: 20px; /* Adjust text size for mobile */
     }
 }
+@media (min-width: 769px) {
+    .navbar-links {
+        display: flex; /* Ensure horizontal display for desktop */
+        flex-direction: row; /* Align items in a row */
+        gap: 20px; /* Add spacing between items */
+    }
+
+    .hamburger-menu {
+        display: none; /* Hide hamburger menu on desktop */
+    }
+}
