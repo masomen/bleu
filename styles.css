@@ -988,7 +988,7 @@ body.mission-page {
     text-decoration: none; /* Remove underline from links */
     color: #fff; /* White text for visibility */
     font-family: 'BatmanForever', sans-serif; /* Use the BatmanForever font */
-    font-size: 12px; /* Adjust size for readability */
+    font-size: 16px; /* Adjust size for readability */
     font-weight: normal; /* Match desktop font weight */
     letter-spacing: 2px; /* Adjust letter spacing if needed */
     padding: 5px 10px; /* Add padding for touch-friendly design */
