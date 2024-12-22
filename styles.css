@@ -929,7 +929,7 @@ body.mission-page {
 @media (max-width: 768px) {
     .logo {
         display: block; /* Ensure the logo is visible */
-        position: fixed;
+        position: absolute;
         top: 10px;
         left: 10px;
         z-index: 10002;
@@ -974,4 +974,27 @@ body.mission-page {
     .logo {
         display: none;
     }
+}
+#hamburger-menu ul {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+}
+#hamburger-menu ul li {
+    margin: 10px 0; /* Add spacing between menu items */
+}
+
+#hamburger-menu ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* White text for visibility */
+    font-family: 'BatmanForever', sans-serif; /* Use the BatmanForever font */
+    font-size: 24px; /* Adjust size for readability */
+    font-weight: normal; /* Match desktop font weight */
+    letter-spacing: 2px; /* Adjust letter spacing if needed */
+    padding: 5px 10px; /* Add padding for touch-friendly design */
+    transition: color 0.2s ease; /* Smooth hover effect */
+}
+
+#hamburger-menu ul li a:hover {
+    color: #00f; /* Add hover effect (e.g., blue) */
 }
