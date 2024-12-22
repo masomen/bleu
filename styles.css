@@ -290,7 +290,6 @@ body {
 h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
     font-family: 'BatmanForever', Arial, sans-serif; /* Batman font */
     text-transform: uppercase; /* Keep titles uppercase */
-    letter-spacing: 1px; /* Add slight spacing for style */
 }
 /* Footer Section */
 .footer {
