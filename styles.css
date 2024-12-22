@@ -1056,3 +1056,10 @@ body.mission-page {
         display: none; /* Hide hamburger menu on desktop */
     }
 }
+/* Desktop View: Hide Hamburger Menu Button */
+@media (min-width: 769px) {
+    #menu-button,
+    #hamburger-menu {
+        display: none !important; /* Force hiding on desktop */
+    }
+}
