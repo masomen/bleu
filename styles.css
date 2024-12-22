@@ -73,12 +73,21 @@ body {
     line-height: 1;
 }
 
-/* Responsive Design */
+/* Mobile View */
 @media (max-width: 768px) {
     .navbar ul {
         flex-direction: column; /* Stack items vertically */
-        gap: 15px;
+        gap: 15px; /* Add spacing between items */
     }
+}
+
+/* Desktop View */
+@media (min-width: 769px) {
+    .navbar ul {
+        flex-direction: row; /* Align items horizontally */
+        gap: 20px; /* Add horizontal spacing */
+    }
+}
 
     .navbar ul li a {
         font-size: 1.2rem; /* Slightly reduce font size for smaller screens */
