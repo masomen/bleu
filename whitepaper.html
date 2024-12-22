@@ -80,8 +80,6 @@
   </style>
 </head>
 <body>
-  <!-- Navbar Placeholder -->
-    <div id="navbar-placeholder"></div>
   <div class="global-wrapper">
     <!-- TSParticles Background -->
     <div id="tsparticles"></div>
@@ -214,11 +212,6 @@
 
   <!-- Smooth Reveal Script -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const navbarPlaceholder = document.getElementById("navbar-placeholder");
-      fetch("navbar.html")
-        .then(response => response.text())
-        .then(data => navbarPlaceholder.innerHTML = data);
 
       tsParticles.load("tsparticles", {
         particles: {
