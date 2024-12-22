@@ -1,59 +1,730 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* General Navbar Styling */
+/* Font Integration */
+@font-face {
+    font-family: 'BatmanForever';
+    src: url('fonts/batmfa__.ttf') format('truetype');
+    font-display: swap;
+}
+
+/* Body Styling */
+body {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #000;
+    color: white;
+    font-family: 'Poppins', Arial, sans-serif;
+    text-align: center;
+}
+
+/* Navbar Styles */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 10px 20px;
     background-color: #000;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 60px;
 }
 
-.navbar-container {
+.navbar ul {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.logo-tab {
-    display: flex;
-    align-items: center;
-}
-
-.logo-tab img {
-    height: 40px;
-    margin-right: 10px;
-}
-
-.navbar-title {
-    font-family: 'BatmanForever', Arial, sans-serif;
-    font-size: 1.4rem;
-    color: white;
-}
-
-.navbar-links {
-    display: flex;
-    list-style: none;
     gap: 20px;
+    list-style: none;
     padding: 0;
     margin: 0;
+    align-items: center; /* Align items vertically */
 }
 
-.navbar-links li a {
-    font-family: 'Poppins', Arial, sans-serif;
+.navbar ul li a {
+    font-family: 'BatmanForever', Arial, sans-serif;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Slightly larger font size */
     color: white;
     opacity: 0.8;
     transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center; /* Align content vertically */
+}
+
+.navbar ul li a:hover {
+    opacity: 1;
+}
+
+/* Logo Tab Styling */
+.logo-tab img {
+    height: 30px; /* Adjust logo size */
+    width: 30px;
+    object-fit: contain;
+    margin-right: 8px; /* Space between logo and text */
+}
+
+.navbar-title {
+    font-size: 1.4rem; /* Match text size with other tabs */
+    line-height: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column; /* Stack items vertically */
+        gap: 15px;
+    }
+
+    .navbar ul li a {
+        font-size: 1.2rem; /* Slightly reduce font size for smaller screens */
+    }
+
+    .logo-tab img {
+        height: 25px;
+        width: 25px;
+    }
+
+    .navbar-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Hero Section Styling */
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+    flex: 1.5;
+    text-align: left;
+    padding-right: 30px;
+}
+
+.hero-title {
+    font-family: 'BatmanForever', Arial, sans-serif;
+    font-size: 3rem;
+    color: #00bfff;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.hero-description strong {
+    color: #00bfff;
+}
+
+.hero-description .highlight {
+    color: #ffcc00;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.hero-button {
+    background-color: #00bfff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #0080ff;
+}
+
+.hero-mascot img {
+    max-width: 300px;
+    height: auto;
+}
+
+/* Bleu Info Section */
+.bleu-info-section {
+    background-color: rgba(17, 17, 17, 0.5); /* 50% transparency */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.bleu-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.bleu-title .highlight {
+    color: #00bfff;
+}
+
+.bleu-steps-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.bleu-step {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 280px;
+}
+
+.step-number {
+    background-color: #00bfff;
+    color: #111;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: -20px auto 10px;
+}
+
+.bleu-step h3 {
+    color: #00bfff;
+    margin-bottom: 10px;
+}
+
+.bleu-step p {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Powered by Binance Smart Chain Section */
+.bsc-powered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+}
+
+.bsc-logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.bsc-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.bsc-text .highlight {
+    color: #f3ba2f;
+}
+
+/* Hidden Section (Scroll Effect) */
+.hidden-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.hidden-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #00bfff, transparent);
+    margin: 30px auto;
+    width: 80%;
+    opacity: 0.8;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column; /* Stack hero content and image vertically */
+        text-align: center;
+        padding: 30px 15px;
+    }
+
+    .hero-title {
+        font-size: 2rem; /* Smaller title size for mobile */
+        margin-bottom: 15px;
+    }
+
+    .hero-mascot img {
+        max-width: 200px; /* Limit the image to 200px */
+        height: auto; /* Maintain aspect ratio */
+        margin: 20px auto 0; /* Center the image with spacing */
+    }
+}
+/* Apply BatmanForever font to all titles */
+h1, h2, h3, .hero-title, .bleu-title, .tokenomics-title, .bsc-text {
+    font-family: 'BatmanForever', Arial, sans-serif; /* Batman font */
+    text-transform: uppercase; /* Keep titles uppercase */
+    letter-spacing: 1px; /* Add slight spacing for style */
+}
+/* Footer Section */
+.footer {
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 50px;
+  border-radius: 10px 10px 0 0;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.footer-email {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and email */
+}
+
+.footer-icon {
+  color: #00bfff; /* Match Bleu’s highlight color */
+  font-size: 1.2rem; /* Adjust icon size */
+}
+
+.footer-link {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #0080ff;
+}
+
+.footer-text p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+.footer-disclaimer {
+  font-size: 0.8rem;
+  color: #999;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Reveal Effect for Footer */
+.hidden-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+.hidden-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Mission Page Specific Centering Fix */
+body.mission-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Centers content vertically */
+    max-width: none; /* Override the global max-width */
+    width: 100%; /* Ensure full page width */
+    margin: 0; /* Remove conflicting centering */
+}
+
+.global-wrapper {
+    width: 100%;
+    max-width: 900px; /* Adjust the width for the mission page */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.mission-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.mission-container .mission-image {
+    max-width: 50% !important; /* Reduce size */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto 20px; /* Center the image */
+}
+/* Buy Section */
+.buy-section {
+  background-color: rgba(17, 17, 17, 0.5); /* 50% transparency */
+  padding: 60px 20px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buy-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.buy-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+.buy-step {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.buy-step h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.buy-step h3 span {
+  color: #00bfff;
+  font-size: 1.8rem;
+}
+
+.buy-button,
+.payment-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #000;
+  background-color: #00bfff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.buy-button:hover,
+.payment-button:hover {
+  background-color: #0080ff;
+  transform: scale(1.05);
+}
+
+.payment-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.payment-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.wallet-status {
+  margin-top: 10px;
+  color: orange;
+  font-size: 1.1rem;
+}
+
+.contract-address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.copy-button {
+  padding: 5px 10px;
+  background-color: #00bfff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+  background-color: #0080ff;
+}
+.contract-address {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.contract-address p {
+  font-size: 1rem;
+  word-break: break-all; /* Ensures long text wraps properly */
+}
+
+.contract-address button {
+  background-color: #00bfff;
+  border: none;
+  color: #000;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+.contract-address button:hover {
+  background-color: #0080ff;
+  color: white;
+}
+/* Responsive Container for Contract and Wallet Addresses */
+.address-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between elements */
+    word-break: break-word; /* Ensures text wraps on smaller screens */
+    max-width: 100%; /* Prevents overflow */
+    padding: 10px;
+}
+
+.address-text {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Light background for visibility */
+    padding: 8px 10px;
+    border-radius: 5px;
+    width: 100%;
+    overflow-wrap: break-word; /* Force address to wrap */
+    white-space: normal; /* Allow normal wrapping */
+    box-sizing: border-box;
+}
+
+.address-button {
+    background-color: #00bfff;
+    color: black;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.address-button:hover {
+    background-color: #0080ff;
+    color: white;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .address-text {
+        font-size: 0.8rem; /* Smaller font for mobile screens */
+    }
+}
+/* Woofonomics Section Styling */
+#woofonomics-section {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(17, 17, 17, 0.9));
+  padding: 100px 20px;
+  color: white;
+  position: relative;
+  margin-top: 80px;
+  text-align: center;
+}
+
+/* Woofonomics Header */
+.woofonomics-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.woofonomics-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  object-fit: cover;
+}
+
+.woofonomics-title {
+  font-family: 'BatmanForever', Arial, sans-serif;
+  font-size: 2.5rem;
+  color: solid #00bfff;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Section Subtitle */
+.woofonomics-subtitle {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+/* Tokenomics Cards */
+.woofonomics-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.woof-card {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #00bfff;
+  border-radius: 20px; /* Fully rounded corners */
+  padding: 20px;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.woof-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.4);
+}
+
+.woof-icon {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.woof-card h3 {
+  font-size: 1.4rem;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.woof-card p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .woofonomics-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .woofonomics-title {
+    font-size: 2rem;
+  }
+
+  .woofonomics-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .woof-card {
+    width: 100%;
+  }
+}
+/* General Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo-tab {
+  display: flex;
+  align-items: center;
+}
+
+.logo-tab img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.navbar-title {
+  font-family: 'BatmanForever', Arial, sans-serif;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-links li a {
+  font-family: 'BatmanForever', Arial, sans-serif;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 .navbar-links li a:hover {
-    opacity: 1;
+  opacity: 1;
+}
+
+/* Collapsible Menu */
+.collapsible {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    background-color: #000;
+    padding: 10px;
+}
+
+.collapsible.active {
+    display: flex; /* Shown when active */
 }
 
 /* Hamburger Menu */
@@ -70,26 +741,298 @@
     margin: 3px 0;
 }
 
-/* Responsive Navbar */
+/* Mobile View */
 @media (max-width: 768px) {
-    .navbar-links {
-        display: none; /* Hide for mobile */
-        flex-direction: column;
-        gap: 15px;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background-color: #000;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    .navbar-links.open {
-        display: flex;
-    }
-
     .hamburger-menu {
         display: flex;
+    }
+
+    .navbar-links {
+        display: none; /* Hide regular navbar links */
+    }
+}
+
+
+#menu-button {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1000;
+}
+
+#hamburger-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+#hamburger-menu.open {
+    display: block;
+}
+
+
+/* Hide the desktop navbar on smaller screens */
+@media (max-width: 768px) {
+    .desktop-navbar {
+        display: none;
+    }
+
+    #hamburger-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100vh;
+        background-color: #000;
+        color: #fff;
+        z-index: 10000; /* Ensure it's above everything else */
+        overflow-y: auto;
+    }
+
+    #hamburger-menu.open {
+        display: block;
+    }
+
+    #menu-button {
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10001; /* Ensure it's above the hamburger menu */
+    }
+}
+
+/* Ensure the desktop navbar displays normally on larger screens */
+@media (min-width: 769px) {
+    #menu-button,
+    #hamburger-menu {
+        display: none;
+    }
+
+    .desktop-navbar {
+        display: block;
+    }
+}
+/* Hide the desktop navbar on smaller screens */
+@media (max-width: 768px) {
+    .desktop-navbar {
+        display: none; /* Hide the desktop navbar */
+    }
+
+    #menu-button {
+        display: block; /* Show the hamburger menu button */
+    }
+
+    #hamburger-menu {
+        display: none; /* Initially hide the hamburger menu */
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100vh;
+        background-color: #000; /* Menu background color */
+        color: #fff; /* Menu text color */
+        z-index: 10000; /* Ensure it overlays other elements */
+        overflow-y: auto; /* Enable scrolling for long menus */
+    }
+
+    #hamburger-menu.open {
+        display: block; /* Show menu when open class is added */
+    }
+}
+
+/* Show the desktop navbar on larger screens */
+@media (min-width: 769px) {
+    .desktop-navbar {
+        display: flex; /* Or block, depending on your design */
+    }
+
+    #menu-button,
+    #hamburger-menu {
+        display: none; /* Hide hamburger menu on larger screens */
+    }
+}
+@media (max-width: 768px) {
+    .navbar {
+        display: none; /* Hide the navbar on smaller screens */
+    }
+
+    #menu-button {
+        display: block; /* Show the hamburger menu button */
+    }
+
+    #hamburger-menu {
+        display: none; /* Initially hide the hamburger menu */
+        position: fixed;
+        top: 50px;
+        right: 20px;
+        width: 200px;
+        height: auto;* Dynamically adjust to content */
+        background-color: #000; /* Menu background color */
+        color: #fff; /* Menu text color */
+        z-index: 10000; /* Ensure it overlays other elements */
+        overflow-y: auto; /* Enable scrolling for long menus */
+    }
+
+    #hamburger-menu.open {
+        display: block; /* Show menu when open class is added */
+    }
+}
+
+@media (min-width: 769px) {
+    .navbar {
+        display: flex; /* Show the navbar on larger screens */
+    }
+
+    #menu-button,
+    #hamburger-menu {
+        display: none; /* Hide hamburger menu on larger screens */
+    }
+}
+#menu-button {
+    display: block;
+    position: fixed;
+    top: 5px;
+    right: 20px;
+    z-index: 10001; /* Above the hamburger menu */
+    background-color: #000; /* Black background */
+    color: #fff; /* White icon color */
+    padding: 15px; /* Increase padding */
+    font-size: 20px; /* Larger font size for visibility */
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Optional: Add a "Menu" label */
+#menu-button::after {
+    content: "Menu";
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 5px;
+}
+@media (max-width: 768px) {
+    .logo {
+        display: block; /* Ensure the logo is visible */
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 10002;
+    }
+
+    .logo img {
+        max-height: 40px; /* Adjust size of logo for mobile */
+    }
+
+    .logo .text {
+        display: block;
+        font-size: 18px;
+        color: #fff;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        display: flex; /* Use Flexbox for horizontal alignment */
+    align-items: center; /* Align items vertically in the center */
+    position: fixed; /* Keep it fixed for mobile */
+    top: 10px; /* Adjust as needed */
+    left: 10px;
+    z-index: 10002;
+    }
+
+    .logo img {
+        max-height: 40px; /* Adjust logo size */    }
+
+    .logo .text {
+        font-family: 'BatmanForever', sans-serif; /* Use the desktop font */
+        font-size: 22px; /* Adjust for mobile size */
+        font-weight: normal; /* Match desktop weight */
+        color: #fff; /* White text for contrast */
+        letter-spacing: 0px; /* Optional: Adjust spacing if needed */
+    }
+}
+
+/* Hide the logo and text on larger screens */
+@media (min-width: 769px) {
+    .logo {
+        display: none;
+    }
+}
+#hamburger-menu ul {
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+}
+#hamburger-menu ul li {
+    margin: 10px 0; /* Add spacing between menu items */
+}
+
+#hamburger-menu ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* White text for visibility */
+    font-family: 'BatmanForever', sans-serif; /* Use the BatmanForever font */
+    font-size: 16px; /* Adjust size for readability */
+    font-weight: normal; /* Match desktop font weight */
+    letter-spacing: 2px; /* Adjust letter spacing if needed */
+    padding: 5px 10px; /* Add padding for touch-friendly design */
+    transition: color 0.2s ease; /* Smooth hover effect */
+}
+
+#hamburger-menu ul li a:hover {
+    color: #00f; /* Add hover effect (e.g., blue) */
+}
+/* Logo Section */
+.logo-tab {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Logo Image Styling */
+.logo-img {
+    max-height: 40px; /* Adjust logo size */
+    margin-right: 10px; /* Add spacing between logo and text */
+}
+
+/* Logo Text Styling */
+.navbar-title {
+    font-family: 'BatmanForever', sans-serif; /* Match desktop font */
+    font-size: 24px; /* Match desktop size */
+    color: #fff; /* White text */
+    letter-spacing: 2px;
+}
+
+/* Responsive Styling for Mobile */
+@media (max-width: 768px) {
+    .logo-tab {
+        position: absolute; /* Keep logo fixed at the top-left */
+        top: 10px;
+        left: 10px;
+        z-index: 10001;
+    }
+
+    .logo-img {
+        max-height: 35px; /* Slightly smaller for mobile */
+    }
+
+    .navbar-title {
+        font-size: 20px; /* Adjust text size for mobile */
     }
 }
