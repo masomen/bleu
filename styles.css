@@ -712,7 +712,7 @@ body.mission-page {
   text-decoration: none;
   font-size: 1.2rem;
   color: white;
-  opacity: 0.8;
+  opacity: 1;
   transition: opacity 0.3s ease;
 }
 
