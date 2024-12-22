@@ -994,7 +994,7 @@ body.mission-page {
     font-family: 'BatmanForever', sans-serif; /* Use the BatmanForever font */
     font-size: 16px; /* Adjust size for readability */
     font-weight: normal; /* Match desktop font weight */
-    letter-spacing: 2px; /* Adjust letter spacing if needed */
+    letter-spacing: 0px; /* Adjust letter spacing if needed */
     padding: 5px 10px; /* Add padding for touch-friendly design */
     transition: color 0.2s ease; /* Smooth hover effect */
 }
@@ -1020,7 +1020,7 @@ body.mission-page {
     font-family: 'BatmanForever', sans-serif; /* Match desktop font */
     font-size: 24px; /* Match desktop size */
     color: #fff; /* White text */
-    letter-spacing: 2px;
+    letter-spacing: 0px;
 }
 
 /* Responsive Styling for Mobile */
