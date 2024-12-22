@@ -174,27 +174,6 @@
   <!-- Full Transparent Background -->
   <div class="full-bg"></div>
 
-  <!-- JavaScript to include navbar -->
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("navbar.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("navbar-placeholder").innerHTML = data;
-
-      // Fix for Buy button to navigate properly
-      const buyButton = document.getElementById("scroll-to-buy");
-      if (buyButton) {
-        buyButton.addEventListener("click", function (event) {
-          event.preventDefault(); // Prevent default anchor behavior
-          window.location.href = "index.html#buy-bleu";
-        });
-      }
-    })
-    .catch(error => console.error("Error loading navbar:", error));
-});
-</script>
-
   <!-- Main Wrapper -->
   <div class="global-wrapper">
     <div class="section">
