@@ -11,6 +11,26 @@
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- JavaScript to include navbar -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar-placeholder").innerHTML = data;
+
+        // Fix for Buy button to navigate properly
+        const buyButton = document.getElementById("scroll-to-buy");
+        if (buyButton) {
+          buyButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            window.location.href = "index.html#buy-bleu";
+          });
+        }
+      })
+      .catch(error => console.error("Error loading navbar:", error));
+  });
+</script>
   <style>
     /* General Reset */
     * {
