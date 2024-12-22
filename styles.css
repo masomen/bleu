@@ -361,13 +361,13 @@ body.mission-page {
 
 .global-wrapper {
     width: 100%;
-    max-width: 900px; /* Adjust the width for the mission page */
+    max-width: 1280px; /* Adjust the width for the mission page */
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
 }
 .mission-container {
-    max-width: 900px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
