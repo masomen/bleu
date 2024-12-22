@@ -695,12 +695,25 @@ async function testBNBPriceOracle() {
 
 <div id="menu-button" class="menu-button">☰</div>
 <div id="hamburger-menu" class="hamburger-menu">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="my-mission.html">My Mission</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="whitepaper.html">Whitepaper</a></li>
-    </ul>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="my-mission.html">My Mission</a></li>
+    <li><a href="donate.html">Donate</a></li>
+    <li><a href="whitepaper.html">Whitepaper</a></li>
+    <li><a href="#">Buy</a></li>
+    <li class="language-dropdown">
+      <a href="#" class="language-button">
+        <img src="flags/us.png" alt="English" class="flag-icon" /> English
+        <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="language-menu">
+        <li><a href="#" onclick="setLanguage('en')"><img src="flags/us.png" alt="English" class="flag-icon" /> English</a></li>
+        <li><a href="#" onclick="setLanguage('fr')"><img src="flags/fr.png" alt="French" class="flag-icon" /> Français</a></li>
+        <li><a href="#" onclick="setLanguage('es')"><img src="flags/es.png" alt="Spanish" class="flag-icon" /> Español</a></li>
+        <li><a href="#" onclick="setLanguage('tr')"><img src="flags/tr.png" alt="Turkish" class="flag-icon" /> Türkçe</a></li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 </body>
