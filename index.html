@@ -391,9 +391,9 @@
 </section>
 
 <script>
-  // Connect MetaMask
   async function connectMetaMask() {
   if (window.ethereum) {
+    // MetaMask is detected
     try {
       const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
       document.getElementById("wallet-address").innerText = `Connected: ${accounts[0]}`;
@@ -405,7 +405,20 @@
       }
     }
   } else {
-    alert("MetaMask is not installed. Please install it to use this feature!");
+    // MetaMask is not installed or not detected
+    if (/Android/i.test(navigator.userAgent)) {
+      // Android device
+      alert("MetaMask is not installed. Opening MetaMask in the Play Store...");
+      window.open("https://play.google.com/store/apps/details?id=io.metamask", "_blank");
+    } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      // iOS device
+      alert("MetaMask is not installed. Opening MetaMask in the App Store...");
+      window.open("https://apps.apple.com/app/metamask/id1438144202", "_blank");
+    } else {
+      // Desktop browser
+      alert("MetaMask is not installed. Please install it from https://metamask.io.");
+      window.open("https://metamask.io/download/", "_blank");
+    }
   }
 }
 
